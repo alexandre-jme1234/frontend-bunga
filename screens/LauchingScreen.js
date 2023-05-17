@@ -29,7 +29,7 @@ export default function LauchingScreen({ navigation }) {
     <Text bold style={styles.bodyCorps}> - Réserver une saison pour vos salariés.</Text>
     <Text bold style={styles.bodyCorps}> - Des Bungalows partout en France.</Text>
     </Stack>
-    <Button style={{'marginTop': 80, 'marginEnd': 20}} onPress={() => navigation.navigate('Selection')}>Click Me</Button>
+    <Button style={{'marginTop': 80, 'marginEnd': 20}} onPress={() => navigation.navigate('Selection')}>Suivant</Button>
   </View>
     </ImageBackground>
  );
