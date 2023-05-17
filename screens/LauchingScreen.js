@@ -7,6 +7,11 @@ import Search from '../components/Search';
 export default function LauchingScreen({ navigation }) {
  return (
   <View style={styles.background}>
+    <Text>test lauching</Text>
+    <Button
+          title="Go to bottom Tab "
+          onPress={() => navigation.navigate('TabNavigator')}
+        />
   </View>
  );
 }
