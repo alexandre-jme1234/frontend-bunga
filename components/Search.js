@@ -61,7 +61,16 @@ export default function Search({ navigation }) {
       date: dateSouhait,
       counter: bodyCounter 
     });
+// ------------------------------req.headers.destination ?
+    // const headers = {
+    //   "Content-Type": "application/json",
+    //   destination: destination,
+    //   bodyCounter: bodyCounter.toString(),
+    //   dateSouhait: dateSouhait
+    // };
 // ---------------------------Fetch recherche bungalow dispo
+
+
  
       fetch(`http://localhost:3000/dispo/?${params.toString()}`, {
         method: "GET",
