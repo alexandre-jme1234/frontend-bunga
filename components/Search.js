@@ -62,8 +62,7 @@ export default function Search({ navigation }) {
       counter: bodyCounter 
     });
 // ---------------------------Fetch recherche bungalow dispo
-
-  const selectionDestination = () => {
+ 
       fetch(`http://localhost:3000/dispo/?${params.toString()}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -205,7 +204,7 @@ export default function Search({ navigation }) {
                 },
               }}
               onDateChange={(date) => {
-                setDate(dateSouhait);
+                setDateSouhait(date);r
               }}
             />
           </View>
@@ -241,8 +240,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  datePickerStyle: {
-    width: 200,
-    marginTop: 20,
-  },
+
 });
