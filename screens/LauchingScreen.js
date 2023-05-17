@@ -1,7 +1,6 @@
 
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { Box, Input, Center, Button, Stack, Image } from "native-base";
-import Search from '../components/Search';
 
 
 export default function LauchingScreen({ navigation }) {
@@ -11,19 +10,26 @@ export default function LauchingScreen({ navigation }) {
   <Image style={styles.logoImage} source={require('../assets/logoBunga.jpg')}></Image>
   <Text bold style={styles.title}>BungaBunga</Text>
       </Stack>
-  <Stack mb="2.5" mt="1.5" direction="column" space={3}>
-    <Text bold style={styles.subTitle}>Bungalows</Text>
-  <Text bold style={styles.subTitle}>pour CSE</Text>
-  </Stack>
   <View style={styles.background}>
-  <View style={styles.border}></View>
+  <Stack mb="2.5" mt="1.5" direction="column" space={3} style={styles.containerImage}>
+    <Text bold style={styles.subTitle}>Bungalows</Text>
+  <Text bold style={{    
+    'fontSize': 30,
+    'fontWeight': 400,
+    'color': '#F8FFFF',
+    'fontFamily': 'Futura',
+    'marginBottom': 20,
+    'margin': 0
+    }}>pour CSE</Text>
+  <View style={{'backgroundColor': '#F8FFFF', 'borderWidth': 0.5, 'width': 60, 'marginBottom': 40}}/>
+  </Stack>
     <Stack mb="2.5" mt="1.5" direction="column" space={3}>
-    <Text bold fontSize="sm"> - Réserver des bungalows pour vos employés</Text>
-    <Text bold fontSize="sm"> - Négocier  en direct avec le loueur.</Text>
-    <Text bold fontSize="sm"> - Réserver une saison pour vos salariés.</Text>
-    <Text bold fontSize="sm"> - Des Bungalows partout en France.</Text>
+    <Text bold style={styles.bodyCorps}> - Réserver des bungalows pour vos employés</Text>
+    <Text bold style={styles.bodyCorps}> - Négocier  en direct avec le loueur.</Text>
+    <Text bold style={styles.bodyCorps}> - Réserver une saison pour vos salariés.</Text>
+    <Text bold style={styles.bodyCorps}> - Des Bungalows partout en France.</Text>
     </Stack>
-    <Button onPress={() => console.log("hello world")}>Click Me</Button>
+    <Button style={{'marginTop': 80, 'marginEnd': 20}} onPress={() => navigation.navigate('Selection')}>Click Me</Button>
   </View>
     </ImageBackground>
  );
@@ -35,26 +41,45 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         justifyContent: 'space-around',
-        alignItems: 'center'
       },
   title: {
     justifyContent: '',
-    fontSize: 60,
+    fontSize: 70,
     fontWeight: '600',
+    color: '#305775',
     fontFamily: 'Futura',
     marginBottom: 20
   },
   subTitle: {
-    fontSize: 20,
+    fontSize: 50,
     fontWeight: '600',
-    fontFamily: 'Futura',
-    marginBottom: 20
+    color: '#F8FFFF',
+    fontFamily: 'Futura', 
+    margin: 0
+  },
+  bodyCorps: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#F8FFFF',
+    fontFamily: 'Futura', 
+    margin: 0
+  },
+  containerImage: {
+    paddingLeft: 20,
   },
       logoImage: {
        paddingRight: 50,
+       justifyContent: 'flex-start',
+       alignItems: 'flex-start',
         // width: '40%',
         // height: '100%',
       },
+  background: {
+    marginLeft: 60,
+    marginRight: 60,
+    marginBottom: 20,
+    marginTop: 20
+  }, 
       // image: {
       //   width: 664,
       //   height: 664,
