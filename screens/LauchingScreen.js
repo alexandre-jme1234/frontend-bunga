@@ -28,6 +28,11 @@ export default function LauchingScreen({ navigation }) {
     <Text bold style={styles.bodyCorps}> - Négocier  en direct avec le loueur.</Text>
     <Text bold style={styles.bodyCorps}> - Réserver une saison pour vos salariés.</Text>
     <Text bold style={styles.bodyCorps}> - Des Bungalows partout en France.</Text>
+    <Text bold fontSize="sm"> - Réserver des bungalows pour vos employés</Text>
+    <Text bold fontSize="sm"> - Négocier  en direct avec le loueur.</Text>
+    <Text bold fontSize="sm"> - Réserver une saison pour vos salariés.</Text>
+    <Text bold fontSize="sm"> - Des Bungalows partout en France.</Text>
+    <Button onPress={() => navigation.navigate('Selection')}>Click Me</Button>
     </Stack>
     <Button style={{'marginTop': 80, 'marginEnd': 20}} onPress={() => navigation.navigate('Selection')}>Suivant</Button>
   </View>
