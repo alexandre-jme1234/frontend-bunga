@@ -30,7 +30,7 @@ export default function Search({ navigation }) {
   const [bodyCounter, setBodyCounter] = useState(0);
   const [weeksCounter, setWeeksCounter] = useState(0);
   const [destination, setDestination] = useState("");
-  const [date, setDate] = useState("09-10-2020");
+  const [dateSouhait, setDateSouhait] = useState("09-10-2020");
 
   const addCounterBody = () => {
     if (bodyCounter >= 0) {
@@ -54,24 +54,27 @@ export default function Search({ navigation }) {
       setWeeksCounter(weeksCounter - 1);
     }
   };
+// --------------------------Preparation des params
+  const selectionDestination = (destination = 'Ardèche',bodyCounter = 0, dateSouhait = '2023-07-19') => {
+    const params = new URLSearchParams({
+      destination: destination,
+      date: dateSouhait,
+      counter: bodyCounter 
+    });
+// ---------------------------Fetch recherche bungalow dispo
 
   const selectionDestination = () => {
-      fetch("http://localhost:3000/users/signin", {
-        method: "POST",
+      fetch(`http://localhost:3000/dispo/?${params.toString()}`, {
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          counter: bodyCounter, 
-          weekCounter: weeksCounter, 
-          destination: destination, 
-          date: date
-        }),
-      })
+           })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
+          console.log(data);
           if (data.result) {
+              console.log(selectionDestination)
             dispatch(addCounter(bodyCounter));
-            dispatch(addDate(date));
+            dispatch(addDate(dateSouhait));
             dispatch(addWeekCounter(weeksCounter));
             dispatch(addDestination(destination));
           }
@@ -181,7 +184,7 @@ export default function Search({ navigation }) {
 
             <DatePicker
               style={styles.datePickerStyle}
-              date={date} // Initial date from state
+              date={dateSouhait} // Initial date from state
               mode="date" // The enum of date, datetime and time
               placeholder="select date"
               format="DD-MM-YYYY"
@@ -202,7 +205,7 @@ export default function Search({ navigation }) {
                 },
               }}
               onDateChange={(date) => {
-                setDate(date);
+                setDate(dateSouhait);
               }}
             />
           </View>

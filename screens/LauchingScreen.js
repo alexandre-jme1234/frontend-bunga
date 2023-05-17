@@ -1,7 +1,6 @@
 
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { Box, Input, Center, Button, Stack, Image } from "native-base";
-import Search from '../components/Search';
 
 
 export default function LauchingScreen({ navigation }) {
@@ -22,7 +21,7 @@ export default function LauchingScreen({ navigation }) {
     <Text bold fontSize="sm"> - Négocier  en direct avec le loueur.</Text>
     <Text bold fontSize="sm"> - Réserver une saison pour vos salariés.</Text>
     <Text bold fontSize="sm"> - Des Bungalows partout en France.</Text>
-    <Button onPress={() => console.log("hello world")}>Click Me</Button>
+    <Button onPress={() => navigation.navigate('Selection')}>Click Me</Button>
     </Stack>
   </View>
     </ImageBackground>

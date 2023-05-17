@@ -1,6 +1,7 @@
 
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { Box, Input } from "native-base";
+import Search from '../components/Search';
 
 
 export default function SelectionScreen({ navigation }) {
