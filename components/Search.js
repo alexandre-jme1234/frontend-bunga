@@ -27,39 +27,55 @@ export default function Search({ navigation }) {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.value);
 
-  const [counter, setCounter] = useState(0);
-  const [weekCounter, setWeekCounter] = useState(0);
+  const [bodyCounter, setBodyCounter] = useState(0);
+  const [weeksCounter, setWeeksCounter] = useState(0);
   const [destination, setDestination] = useState("");
   const [date, setDate] = useState("09-10-2020");
 
   const addCounterBody = () => {
-    if (counter >= 0) {
-      setCounter(counter + 1);
+    if (bodyCounter >= 0) {
+      setBodyCounter(bodyCounter + 1);
     }
   };
 
   const substractCounter = () => {
-    if (counter > 0) {
-      setCounter(counter - 1);
+    if (bodyCounter > 0) {
+      setBodyCounter(bodyCounter - 1);
     }
   };
 
   const addWeekCounterBody = () => {
-    if (weekCounter >= 0) {
-      setWeekCounter(weekCounter + 1);
+    if (weeksCounter >= 0) {
+      setWeeksCounter(weeksCounter + 1);
     }
   };
   const substractWeekCounter = () => {
-    if (weekCounter > 0) {
-      setWeekCounter(weekCounter - 1);
+    if (weeksCounter > 0) {
+      setWeeksCounter(weeksCounter - 1);
     }
   };
 
   const selectionDestination = () => {
-    dispatch(addCounter(counter));
-    dispatch(addDate(date));
-    dispatch(addWeekCounter(weekCounter));
-    dispatch(addDestination(destination));
+      fetch("http://localhost:3000/users/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          counter: bodyCounter, 
+          weekCounter: weeksCounter, 
+          destination: destination, 
+          date: date
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          if (data.result) {
+            dispatch(addCounter(bodyCounter));
+            dispatch(addDate(date));
+            dispatch(addWeekCounter(weeksCounter));
+            dispatch(addDestination(destination));
+          }
+        });
   };
 
   console.log(reservation);
@@ -105,7 +121,7 @@ export default function Search({ navigation }) {
             +
           </Button>
           <Text bold fontSize="sm">
-            {counter}
+            {bodyCounter}
           </Text>
           <Button
             size="sm"
@@ -143,7 +159,7 @@ export default function Search({ navigation }) {
             +
           </Button>
           <Text bold fontSize="sm">
-            {weekCounter}
+            {weeksCounter}
           </Text>
           <Button
             size="sm"
