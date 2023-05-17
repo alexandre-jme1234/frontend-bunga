@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-// import counter from './reducers/counter';
+import reservation from './reducers/reservation';
 
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
@@ -26,9 +26,9 @@ import { extendTheme, NativeBaseProvider, Box } from "native-base";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// const store = configureStore({
-//   reducer: { counter },
-//  });
+const store = configureStore({
+  reducer: {reservation},
+ });
 
 const TabNavigator = () => {
   return (
@@ -69,9 +69,8 @@ const BungalowStack = () => {
 
 export default function App() {
   return (
-    // <Provider store={store}>
+    <Provider store={store}>
       <NativeBaseProvider theme={theme}>
-        <Box>Hello world</Box>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Launching" component={LauchingScreen} />
@@ -85,7 +84,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
-    // </Provider>
+    </Provider>
   );
 }
 
