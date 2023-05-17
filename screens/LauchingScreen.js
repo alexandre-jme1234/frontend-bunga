@@ -7,7 +7,6 @@ import Search from '../components/Search';
 export default function LauchingScreen({ navigation }) {
  return (
   <View style={styles.background}>
-   <Search />
   </View>
  );
 }
