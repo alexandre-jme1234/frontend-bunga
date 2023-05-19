@@ -38,28 +38,32 @@ export default function HomeScreen({ navigation }) {
     codePostal: formattedData.codePostal,
     departementNom: formattedData.departementNom,
     image: formattedData.image,
+ // // ----------- PROPS OPTIONS DU BUNGALOW
+
+ climatisation: formattedData.climatisation,
+ télévision: formattedData.télévision,
+ wifi: formattedData.wifi,
+ lave_vaisselle: formattedData.lave_vaisselle,
+ machineCafe: formattedData.machineCafe,
+ plancha: formattedData.plancha,
+ piscine: formattedData.piscine,
+ barbecue: formattedData.barbecue,
+ chien: formattedData.chien,
+// // ----------- PROPS PROPRIO
+
+  proprio_prenom: formattedData.proprietaire.prenom,
+  proprio_nom: formattedData.proprietaire.nom,
+  proprio_email: formattedData.proprietaire.email
+
+
   };
 
     return (<CardBungalow key={i} {...bungalowProps} />)
   });
 
-  // // ----------- PROPS OPTIONS DU BUNGALOW
+ 
 
-  // climatisation={data.bungalow_dispo[0].climatisation}
-  // télévision={data.bungalow_dispo[0].télévision}
-  // wifi={data.bungalow_dispo[0].wifi}
-  // lave_vaisselle={data.bungalow_dispo[0].lave_vaisselle}
-  // machineCafe={data.bungalow_dispo[0].machineCafe}
-  // plancha={data.bungalow_dispo[0].plancha}
-  // piscine={data.bungalow_dispo[0].piscine}
-  // barbecue={data.bungalow_dispo[0].barbecue}
-  // chien={data.bungalow_dispo[0].chien}
-
-  // // ----------- PROPS PROPRIO
-
-  // proprio_prenom={data.bungalow_dispo[0].proprietaire.prenom}
-  // proprio_nom={data.bungalow_dispo[0].proprietaire.nom}
-  // proprio_email={data.bungalow_dispo[0].proprietaire.email}
+  
 
   return (
     <View style={styles.background}>
