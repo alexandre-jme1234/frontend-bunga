@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import reservation from './reducers/reservation';
+import reservation from "./reducers/reservation";
 import searchResult from "./reducers/searchResult";
 
 import { StatusBar } from "expo-status-bar";
@@ -27,13 +27,9 @@ import { extendTheme, NativeBaseProvider, Box } from "native-base";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-
-
 const store = configureStore({
-  reducer: {reservation, searchResult},
- });
-
-
+  reducer: { reservation, searchResult },
+});
 
 const TabNavigator = () => {
   return (
@@ -73,7 +69,6 @@ const BungalowStack = () => {
 };
 
 export default function App() {
-  
   return (
     <Provider store={store}>
       <NativeBaseProvider theme={theme}>
@@ -83,14 +78,16 @@ export default function App() {
             <Stack.Screen name="Selection" component={SelectionScreen} />
             <Stack.Screen name="TabNavigator" component={TabNavigator} />
             <Stack.Screen name="PlageDate" component={PlageDateScreen} />
-            <Stack.Screen name="Congratulation" component={CongratulateScreen} />
+            <Stack.Screen
+              name="Congratulation"
+              component={CongratulateScreen}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
     </Provider>
   );
 }
-
 
 const newColorTheme = {
   brand: {

@@ -24,7 +24,11 @@ import {
   addDestination,
 } from "../reducers/reservation";
 
+import { useNavigation } from "@react-navigation/native";
+
 import { saveSearchData } from "../reducers/searchResult";
+
+const IP_BACKEND = "10.0.2.155"
 
 export default function Search({ navigation }) {
   const dispatch = useDispatch();
@@ -34,6 +38,7 @@ export default function Search({ navigation }) {
   const [destination, setDestination] = useState("Ardèche");
   const [dateSouhait, setDateSouhait] = useState("2023-07-19");
   const [bungalowsData, setBungalowsData] = useState([]);
+
 
   const addCounterBody = () => {
     if (bodyCounter >= 0) {
@@ -78,7 +83,7 @@ export default function Search({ navigation }) {
     // };
     // ---------------------------Fetch recherche bungalow dispo
 
-    fetch(`http://localhost:3000/dispo/?${listBungalows}`, {
+    fetch(`http://${IP_BACKEND}:3000/dispo/?${listBungalows}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -88,6 +93,7 @@ export default function Search({ navigation }) {
         console.log("DATA", data.results);
         //if (data.dispo === object) => setDispo([...dispo, data.dispo])
         dispatch(saveSearchData(data.results));
+        navigation.navigate('TabNavigator', { screen: 'Home' })
         // data.success && setBungalowsData(data.results);
       })
       .catch((error) => {
