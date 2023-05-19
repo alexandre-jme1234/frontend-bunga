@@ -5,9 +5,9 @@ import { Box, Input, Center, Button, Stack, Image } from "native-base";
 
 export default function LauchingScreen({ navigation }) {
  return (
-    <ImageBackground source={require('../assets/backgroundLogo.jpg')} space={3} resizeMode="cover" style={styles.backgroundImage}>
+    <ImageBackground source={require('../assets/backgroundLogo.jpg')} space={3} accessibilityLabel='BackgroundImage' resizeMode="cover" style={styles.backgroundImage}>
       <Stack mb="2.5" mt="1.5" direction="row" space={3}>
-  <Image style={styles.logoImage} source={require('../assets/logoBunga.jpg')}></Image>
+  <Image style={styles.logoImage} source={require('../assets/logoBunga.jpg')} accessibilityLabel="LogoBungaBunga"></Image>
   <Text bold style={styles.title}>BungaBunga</Text>
       </Stack>
   <View style={styles.background}>
@@ -28,10 +28,6 @@ export default function LauchingScreen({ navigation }) {
     <Text bold style={styles.bodyCorps}> - Négocier  en direct avec le loueur.</Text>
     <Text bold style={styles.bodyCorps}> - Réserver une saison pour vos salariés.</Text>
     <Text bold style={styles.bodyCorps}> - Des Bungalows partout en France.</Text>
-    <Text bold fontSize="sm"> - Réserver des bungalows pour vos employés</Text>
-    <Text bold fontSize="sm"> - Négocier  en direct avec le loueur.</Text>
-    <Text bold fontSize="sm"> - Réserver une saison pour vos salariés.</Text>
-    <Text bold fontSize="sm"> - Des Bungalows partout en France.</Text>
     <Button onPress={() => navigation.navigate('Selection')}>Click Me</Button>
     </Stack>
     <Button style={{'marginTop': 80, 'marginEnd': 20}} onPress={() => navigation.navigate('Selection')}>Suivant</Button>
@@ -48,7 +44,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
       },
   title: {
-    justifyContent: '',
+    // justifyContent: '',
     fontSize: 70,
     fontWeight: '600',
     color: '#305775',

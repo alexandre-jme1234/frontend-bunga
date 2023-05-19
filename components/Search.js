@@ -1,3 +1,5 @@
+import CardBungalow from "../components/CardBungalow";
+import { useState, useEffect } from "react";
 import {
   NativeBaseProvider,
   Box,
@@ -6,7 +8,6 @@ import {
   Text,
   Button,
 } from "native-base";
-import { useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -23,14 +24,16 @@ import {
   addDestination,
 } from "../reducers/reservation";
 
+import { saveSearchData } from "../reducers/searchResult";
+
 export default function Search({ navigation }) {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.value);
-
   const [bodyCounter, setBodyCounter] = useState(0);
   const [weeksCounter, setWeeksCounter] = useState(0);
-  const [destination, setDestination] = useState("");
-  const [dateSouhait, setDateSouhait] = useState("09-10-2020");
+  const [destination, setDestination] = useState("Ardèche");
+  const [dateSouhait, setDateSouhait] = useState("2023-07-19");
+  const [bungalowsData, setBungalowsData] = useState([]);
 
   const addCounterBody = () => {
     if (bodyCounter >= 0) {
@@ -54,43 +57,65 @@ export default function Search({ navigation }) {
       setWeeksCounter(weeksCounter - 1);
     }
   };
-// --------------------------Preparation des params
-  const selectionDestination = (destination = 'Ardèche',bodyCounter = 0, dateSouhait = '2023-07-19') => {
+
+  // --------------------------Preparation des params
+  function selectionDestination() {
     const params = new URLSearchParams({
-      destination: destination,
-      date: dateSouhait,
-      counter: bodyCounter 
+      destination,
+      dateSouhait,
+      bodyCounter,
     });
-// ------------------------------req.headers.destination ?
+
+    const listBungalows = params.toString();
+
+    // console.log("query params", listBungalows);
+    // ------------------------------req.headers.destination ?
     // const headers = {
     //   "Content-Type": "application/json",
     //   destination: destination,
     //   bodyCounter: bodyCounter.toString(),
     //   dateSouhait: dateSouhait
     // };
-// ---------------------------Fetch recherche bungalow dispo
+    // ---------------------------Fetch recherche bungalow dispo
 
+    fetch(`http://localhost:3000/dispo/?${listBungalows}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((data) => {
 
- 
-      fetch(`http://localhost:3000/dispo/?${params.toString()}`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-           })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          if (data.result) {
-              console.log(selectionDestination)
-            dispatch(addCounter(bodyCounter));
-            dispatch(addDate(dateSouhait));
-            dispatch(addWeekCounter(weeksCounter));
-            dispatch(addDestination(destination));
-          }
-        });
-  };
+        console.log("DATA", data.results);
+        //if (data.dispo === object) => setDispo([...dispo, data.dispo])
+        dispatch(saveSearchData(data.results));
+        // data.success && setBungalowsData(data.results);
+      })
+      .catch((error) => {
+        console.error("Une erreur s'est produite lors de la récupération des données :", error);
+      });
+    //         if (data.result && setBungalowsData(data)) {
+    //           // console.log(selectionDestination);
+    //           dispatch(addCounter(bodyCounter));
+    //           // dispatch(addDate(dateSouhait));
+    //           dispatch(addWeekCounter(weeksCounter));
+    //           dispatch(addDestination(destination));
 
-  console.log(reservation);
+    // // Renvoie les props vers un composant enfant.
 
+    //           //
+    //         }
+  }
+  // console.log("DataB", bungalowsData);
+  // console.log("reservation _", reservation);
+
+  const bungalows = bungalowsData.map((data, i) => {
+    
+    // console.log('bungalow in map', data)
+    return 
+    // console.log('CardBungalow _', CardBungalow())
+   
+  });
+  
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -106,7 +131,6 @@ export default function Search({ navigation }) {
           onChangeText={(value) => setDestination(value)}
           value={destination}
         />
-
         <Text bold fontSize="sm">
           Nombre de participants
         </Text>
@@ -200,6 +224,7 @@ export default function Search({ navigation }) {
               maxDate="31-01-2030"
               confirmBtnText="Confirm"
               cancelBtnText="Cancel"
+              // getDateStr={Date}
               customStyles={{
                 dateIcon: {
                   display: "none",
@@ -213,7 +238,7 @@ export default function Search({ navigation }) {
                 },
               }}
               onDateChange={(date) => {
-                setDateSouhait(date);r
+                setDateSouhait(date);
               }}
             />
           </View>
@@ -249,5 +274,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
 });

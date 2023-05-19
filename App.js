@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import reservation from './reducers/reservation';
+import searchResult from "./reducers/searchResult";
 
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
@@ -26,9 +27,13 @@ import { extendTheme, NativeBaseProvider, Box } from "native-base";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+
+
 const store = configureStore({
-  reducer: {reservation},
+  reducer: {reservation, searchResult},
  });
+
+
 
 const TabNavigator = () => {
   return (
@@ -51,9 +56,9 @@ const TabNavigator = () => {
         headerShown: false,
       })}
     >
+      <Tab.Screen name="Bungalow" component={BungalowStack} />
       <Tab.Screen name="WishList" component={WishListScreen} />
       <Tab.Screen name="Profil" component={ProfilScreen} />
-      <Tab.Screen name="Bungalow" component={BungalowStack} />
     </Tab.Navigator>
   );
 };
@@ -68,6 +73,7 @@ const BungalowStack = () => {
 };
 
 export default function App() {
+  
   return (
     <Provider store={store}>
       <NativeBaseProvider theme={theme}>
@@ -77,16 +83,14 @@ export default function App() {
             <Stack.Screen name="Selection" component={SelectionScreen} />
             <Stack.Screen name="TabNavigator" component={TabNavigator} />
             <Stack.Screen name="PlageDate" component={PlageDateScreen} />
-            <Stack.Screen
-              name="Congratulation"
-              component={CongratulateScreen}
-            />
+            <Stack.Screen name="Congratulation" component={CongratulateScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
     </Provider>
   );
 }
+
 
 const newColorTheme = {
   brand: {

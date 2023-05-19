@@ -21,6 +21,8 @@ export default function WishListScreen({ navigation }) {
 
 const styles = StyleSheet.create({
     background: {
+      flex: 1,
+      justifyContent: 'center',
       width: '100%',
       height: '100%',
     },
