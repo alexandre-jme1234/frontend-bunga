@@ -40,17 +40,11 @@ export default function CardBungalow(props) {
         <Box>
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
-<<<<<<< HEAD
               source={
                 require('../assets/bungalowBackground.jpeg')
               }
               height='110%'
               width='100%'
-=======
-              source={{
-                uri: props.image,
-              }}
->>>>>>> filtre
               alt="image"
             />
           </AspectRatio>

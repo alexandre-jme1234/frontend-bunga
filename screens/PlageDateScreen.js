@@ -19,8 +19,22 @@ export default function PlageDateScreen({ navigation }) {
         Sélectionner les lots de </Text>
       </VStack>
       <VStack style={styles.containerPlageData}>
+        <VStack style={styles.plageData}>
 
+        </VStack>
 
+      </VStack>
+      <VStack
+        space={1}
+        alignItems="flex-start"
+        paddingLeft="10"
+        marginBottom="5"
+        marginTop="5"
+      >
+        <Text bold fontSize="sm">
+        Clôturer votre réservation
+        </Text>
+        <Text fontSize="xs">Renseigner votre e-mail pour contacter</Text>
       </VStack>
      <Button
        title="Go to Congratulation"
@@ -41,9 +55,15 @@ const styles = StyleSheet.create({
       height: '100%',
     },
     containerPlageData: {
+      padding: 30,
       height: '60%',
       width: '80%',
       backgroundColor: '#F8F8F8',
       borderRadius: '15',
+    }, plageData: {
+      height: '10%',
+      width: '100%',
+      backgroundColor: '#EAEAEA',
+      borderRadius: '10',
     }
 });
