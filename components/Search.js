@@ -24,9 +24,7 @@ import {
   addWeekCounter,
   addDestination,
 } from "../reducers/reservation";
-
 import { useNavigation } from "@react-navigation/native";
-
 import { saveSearchData } from "../reducers/searchResult";
 
 const IP_BACKEND = "10.0.2.155"
