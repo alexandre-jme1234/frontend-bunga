@@ -100,7 +100,7 @@ export default function Search({ navigation }) {
         console.error("Une erreur s'est produite lors de la récupération des données :", error);
       });
     //         if (data.result && setBungalowsData(data)) {
-    //           // console.log(selectionDestination);
+              // console.log(selectionDestination);
     //           dispatch(addCounter(bodyCounter));
     //           // dispatch(addDate(dateSouhait));
     //           dispatch(addWeekCounter(weeksCounter));
