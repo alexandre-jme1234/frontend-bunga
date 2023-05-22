@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import CardBungalow from "../components/CardBungalow";
+import EquipementList from '../components/EquipementList';
 import {
   Image,
   ImageBackground,
@@ -54,16 +55,13 @@ export default function HomeScreen({ navigation }) {
   proprio_prenom: formattedData.proprietaire.prenom,
   proprio_nom: formattedData.proprietaire.nom,
   proprio_email: formattedData.proprietaire.email
-
-
   };
 
-    return (<CardBungalow key={i} {...bungalowProps} />)
+    return (
+    <CardBungalow key={i} {...bungalowProps} />,
+    <EquipementList key={i} {...bungalowProps} />
+    )
   });
-
- 
-
-  
 
   return (
     <View style={styles.background}>

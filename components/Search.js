@@ -1,4 +1,5 @@
 import CardBungalow from "../components/CardBungalow";
+import EquipementList from '../components/EquipementList';
 import { useState, useEffect } from "react";
 import {
   NativeBaseProvider,
