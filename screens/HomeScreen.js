@@ -23,34 +23,33 @@ export default function HomeScreen({ navigation }) {
   const searchResult = useSelector((state) => state.searchResult.value);
   console.log("searchResult", searchResult);
   const bungalowsList = searchResult.map((data, i) => {
+    const formattedData = data;
 
-  const formattedData = data.bungalow_dispo[0];
+    const bungalowProps = {
+      nom: formattedData.nom,
+      surface: formattedData.surface,
+      chambre: formattedData.chambre,
+      terrasse: formattedData.terrasse,
+      capaciteAdulte: formattedData.capaciteAdulte,
+      capaciteEnfant: formattedData.capaciteEnfant,
+      adresse1: formattedData.adresse1,
+      adresse2: formattedData.adresse2,
+      ville: formattedData.ville,
+      codePostal: formattedData.codePostal,
+      departementNom: formattedData.departementNom,
+      image: formattedData.image,
+      // // ----------- PROPS OPTIONS DU BUNGALOW
 
-  const bungalowProps = {
-    nom: formattedData.nom,
-    surface: formattedData.surface,
-    chambre: formattedData.chambre,
-    terrasse: formattedData.terrasse,
-    capaciteAdulte: formattedData.capaciteAdulte,
-    capaciteEnfant: formattedData.capaciteEnfant,
-    adresse1: formattedData.adresse1,
-    adresse2: formattedData.adresse2,
-    ville: formattedData.ville,
-    codePostal: formattedData.codePostal,
-    departementNom: formattedData.departementNom,
-    image: formattedData.image,
- // // ----------- PROPS OPTIONS DU BUNGALOW
-
- climatisation: formattedData.climatisation,
- télévision: formattedData.télévision,
- wifi: formattedData.wifi,
- lave_vaisselle: formattedData.lave_vaisselle,
- machineCafe: formattedData.machineCafe,
- plancha: formattedData.plancha,
- piscine: formattedData.piscine,
- barbecue: formattedData.barbecue,
- chien: formattedData.chien,
-// // ----------- PROPS PROPRIO
+      climatisation: formattedData.climatisation,
+      télévision: formattedData.télévision,
+      wifi: formattedData.wifi,
+      lave_vaisselle: formattedData.lave_vaisselle,
+      machineCafe: formattedData.machineCafe,
+      plancha: formattedData.plancha,
+      piscine: formattedData.piscine,
+      barbecue: formattedData.barbecue,
+      chien: formattedData.chien,
+      // // ----------- PROPS PROPRIO
 
   proprio_prenom: formattedData.proprietaire.prenom,
   proprio_nom: formattedData.proprietaire.nom,
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
     height: "15%",
   },
   scrollView: {
-    backgroundColor: "pink",
+    backgroundColor: "white",
     marginHorizontal: 20,
   },
   containerBox: {
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "70%",
-    backgroundColor: "yellow",
+    backgroundColor: "white",
   },
   title: {
     fontSize: 40,
