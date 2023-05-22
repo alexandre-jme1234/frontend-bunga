@@ -8,14 +8,17 @@ import {
   Stack,
   Heading,
   Badge,
+  Button,
 } from "native-base";
 import { saveSearchData } from "../reducers/searchResult";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function CardBungalow(props) {
   console.log("props", props);
-
+  
   return (
     <Box alignItems="center" marginBottom="5%" backgroundColor="white">
+      <Text ></Text>
       <Box
         maxW="80"
         rounded="lg"
@@ -37,67 +40,43 @@ export default function CardBungalow(props) {
         <Box>
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
-              source={{
-                uri: "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg",
-              }}
+              source={
+                require('../assets/bungalowBackground.jpeg')
+              }
+              height='110%'
+              width='100%'
               alt="image"
             />
           </AspectRatio>
-          <Center
-            bg="violet.500"
-            _dark={{
-              bg: "violet.400",
-            }}
-            _text={{
-              color: "warmGray.50",
-              fontWeight: "700",
-              fontSize: "xs",
-            }}
-            position="absolute"
-            bottom="0"
-            px="3"
-            py="1.5"
-          >
-            PHOTOS
-          </Center>
         </Box>
         <Stack p="4" space={3}>
           <Stack space={2}>
             <Heading size="md" ml="-1">
-              The Garden City
+              {props.nom}
             </Heading>
-            <Text
-              fontSize="xs"
-              _light={{
-                color: "violet.500",
-              }}
-              _dark={{
-                color: "violet.400",
-              }}
-              fontWeight="500"
-              ml="-0.5"
-              mt="-1"
-            >
-              The Silicon Valley of India.
-            </Text>
           </Stack>
           <HStack alignItems="center" space={4} justifyContent="space-between">
-            <HStack alignItems="center">
+            <HStack alignItems="center" backgroundColor='#EBE8FF' width='280' padding='1' borderRadius='5'>
               <Badge colorScheme="success" alignSelf="center">
-                SUCCESS
+              surface: {props.surface}
               </Badge>
               <Badge colorScheme="success" alignSelf="center" margin="1">
-                SUCCESS
+              chambre: {props.chambre}
               </Badge>
+              <HStack alignItems="center" backgroundColor='#EBF9FF' padding='1' borderRadius='5'>
               <Text
                 color="coolGray.600"
                 _dark={{
                   color: "warmGray.200",
                 }}
                 fontWeight="400"
+                marginLeft='5'
               >
+            {/* TARIF N'EST PAS DANS BUNGALOW DISPO */}
                 6 mins ago
+              <FontAwesome name='caret-right' aria-hidden="true" size='20' color='#ec6e5b' margin="20%"></FontAwesome>
               </Text>
+              </HStack>
             </HStack>
           </HStack>
         </Stack>

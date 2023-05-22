@@ -66,6 +66,7 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.containerTitle}></View>
       <View style={styles.containerBox}>
         <Text> HOME </Text>
+        <CardBungalow />
         <ScrollView style={styles.scrollView}>
           { bungalowsList }
         </ScrollView>
