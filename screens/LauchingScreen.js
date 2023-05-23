@@ -59,10 +59,10 @@ const styles = StyleSheet.create({
     margin: 0
   },
   bodyCorps: {
-    fontSize: 18,
+    // fontSize: 18,
     fontWeight: '600',
     color: '#F8FFFF',
-    fontFamily: 'Futura', 
+    // fontFamily: 'Futura', 
     margin: 0
   },
   containerImage: {

@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 40,
         fontWeight: '600',
-        fontFamily: 'Futura',
+        // fontFamily: 'Futura',
         marginBottom: 20
       },
 });

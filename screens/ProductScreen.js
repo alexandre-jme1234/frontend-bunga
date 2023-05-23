@@ -101,7 +101,7 @@ export default function ProductScreen({ navigation }) {
             <FontAwesome
               name="caret-right"
               aria-hidden="true"
-              size="20"
+              size={20}
               color="#ec6e5b"
             ></FontAwesome>
             <Badge justifyContent="center">surface</Badge>
@@ -115,7 +115,7 @@ export default function ProductScreen({ navigation }) {
             <FontAwesome
               name="caret-right"
               aria-hidden="true"
-              size="20"
+              size={20}
               color="#ec6e5b"
             ></FontAwesome>
             <Badge justifyContent="center">surface</Badge>
@@ -129,8 +129,8 @@ export default function ProductScreen({ navigation }) {
             <FontAwesome
               name="caret-right"
               aria-hidden="true"
-              size="20"
-              crolor="#ec6e5b"
+              size={20}
+              color="#ec6e5b"
             ></FontAwesome>
             <Badge justifyContent="center">surface</Badge>
           </HStack>
@@ -170,7 +170,7 @@ export default function ProductScreen({ navigation }) {
         <FontAwesome
           name="caret-right"
           aria-hidden="true"
-          size="10"
+          size={10}
           color="#ec6e5b"
         ></FontAwesome>
         <VStack space={2} alignItems="flex-start">

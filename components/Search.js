@@ -24,10 +24,9 @@ import {
   addWeekCounter,
   addDestination,
 } from "../reducers/reservation";
-import { useNavigation } from "@react-navigation/native";
 import { saveSearchData } from "../reducers/searchResult";
 
-const IP_BACKEND = "10.0.1.166"
+const IP_BACKEND = "10.0.1.53"
 
 export default function Search({ navigation }) {
   const dispatch = useDispatch();
