@@ -1,9 +1,20 @@
 
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { Box, Input, Center, Button, Stack, Image } from "native-base";
-
+import { useFonts } from "expo-font";
 
 export default function LauchingScreen({ navigation }) {
+//----------------font
+  const [fontsLoaded] = useFonts({
+    "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
+  });
+  
+  if (!fontsLoaded) {
+    return <Text>Please wait...</Text>;
+  }
+
+//-----------------------
+
  return (
     <ImageBackground source={require('../assets/backgroundLogo.jpg')} space={3} accessibilityLabel='BackgroundImage' resizeMode="cover" alt="ImagedeFond" style={styles.backgroundImage}>
       <Stack mb="2.5" mt="1.5" direction="row" space={3}>
@@ -17,7 +28,7 @@ export default function LauchingScreen({ navigation }) {
     'fontSize': 30,
     'fontWeight': 400,
     'color': '#F8FFFF',
-    'fontFamily': 'Futura',
+    'fontFamily': 'Poppins-Regular',
     'marginBottom': 20,
     'margin': 0
     }}>pour CSE</Text>
@@ -51,21 +62,21 @@ const styles = StyleSheet.create({
     fontSize: 70,
     fontWeight: '600',
     color: '#305775',
-    fontFamily: 'Futura',
+    fontFamily: 'Poppins-Regular',
     marginBottom: 20
   },
   subTitle: {
     fontSize: 50,
     fontWeight: '600',
     color: '#F8FFFF',
-    fontFamily: 'Futura', 
+    fontFamily: 'Poppins-Regular', 
     margin: 0
   },
   bodyCorps: {
-    fontSize: 18,
+    // fontSize: 18,
     fontWeight: '600',
     color: '#F8FFFF',
-    fontFamily: 'Futura', 
+    // fontFamily: 'Poppins-Regular', 
     margin: 0
   },
   containerImage: {
