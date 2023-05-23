@@ -11,7 +11,7 @@ import {
     Button,
   } from "native-base";
   import { saveSearchData } from "../reducers/searchResult";
-  import FontAwesome from 'react-native-vector-icons/FontAwesome';
+  // import FontAwesome from 'react-native-vector-icons/FontAwesome';
   import {
     View,
     StyleSheet

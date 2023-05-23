@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import CardBungalow from "../components/CardBungalow";
-import EquipementList from '../components/EquipementList';
+// import EquipementList from '../components/EquipementList';
 import {
   Image,
   ImageBackground,
@@ -22,6 +22,8 @@ import { useSelector } from "react-redux";
 export default function HomeScreen({ navigation }) {
   const searchResult = useSelector((state) => state.searchResult.value);
   console.log("searchResult", searchResult);
+
+  // Map------ cards
   const bungalowsList = searchResult.map((data, i) => {
     const formattedData = data;
 
@@ -51,15 +53,15 @@ export default function HomeScreen({ navigation }) {
       chien: formattedData.chien,
       // // ----------- PROPS PROPRIO
 
-  proprio_prenom: formattedData.proprietaire.prenom,
-  proprio_nom: formattedData.proprietaire.nom,
-  proprio_email: formattedData.proprietaire.email
-  };
-
+      proprio_prenom: formattedData.proprietaire.prenom,
+      proprio_nom: formattedData.proprietaire.nom,
+      proprio_email: formattedData.proprietaire.email,
+    };
+    console.log("bungalowProps__", bungalowProps);
     return (
-    <CardBungalow key={i} {...bungalowProps} />,
-    <EquipementList key={i} {...bungalowProps} />
-    )
+      <CardBungalow key={i} {...bungalowProps} />
+    //   // <EquipementList key={i} {...bungalowProps} />
+    );
   });
 
   return (
@@ -68,9 +70,7 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.containerBox}>
         <Text> HOME </Text>
         <CardBungalow />
-        <ScrollView style={styles.scrollView}>
-          { bungalowsList }
-        </ScrollView>
+        <ScrollView style={styles.scrollView}>{bungalowsList}</ScrollView>
         <Button
           title="Go to Product Screen"
           onPress={() => navigation.navigate("Product")}
