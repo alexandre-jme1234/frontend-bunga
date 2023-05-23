@@ -26,7 +26,7 @@ import {
 } from "../reducers/reservation";
 import { saveSearchData } from "../reducers/searchResult";
 
-const IP_BACKEND = "10.0.2.155"
+const IP_BACKEND = "10.0.1.166"
 
 export default function Search({ navigation }) {
   const dispatch = useDispatch();

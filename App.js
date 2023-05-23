@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import reservation from "./reducers/reservation";
 import searchResult from "./reducers/searchResult";
+//-----------font
 
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
@@ -23,6 +24,10 @@ import LauchingScreen from "./screens/LauchingScreen";
 import WishListScreen from "./screens/WishListScreen";
 
 import { extendTheme, NativeBaseProvider, Box } from "native-base";
+
+//insertion des----------------- fonts
+
+//-------------------------------------
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

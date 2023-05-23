@@ -74,7 +74,7 @@ export default function CardBungalow(props) {
               >
             {/* TARIF N'EST PAS DANS BUNGALOW DISPO */}
                 6 mins ago
-              <FontAwesome name='caret-right' aria-hidden="true" size='20' color='#ec6e5b' margin="20%"></FontAwesome>
+              <FontAwesome name='caret-right' aria-hidden="true" size={20} color='#ec6e5b' margin="20%"></FontAwesome>
               </Text>
               </HStack>
             </HStack>
