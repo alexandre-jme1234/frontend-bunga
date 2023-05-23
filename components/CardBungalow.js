@@ -10,11 +10,11 @@ import {
   Badge,
   Button,
 } from "native-base";
-import { saveSearchData } from "../reducers/searchResult";
+// import { saveSearchData } from "../reducers/searchResult";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function CardBungalow(props) {
-  console.log("props", props);
+  console.log("props_cards", props);
   
   return (
     <Box alignItems="center" marginBottom="5%" backgroundColor="white">
@@ -40,9 +40,9 @@ export default function CardBungalow(props) {
         <Box>
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
-              source={
-                require('../assets/bungalowBackground.jpeg')
-              }
+              source={{
+                uri: props.image,
+              }}
               height='110%'
               width='100%'
               alt="image"
@@ -52,16 +52,16 @@ export default function CardBungalow(props) {
         <Stack p="4" space={3}>
           <Stack space={2}>
             <Heading size="md" ml="-1">
-              {props.nom}
+             
             </Heading>
           </Stack>
           <HStack alignItems="center" space={4} justifyContent="space-between">
             <HStack alignItems="center" backgroundColor='#EBE8FF' width='280' padding='1' borderRadius='5'>
               <Badge colorScheme="success" alignSelf="center">
-              surface: {props.surface}
+              surface:
               </Badge>
               <Badge colorScheme="success" alignSelf="center" margin="1">
-              chambre: {props.chambre}
+              chambre: 
               </Badge>
               <HStack alignItems="center" backgroundColor='#EBF9FF' padding='1' borderRadius='5'>
               <Text

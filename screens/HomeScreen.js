@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import CardBungalow from "../components/CardBungalow";
-import EquipementList from '../components/EquipementList';
+// import EquipementList from '../components/EquipementList';
 import {
   SafeAreaView,
   Image,
@@ -60,6 +60,7 @@ export default function HomeScreen({ navigation }) {
       barbecue: formattedData.barbecue,
       chien: formattedData.chien,
 
+<<<<<<< HEAD
       // ----------- PROPS PROPRIO
   // proprio_prenom: formattedData.proprietaire.prenom,
   // proprio_nom: formattedData.proprietaire.nom,
@@ -70,11 +71,23 @@ export default function HomeScreen({ navigation }) {
     <CardBungalow key={i} {...bungalowProps} />,
     <ProductScreen key={i} {...bungalowProps} />
     )
+=======
+      proprio_prenom: formattedData.proprietaire.prenom,
+      proprio_nom: formattedData.proprietaire.nom,
+      proprio_email: formattedData.proprietaire.email,
+    };
+    console.log("bungalowProps__", bungalowProps);
+    return (
+      <CardBungalow key={i} {...bungalowProps} />
+    //   // <EquipementList key={i} {...bungalowProps} />
+    );
+>>>>>>> 67f414a0982b7161cbbe391e7c03f9160546bdae
   });
 
   return (
     <SafeAreaView style={styles.background}>
       <View style={styles.containerBox}>
+<<<<<<< HEAD
         <Stack style={styles.headContainer}>
         <Text style={styles.title}>Notre Sélection</Text>
         <Text style={styles.title}>{searchResult.destination}</Text>
@@ -82,6 +95,11 @@ export default function HomeScreen({ navigation }) {
         <ScrollView style={styles.scrollView}>
           <CardBungalow />
         </ScrollView>
+=======
+        <Text> HOME </Text>
+        <CardBungalow />
+        <ScrollView style={styles.scrollView}>{bungalowsList}</ScrollView>
+>>>>>>> 67f414a0982b7161cbbe391e7c03f9160546bdae
         <Button
           title="Go to Product Screen"
           onPress={() => navigation.navigate("Product")}
