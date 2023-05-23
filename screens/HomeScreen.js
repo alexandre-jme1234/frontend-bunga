@@ -75,10 +75,10 @@ export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.background}>
       <View style={styles.containerBox}>
-        <Stack style={styles.headContainer}>
+        <View style={styles.headContainer}>
         <Text style={styles.title}>Notre Sélection</Text>
-        <Text style={styles.title}>{searchResult.destination}</Text>
-        </Stack>
+        <Text style={styles.subTitle}>{searchResult[0].departementNom}</Text>
+        </View>
         <ScrollView style={styles.scrollView}>
           <CardBungalow />
         </ScrollView>
@@ -97,23 +97,35 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    backgroundColor: "red",
+    // backgroundColor: "red",
     paddingTop: StatusBar.currentHeight,
   },
   headContainer: {
-    backgroundColor: 'green',
-    height: 80,
-    padding: 10
+    // backgroundColor: 'green',
+    justifyContent: 'space-around',
+    // alignItems: 'center',
+    height: 90,
+    paddingTop: 26
+  },
+  subTitle: {
+     // fontFamily: 'abel',
+     fontSize: '60',
+     fontWeight: 'bold',
+     padding: 0,
+    //  color: 'red',
+    //  paddingTop: 20
   },
   title: {
     // fontFamily: 'abel',
-    fontSize: '30',
-    // fontWeight: 'regular',
-    paddingTop: 20
+    fontSize: '1',
+    fontWeight: 'regular',
+    padding: 0,
   },
   scrollView: {
-    backgroundColor: "white",
-    marginHorizontal: 20,
+    backgroundColor: "red",
+    width: '100%',
+    height: '100%',
+    marginTop: 40
   },
   containerBox: {
     flex: 1,

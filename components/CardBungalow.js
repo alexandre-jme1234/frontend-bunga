@@ -17,7 +17,7 @@ export default function CardBungalow(props) {
   console.log("props_cards", props);
   
   return (
-    <Box alignItems="center" marginBottom="5%" backgroundColor="white">
+    <Box alignItems="center" marginBottom="5%">
       <Text ></Text>
       <Box
         maxW="80"
@@ -27,14 +27,14 @@ export default function CardBungalow(props) {
         borderWidth="1"
         _dark={{
           borderColor: "coolGray.600",
-          backgroundColor: "gray.700",
+          backgroundColor: "red",
         }}
         _web={{
           shadow: 2,
           borderWidth: 0,
         }}
         _light={{
-          backgroundColor: "gray.50",
+          backgroundColor: "red",
         }}
       >
         <Box>
@@ -51,31 +51,31 @@ export default function CardBungalow(props) {
         </Box>
         <Stack p="4" space={3}>
           <Stack space={2}>
-            <Heading size="md" ml="-1">
-             
+            <Heading size="md" ml="-1">kutfyt
             </Heading>
           </Stack>
-          <HStack alignItems="center" space={4} justifyContent="space-between">
-            <HStack alignItems="center" backgroundColor='#EBE8FF' width='280' padding='1' borderRadius='5'>
+          <HStack space={4}>
+            <HStack alignItems="center" backgroundColor='#674DCF' width='100%' padding='1' borderRadius='5' >
               <Badge colorScheme="success" alignSelf="center">
               surface:
               </Badge>
-              <Badge colorScheme="success" alignSelf="center" margin="1">
+              <Badge colorScheme="success" alignSelf="center" margin="1" marginRight='10'>
               chambre: 
               </Badge>
-              <HStack alignItems="center" backgroundColor='#EBF9FF' padding='1' borderRadius='5'>
-              <Text
-                color="coolGray.600"
-                _dark={{
-                  color: "warmGray.200",
-                }}
-                fontWeight="400"
-                marginLeft='5'
-              >
+              <HStack backgroundColor='#EBF9FF' padding='1' borderRadius='5'>
+              {/* <Text
+                // color="coolGray.600"
+                marginRight='2
+                // _dark={{
+                //   color: "warmGray.200",
+                // }}
+                // fontWeight="400"
+                // marginLeft='5',
+              > */}
             {/* TARIF N'EST PAS DANS BUNGALOW DISPO */}
-                6 mins ago
-              <FontAwesome name='caret-right' aria-hidden="true" size='20' color='#ec6e5b' margin="20%"></FontAwesome>
-              </Text>
+                {/* 6 mins ago */}
+              {/* </Text> */}
+              <FontAwesome name='caret-right' aria-hidden="true" size='20' color='#ec6e5b'></FontAwesome>
               </HStack>
             </HStack>
           </HStack>
