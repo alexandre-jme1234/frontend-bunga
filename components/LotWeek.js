@@ -1,9 +1,10 @@
 import { useState } from "react";
-import 
+import { Box, Text, Button } from "native-base";
+import {
+    StyleSheet
+  } from 'react-native';
 
-
-
-export default function LotWeek(props) {
+export default function LotWeek() {
     
     const[lotWeeks, setLotWeeks ] = useState(false);
     

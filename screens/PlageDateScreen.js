@@ -1,8 +1,11 @@
 
 import { VStack, Text } from "native-base";
 import { Button, StyleSheet, View } from 'react-native';
+import LotWeek from '../components/LotWeek';
 
-export default function PlageDateScreen({ navigation }) {
+export default function PlageDateScreen({ navigation, ...props }) {
+
+
  return (
    <View style={styles.background}>
     <VStack
@@ -15,8 +18,10 @@ export default function PlageDateScreen({ navigation }) {
         <Text bold fontSize="sm">
         Contacter le bailleur
         </Text>
-        <Text fontSize="xs">Pour entamer les négociations avec le propriétaire de bungalows.
-        Sélectionner les lots de </Text>
+        <Text fontSize="xs">
+        Pour entamer les négociations avec le propriétaire de bungalows.
+        Sélectionner les lots de bungalows.
+        </Text>
       </VStack>
       <VStack style={styles.containerPlageData}>
         <VStack style={styles.plageData}>
@@ -36,6 +41,7 @@ export default function PlageDateScreen({ navigation }) {
         </Text>
         <Text fontSize="xs">Renseigner votre e-mail pour contacter</Text>
       </VStack>
+      <InputMail navigation={navigation}/>
      <Button
        title="Go to Congratulation"
        onPress={() => navigation.navigate('Congratulation')}

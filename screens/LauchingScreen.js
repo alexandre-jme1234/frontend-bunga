@@ -5,9 +5,9 @@ import { Box, Input, Center, Button, Stack, Image } from "native-base";
 
 export default function LauchingScreen({ navigation }) {
  return (
-    <ImageBackground source={require('../assets/backgroundLogo.jpg')} space={3} accessibilityLabel='BackgroundImage' resizeMode="cover" style={styles.backgroundImage}>
+    <ImageBackground source={require('../assets/backgroundLogo.jpg')} space={3} accessibilityLabel='BackgroundImage' resizeMode="cover" alt="ImagedeFond" style={styles.backgroundImage}>
       <Stack mb="2.5" mt="1.5" direction="row" space={3}>
-  <Image style={styles.logoImage} source={require('../assets/logoBunga.jpg')} accessibilityLabel="LogoBungaBunga"></Image>
+  <Image style={styles.logoImage} source={require('../assets/logoBunga.jpg')} alt="ImagedeFond2" accessibilityLabel="LogoBungaBunga"></Image>
   <Text bold style={styles.title}>BungaBunga</Text>
       </Stack>
   <View style={styles.background}>
@@ -30,7 +30,10 @@ export default function LauchingScreen({ navigation }) {
     <Text bold style={styles.bodyCorps}> - Des Bungalows partout en France.</Text>
     <Button onPress={() => navigation.navigate('Selection')}>Click Me</Button>
     </Stack>
-    <Button style={{'marginTop': 80, 'marginEnd': 20}} onPress={() => navigation.navigate('Selection')}>Suivant</Button>
+    <Button 
+    style={{'marginTop': 80, 
+            'marginEnd': 20
+            }} onPress={() => navigation.navigate('Selection')}>Suivant</Button>
   </View>
     </ImageBackground>
  );
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         justifyContent: 'space-around',
-      },
+  },
   title: {
     // justifyContent: '',
     fontSize: 70,
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
   containerImage: {
     paddingLeft: 20,
   },
-      logoImage: {
+  logoImage: {
        paddingRight: 50,
        justifyContent: 'flex-start',
        alignItems: 'flex-start',

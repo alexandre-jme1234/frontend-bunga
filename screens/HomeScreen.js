@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import CardBungalow from "../components/CardBungalow";
 import EquipementList from '../components/EquipementList';
 import {
+  SafeAreaView,
   Image,
   ImageBackground,
   KeyboardAvoidingView,
@@ -18,10 +19,19 @@ import {
   StatusBar,
 } from "react-native";
 import { useSelector } from "react-redux";
+import ProductScreen from "./ProductScreen";
+import { Stack } from "native-base";
+import {
+  addCounter,
+  addDate,
+  addWeekCounter,
+  addDestination,
+} from "../reducers/reservation";
 
 export default function HomeScreen({ navigation }) {
   const searchResult = useSelector((state) => state.searchResult.value);
-  console.log("searchResult", searchResult);
+  console.log("searchResult", searchResult[0].departementNom);
+
   const bungalowsList = searchResult.map((data, i) => {
     const formattedData = data;
 
@@ -38,8 +48,8 @@ export default function HomeScreen({ navigation }) {
       codePostal: formattedData.codePostal,
       departementNom: formattedData.departementNom,
       image: formattedData.image,
-      // // ----------- PROPS OPTIONS DU BUNGALOW
 
+      // ----------- PROPS OPTIONS DU BUNGALOW
       climatisation: formattedData.climatisation,
       télévision: formattedData.télévision,
       wifi: formattedData.wifi,
@@ -49,34 +59,35 @@ export default function HomeScreen({ navigation }) {
       piscine: formattedData.piscine,
       barbecue: formattedData.barbecue,
       chien: formattedData.chien,
-      // // ----------- PROPS PROPRIO
 
-  proprio_prenom: formattedData.proprietaire.prenom,
-  proprio_nom: formattedData.proprietaire.nom,
-  proprio_email: formattedData.proprietaire.email
+      // ----------- PROPS PROPRIO
+  // proprio_prenom: formattedData.proprietaire.prenom,
+  // proprio_nom: formattedData.proprietaire.nom,
+  // proprio_email: formattedData.proprietaire.email
   };
 
     return (
     <CardBungalow key={i} {...bungalowProps} />,
-    <EquipementList key={i} {...bungalowProps} />
+    <ProductScreen key={i} {...bungalowProps} />
     )
   });
 
   return (
-    <View style={styles.background}>
-      <View style={styles.containerTitle}></View>
+    <SafeAreaView style={styles.background}>
       <View style={styles.containerBox}>
-        <Text> HOME </Text>
-        <CardBungalow />
+        <Stack style={styles.headContainer}>
+        <Text style={styles.title}>Notre Sélection</Text>
+        <Text style={styles.title}>{searchResult.destination}</Text>
+        </Stack>
         <ScrollView style={styles.scrollView}>
-          { bungalowsList }
+          <CardBungalow />
         </ScrollView>
         <Button
           title="Go to Product Screen"
           onPress={() => navigation.navigate("Product")}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -89,10 +100,16 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     paddingTop: StatusBar.currentHeight,
   },
-  containerTitle: {
-    backgroundColor: "blue",
-    width: "100%",
-    height: "15%",
+  headContainer: {
+    backgroundColor: 'green',
+    height: 80,
+    padding: 10
+  },
+  title: {
+    // fontFamily: 'abel',
+    fontSize: '30',
+    // fontWeight: 'regular',
+    paddingTop: 20
   },
   scrollView: {
     backgroundColor: "white",
@@ -106,8 +123,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   title: {
-    fontSize: 40,
-    fontWeight: "600",
+    fontSize: 25,
+    fontWeight: "300",
     fontFamily: "Futura",
     marginBottom: 20,
   },

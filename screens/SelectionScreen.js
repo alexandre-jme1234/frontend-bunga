@@ -27,4 +27,11 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '100%',
     },
+    containerPlageData: {
+      padding: 30,
+      height: '60%',
+      width: '80%',
+      backgroundColor: '#F8F8F8',
+      borderRadius: '15',
+    },
 });

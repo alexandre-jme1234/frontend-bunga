@@ -24,14 +24,14 @@ import {
   addWeekCounter,
   addDestination,
 } from "../reducers/reservation";
-import { useNavigation } from "@react-navigation/native";
 import { saveSearchData } from "../reducers/searchResult";
 
-const IP_BACKEND = "10.0.1.166"
+const IP_BACKEND = "10.0.2.155"
 
 export default function Search({ navigation }) {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.value);
+
   const [bodyCounter, setBodyCounter] = useState(0);
   const [weeksCounter, setWeeksCounter] = useState(0);
   const [destination, setDestination] = useState("Ardèche");
