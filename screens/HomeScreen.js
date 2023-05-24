@@ -32,7 +32,7 @@ import {
 
 export default function HomeScreen({ navigation }) {
   const searchResult = useSelector((state) => state.searchResult.value);
-
+console.log('searchResult_____',searchResult)
   //------------------------------font
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
@@ -78,8 +78,8 @@ export default function HomeScreen({ navigation }) {
 
   let bungalowsList;
   if (searchResult.length) {
-    bungalowsList = searchResult.map((data, i) => {
-      return <CardBungalow key={i} {...data} />;
+    bungalowsList = searchResult.map((document, i) => {
+      return <CardBungalow key={i} {...document} />;
     });
   }
 

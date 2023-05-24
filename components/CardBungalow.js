@@ -14,7 +14,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function CardBungalow(props) {
-  console.log("props_cards", props);
+  console.log("props_cards__", props);
   
   return (
     <Box alignItems="center" marginBottom="5%">
@@ -40,9 +40,9 @@ export default function CardBungalow(props) {
         <Box>
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
-              source={{
-                uri: props.image,
-              }}
+              // source={{
+              //   uri: props.image,
+              // }}
               height='110%'
               width='100%'
               alt="image"
