@@ -117,13 +117,6 @@ export default function Search({ navigation }) {
   // console.log("DataB", bungalowsData);
   // console.log("reservation _", reservation);
 
-  const bungalows = bungalowsData.map((data, i) => {
-    
-    // console.log('bungalow in map', data)
-    return 
-    // console.log('CardBungalow _', CardBungalow())
-   
-  });
   
   return (
     <KeyboardAvoidingView

@@ -51,7 +51,7 @@ export default function CardBungalow(props) {
         </Box>
         <Stack p="4" space={3}>
           <Stack space={2}>
-            <Heading size="md" ml="-1">kutfyt
+            <Heading size="md" ml="-1">
             </Heading>
           </Stack>
           <HStack space={4}>
@@ -75,7 +75,7 @@ export default function CardBungalow(props) {
             {/* TARIF N'EST PAS DANS BUNGALOW DISPO */}
                 {/* 6 mins ago */}
               {/* </Text> */}
-              <FontAwesome name='caret-right' aria-hidden="true" size='20' color='#ec6e5b'></FontAwesome>
+              <FontAwesome name='caret-right' aria-hidden="true" size={20} color='#ec6e5b'></FontAwesome>
               </HStack>
             </HStack>
           </HStack>

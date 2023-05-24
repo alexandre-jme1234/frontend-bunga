@@ -78,8 +78,8 @@ console.log('searchResult_____',searchResult)
 
   let bungalowsList;
   if (searchResult.length) {
-    bungalowsList = searchResult.map((document, i) => {
-      return <CardBungalow key={i} {...document} />;
+    bungalowsList = searchResult.map((objetbungalow, i) => {
+      return <CardBungalow key={i} {...objetbungalow} />;
     });
   }
 
@@ -89,10 +89,10 @@ console.log('searchResult_____',searchResult)
       <View style={styles.containerBox}>
         <View style={styles.headContainer}>
         <Text style={styles.title}>Notre Sélection</Text>
-        <Text style={styles.subTitle}>{searchResult[0].departementNom}</Text>
+        {/* <Text style={styles.subTitle}>{searchResult[0].departementNom}</Text> */}
         </View>
         <ScrollView style={styles.scrollView}>
-          <CardBungalow />
+          {bungalowsList}
         </ScrollView>
         <Button
           title="Go to Product Screen"

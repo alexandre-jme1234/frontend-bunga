@@ -4,7 +4,7 @@ import {
     HStack,
   } from "native-base";
   import { saveSearchData } from "../reducers/searchResult";
-  // import FontAwesome from 'react-native-vector-icons/FontAwesome';
+  import FontAwesome from 'react-native-vector-icons/FontAwesome';
   import {
     View,
     StyleSheet
@@ -42,7 +42,7 @@ import {
         <Text  style={styles.title}>Détails</Text>
       <Box style={styles.boxEquipement}>
       <HStack alignItems='center'>
-      <FontAwesome name='television' aria-hidden="true" size='20' style={styles.iconStyle}></FontAwesome>
+      <FontAwesome name='television' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Télévision</Text>
       </HStack>
         <Text >{props.télévision}</Text>
@@ -50,7 +50,7 @@ import {
       </Box>
       <Box style={styles.boxEquipement}>
         <HStack alignItems='center'>
-        <FontAwesome name='wifi' aria-hidden="true" size='20' style={styles.iconStyle}></FontAwesome>
+        <FontAwesome name='wifi' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement} >Wifi</Text>
         </HStack>
         <Text >{props.wifi}</Text>
@@ -58,7 +58,7 @@ import {
       </Box>
       <Box style={styles.boxEquipement}>
       <HStack alignItems='center'>
-        <FontAwesome name='tint' aria-hidden="true" size='20' style={styles.iconStyle}></FontAwesome>
+        <FontAwesome name='tint' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Lave_vaisselle</Text>
         </HStack>
         <Text >{props.lave_vaisselle}</Text>
@@ -66,7 +66,7 @@ import {
       </Box>
       <Box style={styles.boxEquipement}>
       <HStack alignItems='center'>
-        <FontAwesome name='coffee' aria-hidden="true" size='20' style={styles.iconStyle}></FontAwesome>
+        <FontAwesome name='coffee' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>MachineCafe</Text>
         </HStack>
         <Text >{props.machineCafe}</Text>
@@ -74,7 +74,7 @@ import {
       </Box>
       <Box style={styles.boxEquipement}>
       <HStack alignItems='center'>
-        <FontAwesome name='cutlery' aria-hidden="true" size='20' style={styles.iconStyle}></FontAwesome>
+        <FontAwesome name='cutlery' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Plancha</Text>
         </HStack>
         <Text >{props.plancha}</Text>
@@ -82,7 +82,7 @@ import {
       </Box>
       <Box style={styles.boxEquipement}>
       <HStack alignItems='center'>
-        <FontAwesome name='life-ring' aria-hidden="true" size='20' style={styles.iconStyle}></FontAwesome>
+        <FontAwesome name='life-ring' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Piscine</Text>
         </HStack>
         <Text >{props.piscine}</Text>
@@ -90,7 +90,7 @@ import {
       </Box>
       <Box style={styles.boxEquipement}>
       <HStack alignItems='center'>
-        <FontAwesome name='fire' aria-hidden="true" size='20' style={styles.iconStyle}></FontAwesome>
+        <FontAwesome name='fire' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Barbecue</Text>
         </HStack>
         <Text >{props.barbecue}</Text>
@@ -98,7 +98,7 @@ import {
       </Box>
       <Box style={styles.boxEquipement}>
       <HStack alignItems='center'>
-        <FontAwesome name='leaf' aria-hidden="true" size='20' style={styles.iconStyle}></FontAwesome>
+        <FontAwesome name='leaf' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Chien</Text>
         </HStack>
         <Text >{props.chien}</Text>
@@ -111,14 +111,14 @@ import {
   const styles = StyleSheet.create({
     title: {
       fontFamily: 'abel',
-      fontSize: '30',
+      fontSize: 30,
       fontWeight: 'bold',
       marginLeft: 5,
       paddingTop: 20
     },
     titleEquipement: {
       fontFamily: 'abel',
-      fontSize: '16'
+      fontSize: 16
     },
     iconStyle: {
       color: '#737373',
