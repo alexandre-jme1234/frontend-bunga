@@ -110,14 +110,14 @@ import {
   
   const styles = StyleSheet.create({
     title: {
-      fontFamily: 'abel',
+      fontFamily: 'Poppins-Regular',
       fontSize: 30,
       fontWeight: 'bold',
       marginLeft: 5,
       paddingTop: 20
     },
     titleEquipement: {
-      fontFamily: 'abel',
+      fontFamily: 'Poppins-Regular',
       fontSize: 16
     },
     iconStyle: {

@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
       //   borderRadius: '10',
       // },
     title: {
-      fontFamily: 'Abel',
+      fontFamily: 'Poppins-Regular',
       fontSize: 20,
       fontWeight: 'bold',
       marginTop: 250,
