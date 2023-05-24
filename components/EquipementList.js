@@ -112,7 +112,7 @@ import {
     title: {
       fontFamily: 'Poppins-Regular',
       fontSize: 30,
-      fontWeight: 'bold',
+      // fontWeight: 'bold',
       marginLeft: 5,
       paddingTop: 20
     },

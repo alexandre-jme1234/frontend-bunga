@@ -1,6 +1,6 @@
 
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView } from 'react-native';
-import { Box, Input, Center, Button, Stack, HStack, Image } from "native-base";
+import { StyleSheet, View, ImageBackground, SafeAreaView } from 'react-native';
+import { Box, Input, Text, Center, Button, Stack, HStack, Image } from "native-base";
 import { useFonts } from "expo-font";
 
 export default function LauchingScreen({ navigation }) {
@@ -25,7 +25,7 @@ export default function LauchingScreen({ navigation }) {
   <Stack height='100%' width='100%' space={2} justifyContent='center' alignItems='center'>
   <View style={styles.containerText}>
   <Text bold style={styles.subTitle}>Bungalows</Text>
-  <Text bold style={{
+  {/* <Text bold style={{
     'fontSize': 30,
     'fontWeight': 400,
     'color': '#F8FFFF',
@@ -33,7 +33,7 @@ export default function LauchingScreen({ navigation }) {
     'marginBottom': 40,
     'margin': 0,
     // 'backgroundColor': 'red',
-    }}>pour CSE</Text>
+    }}>pour CSE</Text> */}
     </View>
     <Stack mb="2.5" mt="1.5" direction="column" space={3}>
     <Text bold style={styles.bodyCorps}> - Réserver des bungalows pour vos employés</Text>
@@ -62,21 +62,21 @@ const styles = StyleSheet.create({
   title: {
     // justifyContent: '',
     fontSize: 60,
-    fontWeight: '600',
+    // fontWeight: 600,
     color: '#305775',
     fontFamily: 'Poppins-Regular',
     // marginBottom: 20
   },
   subTitle: {
     fontSize: 54,
-    fontWeight: '600',
+    // fontWeight: 600,
     color: '#F8FFFF',
     fontFamily: 'Poppins-Regular', 
     margin: 0
   },
   bodyCorps: {
     fontSize: 14,
-    fontWeight: '600',
+    // fontWeight: 600,
     color: '#F8FFFF',
     fontFamily: 'Poppins-Regular', 
     margin: 0

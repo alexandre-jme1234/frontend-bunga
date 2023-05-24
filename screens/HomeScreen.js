@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 50,
-    fontWeight: "600",
+    // fontWeight: 600,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
   },

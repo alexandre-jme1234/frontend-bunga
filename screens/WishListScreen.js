@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 40,
-        fontWeight: '600',
+        // fontWeight: 600,
         // fontFamily: 'Poppins-Regular',
         marginBottom: 20
       },
