@@ -85,20 +85,18 @@ console.log('searchResult_____',searchResult)
 
   return (
     <SafeAreaView style={styles.background}>
-      <Text style={styles.title}> Poppins Regular </Text>
-      <View style={styles.containerBox}>
         <View style={styles.headContainer}>
         <Text style={styles.title}>Notre Sélection</Text>
-        {/* <Text style={styles.subTitle}>{searchResult[0].departementNom}</Text> */}
+        <Text style={styles.subTitle}>Ardèche</Text>
         </View>
         <ScrollView style={styles.scrollView}>
           {bungalowsList}
+        <CardBungalow />
         </ScrollView>
         <Button
           title="Go to Product Screen"
           onPress={() => navigation.navigate("Product")}
         />
-      </View>
     </SafeAreaView>
   );
 }
@@ -112,34 +110,28 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
     paddingTop: StatusBar.currentHeight,
   },
+  scrollView: {
+    // backgroundColor: "red",
+    width: '100%',
+    height: '100%',
+  },
   headContainer: {
-    backgroundColor: "green",
-    height: 80,
+    // backgroundColor: "green",
+    justifyContent: 'space-around',
+    marginTop: 20,
+    height: 100,
     padding: 10,
   },
   title: {
-    // fontFamily: 'abel',
-    fontSize: "30",
-    // fontWeight: 'regular',
-    paddingTop: 20,
-  },
-  scrollView: {
-    backgroundColor: "red",
-    width: '100%',
-    height: '100%',
-    marginTop: 40
-  },
-  containerBox: {
-    flex: 1,
-    justifyContent: "center",
-    width: "100%",
-    height: "70%",
-    backgroundColor: "white",
-  },
-  title: {
-    fontSize: 50,
+    fontSize: 20,
     // fontWeight: 600,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
   },
+  subTitle: {
+    fontSize: 40,
+    // fontWeight: 600,
+    fontFamily: "Poppins-Regular",
+    marginBottom: 20,
+  }
 });

@@ -3,7 +3,6 @@ import {
   Text,
   AspectRatio,
   Box,
-  Image,
   HStack,
   Stack,
   Heading,
@@ -12,15 +11,19 @@ import {
 } from "native-base";
 // import { saveSearchData } from "../reducers/searchResult";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {
+  View,
+  StyleSheet,
+  Image
+} from 'react-native';
 
 export default function CardBungalow(props) {
   console.log("props_cards__", props);
   
   return (
-    <Box alignItems="center" marginBottom="5%">
-      <Text ></Text>
+    <Box alignItems="center">
       <Box
-        maxW="80"
+        maxW="400"
         rounded="lg"
         overflow="hidden"
         borderColor="coolGray.200"
@@ -38,24 +41,27 @@ export default function CardBungalow(props) {
         }}
       >
         <Box>
-          <AspectRatio w="100%" ratio={16 / 9}>
-            <Image
+            <Stack p="4" space={3}>
+        <Image
               // source={{
               //   uri: props.image,
               // }}
-              height='110%'
-              width='100%'
+              // height='110%'
+              // width='100%'
+              // alt="image"
+              source={require('../assets/bungalowBackground.jpeg')}
+              style={styles.imageSize}
               alt="image"
             />
-          </AspectRatio>
-        </Box>
-        <Stack p="4" space={3}>
+  
+          <View style={styles.footerCard}>
           <Stack space={2}>
             <Heading size="md" ml="-1">
+              Ardèche
             </Heading>
           </Stack>
-          <HStack space={4}>
-            <HStack alignItems="center" backgroundColor='#674DCF' width='100%' padding='1' borderRadius='5' >
+          <HStack space={4} >
+            <HStack justifyContent="space-between" backgroundColor='#674DCF' width='100%' padding='1' borderRadius='5' >
               <Badge colorScheme="success" alignSelf="center">
               surface:
               </Badge>
@@ -63,24 +69,40 @@ export default function CardBungalow(props) {
               chambre: 
               </Badge>
               <HStack backgroundColor='#EBF9FF' padding='1' borderRadius='5'>
-              {/* <Text
-                // color="coolGray.600"
-                marginRight='2
-                // _dark={{
-                //   color: "warmGray.200",
-                // }}
-                // fontWeight="400"
-                // marginLeft='5',
-              > */}
-            {/* TARIF N'EST PAS DANS BUNGALOW DISPO */}
-                {/* 6 mins ago */}
-              {/* </Text> */}
+              <View style={styles.containerBadge}>
+              <Text style={styles.bodyCard}>6 mins ago</Text>
               <FontAwesome name='caret-right' aria-hidden="true" size={20} color='#ec6e5b'></FontAwesome>
+              </View>
               </HStack>
             </HStack>
           </HStack>
+          </View>
         </Stack>
       </Box>
     </Box>
+    </Box>
   );
 }
+
+
+const styles = StyleSheet.create({
+  containerBadge: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: 80
+  },
+  imageSize: {
+    height: 250,
+    width: '100%',
+    borderRadius: 10
+  },
+  bodyCard: {
+    fontFamily: "Poppins-Regular",
+    fontSize: "10xl"
+  },
+  footerCard: {
+    // backgroundColor: 'white',
+    height: 100,
+    width: '100%'
+  }
+})
