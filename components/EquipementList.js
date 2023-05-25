@@ -34,7 +34,7 @@ import {
     //     )
     // })
 
-    console.log(props)
+    // console.log('props', props[0])
     return (
     <Box style={styles.containerDetails}>
         {/* <View>{equipmentsNameList}</View> */}
@@ -45,7 +45,7 @@ import {
       <FontAwesome name='television' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Télévision</Text>
       </HStack>
-        <Text >{props.télévision}</Text>
+        <Text >{props[0].télévision}</Text>
         <View style={styles.borderLine}/>
       </Box>
       <Box style={styles.boxEquipement}>
@@ -53,7 +53,7 @@ import {
         <FontAwesome name='wifi' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement} >Wifi</Text>
         </HStack>
-        <Text >{props.wifi}</Text>
+        <Text >{props[0].wifi}</Text>
         <View style={styles.borderLine}/>
       </Box>
       <Box style={styles.boxEquipement}>
@@ -61,7 +61,7 @@ import {
         <FontAwesome name='tint' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Lave_vaisselle</Text>
         </HStack>
-        <Text >{props.lave_vaisselle}</Text>
+        <Text >{props[0].lave_vaisselle}</Text>
         <View style={styles.borderLine}/>
       </Box>
       <Box style={styles.boxEquipement}>
@@ -69,7 +69,7 @@ import {
         <FontAwesome name='coffee' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>MachineCafe</Text>
         </HStack>
-        <Text >{props.machineCafe}</Text>
+        <Text >{props[0].machineCafe}</Text>
         <View style={styles.borderLine}/>
       </Box>
       <Box style={styles.boxEquipement}>
@@ -77,7 +77,7 @@ import {
         <FontAwesome name='cutlery' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Plancha</Text>
         </HStack>
-        <Text >{props.plancha}</Text>
+        <Text >{props[0].plancha}</Text>
         <View style={styles.borderLine}/>
       </Box>
       <Box style={styles.boxEquipement}>
@@ -85,7 +85,7 @@ import {
         <FontAwesome name='life-ring' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Piscine</Text>
         </HStack>
-        <Text >{props.piscine}</Text>
+        <Text >{props[0].piscine}</Text>
         <View style={styles.borderLine}/>
       </Box>
       <Box style={styles.boxEquipement}>
@@ -93,7 +93,7 @@ import {
         <FontAwesome name='fire' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Barbecue</Text>
         </HStack>
-        <Text >{props.barbecue}</Text>
+        <Text >{props[0].barbecue}</Text>
         <View style={styles.borderLine}/>
       </Box>
       <Box style={styles.boxEquipement}>
@@ -101,7 +101,7 @@ import {
         <FontAwesome name='leaf' aria-hidden="true" size={20} style={styles.iconStyle}></FontAwesome>
         <Text style={styles.titleEquipement}>Chien</Text>
         </HStack>
-        <Text >{props.chien}</Text>
+        <Text >{props[0].chien}</Text>
         <View style={styles.borderLine}/>
       </Box>
     </Box>
