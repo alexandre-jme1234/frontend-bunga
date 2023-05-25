@@ -19,9 +19,7 @@ export default function SelectionScreen({ navigation }) {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: "#ffffff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#F8FFFF",
     width: "100%",
     height: "100%",
   },

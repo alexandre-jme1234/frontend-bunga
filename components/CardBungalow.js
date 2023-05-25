@@ -51,7 +51,7 @@ export default function CardBungalow(props) {
                 // height='110%'
                 // width='100%'
                 // alt="image"
-                src={bungalowsFilter[0].image}
+                // src={bungalowsFilter[0].image}
                 style={styles.imageSize}
                 alt="image"
                 />

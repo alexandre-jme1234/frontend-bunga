@@ -1,13 +1,12 @@
 import CardBungalow from "../components/CardBungalow";
 import EquipementList from "../components/EquipementList";
 import { useState } from "react";
-import moment from 'moment';
+import moment from "moment";
 import {
   NativeBaseProvider,
   Box,
   Input,
   Stack,
-  Text,
   Button,
 } from "native-base";
 import {
@@ -15,6 +14,7 @@ import {
   Platform,
   SafeAreaView,
   View,
+  Text,
   StyleSheet,
 } from "react-native";
 // import DatePicker from "react-native-datepicker";
@@ -32,8 +32,6 @@ import { saveSearchData } from "../reducers/searchResult";
 const IP_BACKEND_ABDE = "192.168.211.232";
 const IP_BACKEND_ALEX = "10.0.2.155";
 
-
-
 export default function Search({ navigation }) {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.value);
@@ -44,7 +42,7 @@ export default function Search({ navigation }) {
   const [dateSouhait, setDateSouhait] = useState(new Date());
   const [bungalowsData, setBungalowsData] = useState([]);
   const [show, setShow] = useState(false);
-  const [dateString, setDateString] = useState('')
+  const [dateString, setDateString] = useState("");
 
   const addCounterBody = () => {
     if (bodyCounter >= 0) {
@@ -119,14 +117,13 @@ export default function Search({ navigation }) {
   // };
 
   const onChangeDate = (event, selectedDate) => {
-    const dateStr = moment(selectedDate).format('YYYY-MM-DD')
-    const currentDate = selectedDate 
+    const dateStr = moment(selectedDate).format("YYYY-MM-DD");
+    const currentDate = selectedDate;
     setDateSouhait(currentDate);
-    setDateString(dateStr)
+    setDateString(dateStr);
     setShow(false);
-    
   };
-  console.log('SelectedDate_______',dateSouhait)
+  console.log("SelectedDate_______", dateSouhait);
 
   // const showMode = (currentMode) => {
   //   if (Platform.OS === 'android') {
@@ -146,7 +143,11 @@ export default function Search({ navigation }) {
       style={styles.container}
     >
       <Stack space={12} w="75%" maxW="300px" mx="auto" alignItems="center">
-        <Text bold fontSize="sm">
+      <Text style={styles.title}>
+        Choisissez votre bungalow
+        </Text>
+        <View style={styles.textContainer}>
+        <Text style={styles.body}>
           Région
         </Text>
         <Input
@@ -156,27 +157,25 @@ export default function Search({ navigation }) {
           onChangeText={handleInputChange}
           value={destination}
         />
-        <Text bold fontSize="sm">
+        </View>
+        <View style={styles.textContainer}>
+        <Text style={styles.body}>
           Nombre de participants
         </Text>
         <Stack
           direction="row"
           space={4}
-          w="75%"
+          w="100%"
           maxW="300px"
           mx="auto"
           alignItems="center"
-          justifyContent="center"
+          justifyContent="space-between"
+          backgroundColor='grey.100'
         >
           <Text bold fontSize="sm">
             Capacité du Bungalow
           </Text>
-          <Button size="sm" variant="subtle" onPress={addCounterBody} title="+">
-            <Text style={styles.plusText}>+</Text>
-          </Button>
-          <Text bold fontSize="sm">
-            {bodyCounter}
-          </Text>
+          <View style={styles.buttonCounter}>
           <Button
             size="sm"
             variant="subtle"
@@ -185,20 +184,34 @@ export default function Search({ navigation }) {
           >
             <Text style={styles.plusText}>-</Text>
           </Button>
+          <Text bold fontSize="sm">
+            {bodyCounter}
+          </Text>
+          <Button size="sm" variant="subtle" onPress={addCounterBody} title="+">
+            <Text style={styles.plusText}>+</Text>
+          </Button>
+          </View>
         </Stack>
-
+        </View>
+        
+        <View style={styles.textContainer}>
+        <Text style={styles.body}>
+        Semaines
+        </Text>
         <Stack
           direction="row"
           space={4}
-          w="75%"
+          w="100%"
           maxW="300px"
           mx="auto"
           alignItems="center"
-          justifyContent="center"
+          justifyContent="space-between"
+          backgroundColor='red.100'
         >
           <Text bold fontSize="sm">
             Nombre semaines
           </Text>
+          <View style={styles.buttonCounter}>
           <Button
             size="sm"
             variant="subtle"
@@ -220,7 +233,9 @@ export default function Search({ navigation }) {
           >
             -
           </Button>
+        </View>
         </Stack>
+        </View>
         <SafeAreaView style={styles.containerDataPicker}>
           <View style={styles.containerDataPicker}>
             <Text style={styles.boldText}>Disponibilité</Text>
@@ -229,7 +244,7 @@ export default function Search({ navigation }) {
               title="Pick a date !"
               style={{ height: 50, width: 50 }}
             />
- 
+
             {show && (
               <DateTimePicker
                 value={dateSouhait}
@@ -239,7 +254,13 @@ export default function Search({ navigation }) {
             )}
           </View>
         </SafeAreaView>
-        <Button size="sm" variant="subtle" onPress={() => {selectionDestination()}}>
+        <Button
+          size="sm"
+          variant="subtle"
+          onPress={() => {
+            selectionDestination();
+          }}
+        >
           Rechercher
         </Button>
       </Stack>
@@ -249,11 +270,34 @@ export default function Search({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor:'#F8FFFF',
     flex: 1,
-    padding: 10,
-    margin: 50,
-    justifyContent: "center",
-    alignItems: "center",
+    // padding: 10,
+    // margin: 50,
+    justifyContent: "space-around",
+  },
+  title: {
+    fontSize: 20,
+    // fontWeight: 600,
+    fontFamily: "Poppins-Regular",
+    marginBottom: 20,
+  },
+  textContainer: {
+    height: 80,
+    width: 350,
+    // backgroundColor: 'red',
+    justifyContent: 'space-around',
+  },
+  body: {
+    fontSize: 17,
+    // fontWeight: 600,
+    fontFamily: "Poppins-Regular",
+    marginBottom: 20,
+  },
+  buttonCounter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: "space-between",
   },
   datePickerStyle: {
     width: 200,
