@@ -87,7 +87,8 @@ export default function Search({ navigation }) {
     // };
     // ---------------------------Fetch recherche bungalow dispo
 
-    fetch(`http://${IP_BACKEND_ABDE}:3000/bungalow/dispo?${listBungalows}`, {
+    // fetch(`http://${IP_BACKEND_ABDE}:3000/bungalow/dispo?${listBungalows}`, {
+     fetch(`https://backend-bunga.vercel.app/bungalow/dispo?${listBungalows}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       // 'Cache-Control': 'no-cache'
@@ -143,101 +144,95 @@ export default function Search({ navigation }) {
       style={styles.container}
     >
       <Stack space={12} w="75%" maxW="300px" mx="auto" alignItems="center">
-      <Text style={styles.title}>
-        Choisissez votre bungalow
-        </Text>
+        <Text style={styles.title}>Choisissez votre bungalow</Text>
         <View style={styles.textContainer}>
-        <Text style={styles.body}>
-          Région
-        </Text>
-        <Input
-          style={styles.input}
-          variant="filled"
-          placeholder="Rechercher votre destination"
-          onChangeText={handleInputChange}
-          value={destination}
-        />
+          <Text style={styles.body}>Région</Text>
+          <Input
+            style={styles.input}
+            variant="filled"
+            placeholder="Rechercher votre destination"
+            onChangeText={handleInputChange}
+            value={destination}
+          />
         </View>
         <View style={styles.textContainer}>
-        <Text style={styles.body}>
-          Nombre de participants
-        </Text>
-        <Stack
-          direction="row"
-          space={4}
-          w="100%"
-          maxW="300px"
-          mx="auto"
-          alignItems="center"
-          justifyContent="space-between"
-          backgroundColor='#FAFAFA'
-        >
-          <Text bold fontSize="sm">
-            Capacité du Bungalow
-          </Text>
-          <View style={styles.buttonCounter}>
-          <Button
-            size="sm"
-            variant="subtle"
-            onPress={substractCounter}
-            title="-"
+          <Text style={styles.body}>Nombre de participants</Text>
+          <Stack
+            direction="row"
+            space={4}
+            w="100%"
+            maxW="300px"
+            mx="auto"
+            alignItems="center"
+            justifyContent="space-between"
+            backgroundColor="grey.100"
           >
-            <Text style={styles.plusText}>-</Text>
-          </Button>
-          <View style={styles.counterBlock}>
-          <Text bold fontSize="sm">
-            {bodyCounter}
-          </Text>
-          </View>
-          <Button size="sm" variant="subtle" onPress={addCounterBody} title="+">
-            <Text style={styles.plusText}>+</Text>
-          </Button>
-          </View>
-        </Stack>
+            <Text bold fontSize="sm">
+              Capacité du Bungalow
+            </Text>
+            <View style={styles.buttonCounter}>
+              <Button
+                size="sm"
+                variant="subtle"
+                onPress={addCounterBody}
+                title="+"
+              >
+                <Text style={styles.plusText}>+</Text>
+              </Button>
+              <Text bold fontSize="sm">
+                {bodyCounter}
+              </Text>
+              <Button
+                size="sm"
+                variant="subtle"
+                onPress={substractCounter}
+                title="-"
+              >
+                <Text style={styles.plusText}>-</Text>
+              </Button>
+            </View>
+          </Stack>
         </View>
-        
+
         <View style={styles.textContainer}>
-        <Text style={styles.body}>
-        Semaines
-        </Text>
-        <Stack
-          direction="row"
-          space={4}
-          w="100%"
-          maxW="300px"
-          mx="auto"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Text bold fontSize="sm">
-            Nombre semaines
-          </Text>
-          <View style={styles.buttonCounter}>
-          <Button
-            size="sm"
-            variant="subtle"
-            onPress={() => {
-              addWeekCounterBody();
-            }}
+          <Text style={styles.body}>Semaines</Text>
+          <Stack
+            direction="row"
+            space={4}
+            w="100%"
+            maxW="300px"
+            mx="auto"
+            alignItems="center"
+            justifyContent="space-between"
+            backgroundColor="red.100"
           >
-            +
-          </Button>
-          <View style={styles.counterBlock}>
-          <Text bold fontSize="sm">
-            {weeksCounter}
-          </Text>
-          </View>
-          <Button
-            size="sm"
-            variant="subtle"
-            onPress={() => {
-              substractWeekCounter();
-            }}
-          >
-            -
-          </Button>
-        </View>
-        </Stack>
+            <Text bold fontSize="sm">
+              Nombre semaines
+            </Text>
+            <View style={styles.buttonCounter}>
+              <Button
+                size="sm"
+                variant="subtle"
+                onPress={() => {
+                  addWeekCounterBody();
+                }}
+              >
+                +
+              </Button>
+              <Text bold fontSize="sm">
+                {weeksCounter}
+              </Text>
+              <Button
+                size="sm"
+                variant="subtle"
+                onPress={() => {
+                  substractWeekCounter();
+                }}
+              >
+                -
+              </Button>
+            </View>
+          </Stack>
         </View>
         <SafeAreaView style={styles.containerDataPicker}>
           <View style={styles.containerDataPicker}>
@@ -285,13 +280,9 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
   },
-  counterBlock: {
-    marginLeft:10,
-    marginRight: 10
-  },
   textContainer: {
     height: 80,
-    width: 300,
+    width: 350,
     // backgroundColor: 'red',
     justifyContent: 'space-around',
   },
