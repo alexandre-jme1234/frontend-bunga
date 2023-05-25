@@ -10,8 +10,7 @@ export const searchResultSlice = createSlice({
   reducers: {
       saveSearchData: (state, action) => {
         console.log('Dispatch Bungalow _', action.payload)
-      state.value = action.payload;
-      console.log('state',state)
+        state.value = action.payload;
     }
   },
 });

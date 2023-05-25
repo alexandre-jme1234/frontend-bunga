@@ -12,21 +12,30 @@ import { StyleSheet, Box } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import EquipementList from '../components/EquipementList';
+import { useSelector } from "react-redux";
 
 export default function ProductScreen(props) {
 
   const { bungalow_id } = props.route.params
   console.log('bungalow_id', bungalow_id)
-
   const selectPlageData = () => {
     props.navigation("PlageDate");
   };
+  const searchResult = useSelector((state) => state.searchResult.value);
+  const bungalowsFilter = searchResult.filter(e => e._id === bungalow_id);
+  const capacite = bungalowsFilter[0].capaciteAdulte + bungalowsFilter[0].capaciteEnfant
+    
+
+console.log('capacite', capacite)
+
+  console.log('bungalowsFilter', bungalowsFilter);
+  
   console.log('All props', props)
   return (
     <ScrollView style={styles.background}>
       <Image
           style={styles.imageProduct}
-          source={require("../assets/bungalowBackground.jpeg")}
+          src={bungalowsFilter[0].image}
           alt="bungalow background"
           // resizeMode="cover"
         />
@@ -38,11 +47,10 @@ export default function ProductScreen(props) {
         marginTop="5"
       >
         <Text bold fontSize="sm">
-          Ardèche
+          {bungalowsFilter[0].departementNom}
         </Text>
-        <Text fontSize="xs">Avis</Text>
+        <Text fontSize="xs">{bungalowsFilter[0].ville}</Text>
       </VStack>
-
       <HStack
         alignSelf="center"
         space={2}
@@ -60,7 +68,7 @@ export default function ProductScreen(props) {
           borderRadius="5"
         >
           <HStack
-            justifyContent="center"
+            justifyContent="space-around"
             alignItems="center"
             space={0}
             backgroundColor="#F5F5F5"
@@ -71,7 +79,8 @@ export default function ProductScreen(props) {
               size={20}
               color="#ec6e5b"
             ></FontAwesome>
-            <Badge justifyContent="center">surface</Badge>
+            <Text>surface:</Text>
+            <Badge justifyContent="center" >{bungalowsFilter[0].surface}</Badge>
           </HStack>
           <HStack
             justifyContent="center"
@@ -85,7 +94,8 @@ export default function ProductScreen(props) {
               size={20}
               color="#ec6e5b"
             ></FontAwesome>
-            <Badge justifyContent="center">surface</Badge>
+            <Text>capacité</Text>
+            <Badge justifyContent="center">{capacite}</Badge>
           </HStack>
           <HStack
             justifyContent="center"
@@ -99,7 +109,8 @@ export default function ProductScreen(props) {
               size={20}
               color="#ec6e5b"
             ></FontAwesome>
-            <Badge justifyContent="center">surface</Badge>
+            <Text>chambres</Text>
+            <Badge justifyContent="center">{bungalowsFilter[0].chambre}</Badge>
           </HStack>
         </HStack>
       </HStack>
