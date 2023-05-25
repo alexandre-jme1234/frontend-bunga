@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontSize: 20,
+    fontSize: 30,
     // fontWeight: 600,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
