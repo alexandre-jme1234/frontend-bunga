@@ -32,7 +32,7 @@ import {
 
 export default function HomeScreen({ navigation }) {
   const searchResult = useSelector((state) => state.searchResult.value);
-console.log('searchResult_____',searchResult)
+// console.log('searchResult_____',searchResult)
   //------------------------------font
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),

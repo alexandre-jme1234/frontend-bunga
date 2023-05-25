@@ -9,7 +9,6 @@ import {
   Badge,
   Button, 
 } from "native-base";
-import { TouchableOpacity } from "react-native";
 // import { saveSearchData } from "../reducers/searchResult";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";

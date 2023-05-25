@@ -24,7 +24,7 @@ export default function ProductScreen(props) {
   const searchResult = useSelector((state) => state.searchResult.value);
   const bungalowsFilter = searchResult.filter(e => e._id === bungalow_id);
   const capacite = bungalowsFilter[0].capaciteAdulte + bungalowsFilter[0].capaciteEnfant
-    
+
 
 console.log('capacite', capacite)
 
@@ -181,7 +181,7 @@ console.log('capacite', capacite)
       >
         Voir les disponibilités du lieu
       </Button>
-      <EquipementList {...props} />
+      <EquipementList {...bungalowsFilter} />
     </ScrollView>
   );
 }

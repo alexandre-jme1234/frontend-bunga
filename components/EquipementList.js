@@ -11,7 +11,7 @@ import {
   } from 'react-native';
   
   export default function EquipementList(props) {
-
+    console.log('props', props)
     // console.log('reservation', reservation);
     
     // const equipmentsName = [
