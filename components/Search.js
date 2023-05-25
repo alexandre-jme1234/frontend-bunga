@@ -89,7 +89,7 @@ export default function Search({ navigation }) {
     // };
     // ---------------------------Fetch recherche bungalow dispo
 
-    fetch(`http://${IP_BACKEND_ALEX}:3000/bungalow/dispo?${listBungalows}`, {
+    fetch(`http://${IP_BACKEND_ABDE}:3000/bungalow/dispo?${listBungalows}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       // 'Cache-Control': 'no-cache'
