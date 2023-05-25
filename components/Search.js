@@ -151,8 +151,8 @@ export default function Search({ navigation }) {
           Région
         </Text>
         <Input
-          style={styles.input}
-          variant="filled"
+          // style={styles.input}
+          variant="underlined"
           placeholder="Rechercher votre destination"
           onChangeText={handleInputChange}
           value={destination}
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
     marginRight: 10
   },
   textContainer: {
-    height: 80,
+    height: 70,
     width: 300,
     // backgroundColor: 'red',
     justifyContent: 'space-around',

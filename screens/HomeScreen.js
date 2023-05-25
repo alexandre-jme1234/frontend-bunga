@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
+    backgroundColor: '#F8FFFF',
     // backgroundColor: "red",
     paddingTop: StatusBar.currentHeight,
   },

@@ -7,7 +7,7 @@ import {
   Stack,
   Heading,
   Badge,
-  Button, 
+  Button,
 } from "native-base";
 // import { saveSearchData } from "../reducers/searchResult";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -18,7 +18,7 @@ export default function CardBungalow(props) {
   // console.log("nav_prop_", props.navigation);
 
   return (
-    <Box alignItems="center">
+    <Box alignItems="center" marginBottom="5">
       <Box
         maxW="400"
         rounded="lg"
@@ -38,69 +38,75 @@ export default function CardBungalow(props) {
         }}
       >
         <Box>
-            <Stack p="4" space={3}>
-          <TouchableOpacity
-            onPress={() =>
-              props.navigation.navigate("Product", { bungalow_id: props._id })
-            }
-          >
+          <Stack p="4" space={3}>
+            <TouchableOpacity
+              onPress={() =>
+                props.navigation.navigate("Product", { bungalow_id: props._id })
+              }
+            >
               <Image
-                // source={{
-                //   uri: props.image,
-                // }}
+                source={{
+                  uri: props.image,
+                }}
                 // height='110%'
                 // width='100%'
                 // alt="image"
-                // src={bungalowsFilter[0].image}
                 style={styles.imageSize}
                 alt="image"
-                />
-                </TouchableOpacity>
+              />
+            </TouchableOpacity>
 
-              <View style={styles.footerCard}>
-                <Stack space={2}>
-                  <Heading size="md" ml="-1">
-                    Ardèche
-                  </Heading>
-                </Stack>
-                <HStack space={4}>
+            <View style={styles.footerCard}>
+              <Stack space={2}>
+                <Heading size="md" ml="-1" marginBottom="1">
+                  {props.departementNom}
+                </Heading>
+              </Stack>
+              <HStack space={4}>
+                <HStack
+                  justifyContent="space-between"
+                  alignItems="center"
+                  backgroundColor="#EBE8FF"
+                  width="100%"
+                  padding="1"
+                  borderRadius="5"
+                >
+                  <Badge colorScheme="success" alignSelf="center">
+                    surface:
+                  </Badge>
+                  <Text>{props.surface}m</Text>
                   <HStack
-                    justifyContent="space-between"
-                    backgroundColor="#EBE8FF"
-                    width="100%"
-                    padding="1"
-                    borderRadius="5"
+                    justifyContent="flex-start"
+                    alignItems="center"
                   >
-                    <Badge colorScheme="success" alignSelf="center">
-                      surface:
-                    </Badge>
                     <Badge
                       colorScheme="success"
                       alignSelf="center"
-                      margin="1"
-                      marginRight="10"
+                      marginRight='1'
                     >
                       chambre:
                     </Badge>
-                    <HStack
-                      backgroundColor="#EBF9FF"
-                      padding="1"
-                      borderRadius="5"
-                    >
-                      <View style={styles.containerBadge}>
-                        <Text style={styles.bodyCard}>6 mins ago</Text>
-                        <FontAwesome
-                          name="caret-right"
-                          aria-hidden="true"
-                          size={20}
-                          color="#ec6e5b"
-                        ></FontAwesome>
-                      </View>
-                    </HStack>
+                    <Text>{props.chambre}ch</Text>
+                  </HStack>
+                  <HStack
+                    backgroundColor="#EBF9FF"
+                    padding="1"
+                    borderRadius="5"
+                  >
+                    <View style={styles.containerBadge}>
+                      <Text style={styles.bodyCard}>6 mins ago</Text>
+                      <FontAwesome
+                        name="caret-right"
+                        aria-hidden="true"
+                        size={20}
+                        color="#ec6e5b"
+                      ></FontAwesome>
+                    </View>
                   </HStack>
                 </HStack>
-              </View>
-            </Stack>
+              </HStack>
+            </View>
+          </Stack>
         </Box>
       </Box>
     </Box>
@@ -124,7 +130,6 @@ const styles = StyleSheet.create({
   },
   footerCard: {
     // backgroundColor: 'white',
-    height: 100,
     width: "100%",
   },
 });

@@ -187,6 +187,11 @@ console.log('capacite', capacite)
 }
 
 const styles = StyleSheet.create({
+  background: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#F8FFFF'
+  },
   imageProduct: {
     width: "100%",
     height: "30%",
