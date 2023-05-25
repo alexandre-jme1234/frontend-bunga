@@ -28,7 +28,9 @@ import {
 } from "../reducers/reservation";
 import { saveSearchData } from "../reducers/searchResult";
 
-const IP_BACKEND = "192.168.211.232";
+const IP_BACKEND_ABDE = "192.168.211.232";
+const IP_BACKEND_ALEX = "10.0.2.155";
+
 
 
 export default function Search({ navigation }) {
@@ -85,7 +87,7 @@ export default function Search({ navigation }) {
     // };
     // ---------------------------Fetch recherche bungalow dispo
 
-    fetch(`http://${IP_BACKEND}:3000/bungalow/dispo?${listBungalows}`, {
+    fetch(`http://${IP_BACKEND_ALEX}:3000/bungalow/dispo?${listBungalows}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       // 'Cache-Control': 'no-cache'
@@ -164,6 +166,12 @@ export default function Search({ navigation }) {
           <Text bold fontSize="sm">
             Capacité du Bungalow
           </Text>
+          <Button size="sm" variant="subtle" onPress={addCounterBody} title="+">
+            <Text style={styles.plusText}>+</Text>
+          </Button>
+          <Text bold fontSize="sm">
+            {bodyCounter}
+          </Text>
           <Button
             size="sm"
             variant="subtle"
@@ -171,12 +179,6 @@ export default function Search({ navigation }) {
             title="-"
           >
             <Text style={styles.plusText}>-</Text>
-          </Button>
-          <Text bold fontSize="sm">
-            {bodyCounter}
-          </Text>
-          <Button size="sm" variant="subtle" onPress={addCounterBody} title="+">
-            <Text style={styles.plusText}>+</Text>
           </Button>
         </Stack>
 
@@ -232,7 +234,7 @@ export default function Search({ navigation }) {
             )}
           </View>
         </SafeAreaView>
-        <Button size="sm" variant="subtle" onPress={selectionDestination}>
+        <Button size="sm" variant="subtle" onPress={() => {selectionDestination()}}>
           Rechercher
         </Button>
       </Stack>

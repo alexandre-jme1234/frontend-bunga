@@ -18,7 +18,7 @@ export default function LauchingScreen({ navigation }) {
  return (
     <ImageBackground source={require('../assets/backgroundLogo.jpg')} accessibilityLabel='BackgroundImage' resizeMode="cover" alt="ImagedeFond" style={styles.backgroundImage}>
         <SafeAreaView style={{alignItems:'center', justifyContent: 'space-between', height: '90%', width: '100%'}}>
-      <HStack>
+  <HStack>
   <Image style={styles.logoImage} source={require('../assets/logoBunga.jpg')} alt="ImagedeFond2" accessibilityLabel="LogoBungaBunga" marginRight='5'></Image>
   <Text bold style={styles.title}>BungaBun</Text>
   </HStack>
@@ -53,9 +53,10 @@ const styles = StyleSheet.create({
         flex: 1,
   },
   containerText: {
-    // backgroundColor: 'red', 
-    // // borderWidth: 0.5,
-    // // width: 60, 
+    backgroundColor: 'red', 
+    // borderWidth: 0.5,
+    width: 300,
+    height: 100
     // marginTop: 200,
     // justifyContent: 'flex-start',
   },

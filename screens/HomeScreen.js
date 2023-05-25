@@ -79,7 +79,8 @@ console.log('searchResult_____',searchResult)
   let bungalowsList;
   if (searchResult.length) {
     bungalowsList = searchResult.map((objetbungalow, i) => {
-      return <CardBungalow key={i} {...objetbungalow} />;
+      // attention à descendre la prop de navigation au composant
+      return <CardBungalow key={i} {...objetbungalow} navigation={navigation} />;
     });
   }
 
@@ -91,7 +92,6 @@ console.log('searchResult_____',searchResult)
         </View>
         <ScrollView style={styles.scrollView}>
           {bungalowsList}
-        <CardBungalow />
         </ScrollView>
         <Button
           title="Go to Product Screen"

@@ -58,8 +58,8 @@ const TabNavigator = () => {
       })}
     >
       <Tab.Screen name="Bungalow" component={BungalowStack} />
-      <Tab.Screen name="WishList" component={WishListScreen} />
-      <Tab.Screen name="Profil" component={ProfilScreen} />
+      {/* <Tab.Screen name="WishList" component={WishListScreen} />
+      <Tab.Screen name="Profil" component={ProfilScreen} /> */}
     </Tab.Navigator>
   );
 };
