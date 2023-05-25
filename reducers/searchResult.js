@@ -11,10 +11,12 @@ export const searchResultSlice = createSlice({
       saveSearchData: (state, action) => {
         console.log('Dispatch Bungalow _', action.payload)
       state.value = action.payload;
+      console.log('state',state)
     }
   },
 });
 
 export const { saveSearchData } =
     searchResultSlice.actions;
+    
 export default searchResultSlice.reducer;

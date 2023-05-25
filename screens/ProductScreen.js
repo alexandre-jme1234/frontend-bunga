@@ -14,6 +14,10 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import EquipementList from '../components/EquipementList';
 
 export default function ProductScreen(props) {
+
+  const { bungalow_id } = props.route.params
+  console.log('bungalow_id', bungalow_id)
+
   const selectPlageData = () => {
     props.navigation("PlageDate");
   };

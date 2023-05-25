@@ -1,6 +1,7 @@
 import CardBungalow from "../components/CardBungalow";
 import EquipementList from "../components/EquipementList";
 import { useState } from "react";
+import moment from 'moment';
 import {
   NativeBaseProvider,
   Box,
@@ -41,6 +42,7 @@ export default function Search({ navigation }) {
   const [dateSouhait, setDateSouhait] = useState(new Date());
   const [bungalowsData, setBungalowsData] = useState([]);
   const [show, setShow] = useState(false);
+  const [dateString, setDateString] = useState('')
 
   const addCounterBody = () => {
     if (bodyCounter >= 0) {
@@ -69,7 +71,7 @@ export default function Search({ navigation }) {
   function selectionDestination() {
     const params = new URLSearchParams({
       destination,
-      dateSouhait,
+      dateString,
       bodyCounter,
     });
 
@@ -92,7 +94,7 @@ export default function Search({ navigation }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("DATA", data);
+        console.log("listBungalows----------", listBungalows);
         if (data.success) {
           dispatch(saveSearchData(data.results));
           navigation.navigate("TabNavigator", { screen: "Home" });
@@ -110,16 +112,19 @@ export default function Search({ navigation }) {
   const handleInputChange = (text) => {
     setDestination(text);
   };
-  const handleDateChange = (date) => {
-    setDateSouhait(date);
-  };
+  // const handleDateChange = (date) => {
+  //   setDateSouhait(date);
+  // };
 
   const onChangeDate = (event, selectedDate) => {
-    const currentDate = selectedDate;
-
+    const dateStr = moment(selectedDate).format('YYYY-MM-DD')
+    const currentDate = selectedDate 
     setDateSouhait(currentDate);
+    setDateString(dateStr)
     setShow(false);
+    
   };
+  console.log('SelectedDate_______',dateSouhait)
 
   // const showMode = (currentMode) => {
   //   if (Platform.OS === 'android') {
@@ -222,7 +227,7 @@ export default function Search({ navigation }) {
               title="Pick a date !"
               style={{ height: 50, width: 50 }}
             />
-
+ 
             {show && (
               <DateTimePicker
                 value={dateSouhait}

@@ -79,7 +79,7 @@ console.log('searchResult_____',searchResult)
   let bungalowsList;
   if (searchResult.length) {
     bungalowsList = searchResult.map((objetbungalow, i) => {
-      return <CardBungalow key={i} {...objetbungalow} />;
+      return <CardBungalow key={i} {...objetbungalow} navigation />;
     });
   }
 
