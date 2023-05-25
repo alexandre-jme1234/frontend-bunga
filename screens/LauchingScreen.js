@@ -65,7 +65,7 @@ export default function LauchingScreen({ navigation }) {
               bold
               style={{
                 fontSize: 30,
-                fontWeight: 400,
+                // fontWeight: 400,
                 color: "#F8FFFF",
                 fontFamily: "Poppins-Regular",
                 marginBottom: 40,

@@ -170,7 +170,7 @@ export default function Search({ navigation }) {
           mx="auto"
           alignItems="center"
           justifyContent="space-between"
-          backgroundColor='grey.100'
+          backgroundColor='#FAFAFA'
         >
           <Text bold fontSize="sm">
             Capacité du Bungalow
@@ -184,9 +184,11 @@ export default function Search({ navigation }) {
           >
             <Text style={styles.plusText}>-</Text>
           </Button>
+          <View style={styles.counterBlock}>
           <Text bold fontSize="sm">
             {bodyCounter}
           </Text>
+          </View>
           <Button size="sm" variant="subtle" onPress={addCounterBody} title="+">
             <Text style={styles.plusText}>+</Text>
           </Button>
@@ -206,7 +208,6 @@ export default function Search({ navigation }) {
           mx="auto"
           alignItems="center"
           justifyContent="space-between"
-          backgroundColor='red.100'
         >
           <Text bold fontSize="sm">
             Nombre semaines
@@ -221,9 +222,11 @@ export default function Search({ navigation }) {
           >
             +
           </Button>
+          <View style={styles.counterBlock}>
           <Text bold fontSize="sm">
             {weeksCounter}
           </Text>
+          </View>
           <Button
             size="sm"
             variant="subtle"
@@ -282,9 +285,13 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
   },
+  counterBlock: {
+    marginLeft:10,
+    marginRight: 10
+  },
   textContainer: {
     height: 80,
-    width: 350,
+    width: 300,
     // backgroundColor: 'red',
     justifyContent: 'space-around',
   },
