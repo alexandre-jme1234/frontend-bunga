@@ -1,6 +1,6 @@
 import CardBungalow from "../components/CardBungalow";
 import EquipementList from "../components/EquipementList";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import moment from "moment";
 import {
   NativeBaseProvider,
@@ -33,6 +33,9 @@ const IP_BACKEND_ABDE = "192.168.211.232";
 const IP_BACKEND_ALEX = "10.0.2.155";
 
 export default function Search({ navigation }) {
+
+  const inputRef = useRef('')
+
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.value);
 
@@ -70,7 +73,7 @@ export default function Search({ navigation }) {
   // --------------------------Preparation des params
   function selectionDestination() {
     const params = new URLSearchParams({
-      destination,
+      destination: inputRef.current?.inputValue,
       dateString,
       bodyCounter,
     });
@@ -148,11 +151,11 @@ export default function Search({ navigation }) {
         <View style={styles.textContainer}>
           <Text style={styles.body}>Région</Text>
           <Input
+            ref={inputRef}
             style={styles.input}
             variant="filled"
             placeholder="Rechercher votre destination"
-            onChangeText={handleInputChange}
-            value={destination}
+            onChangeText={(value) => inputRef.current.inputValue = value}
           />
         </View>
         <View style={styles.textContainer}>
