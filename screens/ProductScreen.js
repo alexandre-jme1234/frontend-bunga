@@ -18,9 +18,11 @@ export default function ProductScreen(props) {
 
   const { bungalow_id } = props.route.params
   console.log('bungalow_id', bungalow_id)
+  
   const selectPlageData = () => {
-    props.navigation("PlageDate");
+    props.navigation.navigate("PlageDate", { bungalow_id });
   };
+
   const searchResult = useSelector((state) => state.searchResult.value);
   const bungalowsFilter = searchResult.filter(e => e._id === bungalow_id);
   const capacite = bungalowsFilter[0].capaciteAdulte + bungalowsFilter[0].capaciteEnfant
@@ -32,7 +34,7 @@ console.log('capacite', capacite)
   
   console.log('All props', props)
   return (
-    <ScrollView style={styles.background}>
+    <ScrollView vertical={false} style={styles.background}>
       <Image
           style={styles.imageProduct}
           src={bungalowsFilter[0].image}
@@ -74,10 +76,10 @@ console.log('capacite', capacite)
             backgroundColor="#F5F5F5"
           >
             <FontAwesome
-              name="caret-right"
+              name="arrows-alt"
               aria-hidden="true"
               size={20}
-              color="#ec6e5b"
+              color="#484657"
             ></FontAwesome>
             <Text>surface:</Text>
             <Badge justifyContent="center" >{bungalowsFilter[0].surface}</Badge>
@@ -89,10 +91,10 @@ console.log('capacite', capacite)
             backgroundColor="#F5F5F5"
           >
             <FontAwesome
-              name="caret-right"
+              name="users"
               aria-hidden="true"
               size={20}
-              color="#ec6e5b"
+              color="#484657"
             ></FontAwesome>
             <Text>capacité</Text>
             <Badge justifyContent="center">{capacite}</Badge>
@@ -104,10 +106,10 @@ console.log('capacite', capacite)
             backgroundColor="#F5F5F5"
           >
             <FontAwesome
-              name="caret-right"
+              name="bed"
               aria-hidden="true"
               size={20}
-              color="#ec6e5b"
+              color="#484657"
             ></FontAwesome>
             <Text>chambres</Text>
             <Badge justifyContent="center">{bungalowsFilter[0].chambre}</Badge>
@@ -149,7 +151,7 @@ console.log('capacite', capacite)
           name="caret-right"
           aria-hidden="true"
           size={10}
-          color="#ec6e5b"
+          color="#484657"
         ></FontAwesome>
         <VStack space={2} alignItems="flex-start">
           <Text bold fontSize="sm">
@@ -187,6 +189,11 @@ console.log('capacite', capacite)
 }
 
 const styles = StyleSheet.create({
+  background: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#F8FFFF'
+  },
   imageProduct: {
     width: "100%",
     height: "30%",

@@ -3,17 +3,16 @@ import { Box, Input } from "native-base";
 import Search from "../components/Search";
 
 export default function SelectionScreen({ navigation }) {
-
- return (
-  <View style={styles.background}>
-     <Text>Selection Screen</Text>
-     <Search navigation={navigation} />
-     <Button
+  return (
+    <View style={styles.background}>
+      <Text>Selection Screen</Text>
+      <Search navigation={navigation} />
+      {/* <Button
        title="Go to Home"
        onPress={() => navigation.navigate('TabNavigator')}
-     />
-   </View>
- );
+     /> */}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

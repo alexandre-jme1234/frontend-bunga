@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -7,15 +7,15 @@ import {
 } from 'react-native';
 
 export default function ProfilScreen({ navigation }) {
-    // return (
-    //     <View  style={styles.background}>
-    //     <Text>Wishlist Screen</Text>
-    //     <Button
-    //       title="Go to Tab"
-    //       onPress={() => navigation.navigate('TabNavigator')}
-    //     />
-    //   </View>
-    // );
+    return (
+        <View  style={styles.background}>
+        <Text>Wishlist Screen</Text>
+        <Button
+          title="Go to Tab"
+          onPress={() => navigation.navigate('TabNavigator')}
+        />
+      </View>
+    );
 }
 
 const style = StyleSheet.create({
