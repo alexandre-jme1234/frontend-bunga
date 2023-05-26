@@ -11,42 +11,41 @@ import {
 import { StyleSheet, Box } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import EquipementList from '../components/EquipementList';
+import EquipementList from "../components/EquipementList";
 import { useSelector } from "react-redux";
 
 export default function ProductScreen(props) {
+  const { bungalow_id } = props.route.params;
+  console.log("bungalow_id", bungalow_id);
 
-  const { bungalow_id } = props.route.params
-  console.log('bungalow_id', bungalow_id)
-  
   const selectPlageData = () => {
     props.navigation.navigate("PlageDate", { bungalow_id });
   };
 
   const searchResult = useSelector((state) => state.searchResult.value);
-  const bungalowsFilter = searchResult.filter(e => e._id === bungalow_id);
-  const capacite = bungalowsFilter[0].capaciteAdulte + bungalowsFilter[0].capaciteEnfant
+  const bungalowsFilter = searchResult.filter((e) => e._id === bungalow_id);
+  const capacite =
+    bungalowsFilter[0].capaciteAdulte + bungalowsFilter[0].capaciteEnfant;
 
+  console.log("capacite", capacite);
 
-console.log('capacite', capacite)
+  console.log("bungalowsFilter", bungalowsFilter);
 
-  console.log('bungalowsFilter', bungalowsFilter);
-  
-  console.log('All props', props)
+  console.log("All props", props);
   return (
     <ScrollView vertical={false} style={styles.background}>
       <Image
-          style={styles.imageProduct}
-          src={bungalowsFilter[0].image}
-          alt="bungalow background"
-          // resizeMode="cover"
-        />
+        style={styles.imageProduct}
+        src={bungalowsFilter[0].image}
+        alt="bungalow background"
+        // resizeMode="cover"
+      />
       <VStack
         space={1}
         alignItems="flex-start"
         paddingLeft="10"
         marginBottom="5"
-        marginTop="5"
+        marginTop="10"
       >
         <Text bold fontSize="sm">
           {bungalowsFilter[0].departementNom}
@@ -54,61 +53,65 @@ console.log('capacite', capacite)
         <Text fontSize="xs">{bungalowsFilter[0].ville}</Text>
       </VStack>
       <HStack
-        alignSelf="center"
+        // alignSelf="center"
+        backgroundColor="red.100"
         space={2}
-        width="300"
-        justifyContent="space-between"
+        width="100%"
+        // justifyContent="space-between"
         padding="0"
       >
         <HStack
-          paddingLeft="5"
+          justifyContent="center"
           alignItems="center"
-          space={8}
+          space={4}
           backgroundColor="#EBE8FF"
-          width="325"
+          width="100%"
+          // marginLeft='2'
+          marginRight='2O'
           padding="1"
           borderRadius="5"
         >
           <HStack
-            justifyContent="space-around"
+            justifyContent="space--"
             alignItems="center"
-            space={0}
+            space={2}
             backgroundColor="#F5F5F5"
           >
             <FontAwesome
               name="arrows-alt"
               aria-hidden="true"
-              size={20}
+              size={15}
               color="#484657"
             ></FontAwesome>
             <Text>surface:</Text>
-            <Badge justifyContent="center" >{bungalowsFilter[0].surface}</Badge>
+            <Badge justifyContent="center">{bungalowsFilter[0].surface}</Badge>
           </HStack>
           <HStack
-            justifyContent="center"
+            justifyContent="space-around"
             alignItems="center"
-            space={0}
+            space={2}
             backgroundColor="#F5F5F5"
           >
             <FontAwesome
               name="users"
               aria-hidden="true"
-              size={20}
+              size={15}
               color="#484657"
             ></FontAwesome>
             <Text>capacité</Text>
             <Badge justifyContent="center">{capacite}</Badge>
           </HStack>
           <HStack
-            justifyContent="center"
+            justifyContent="space-around"
             alignItems="center"
-            space={0}
+            w="110"
+            space={2}
             backgroundColor="#F5F5F5"
           >
             <FontAwesome
               name="bed"
               aria-hidden="true"
-              size={20}
+              size={15}
               color="#484657"
             ></FontAwesome>
             <Text>chambres</Text>
@@ -190,9 +193,9 @@ console.log('capacite', capacite)
 
 const styles = StyleSheet.create({
   background: {
-    height: '100%',
-    width: '100%',
-    backgroundColor: '#F8FFFF'
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#F8FFFF",
   },
   imageProduct: {
     width: "100%",

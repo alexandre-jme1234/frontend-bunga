@@ -1,56 +1,37 @@
-import CardBungalow from "../components/CardBungalow";
-import EquipementList from "../components/EquipementList";
 import { useState, useRef } from "react";
 import moment from "moment";
-import {
-  NativeBaseProvider,
-  Box,
-  Input,
-  Stack,
-  Button,
-} from "native-base";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-} from "react-native";
+import { Input, Stack, Button } from "native-base";
+import { Platform, SafeAreaView, View, Text, StyleSheet } from "react-native";
 
-import DateTimePicker from "@react-native-community/datetimepicker";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addCounter,
-  addDate,
-  addWeekCounter,
-  addDestination,
-} from "../reducers/reservation";
 import { saveSearchData } from "../reducers/searchResult";
-import DatePickerAndroid from './DatePickerAndroid';
-import DatePickerIOS from './DatePickeriOs';
+import DatePickerAndroid from "./DatePickerAndroid";
+import DatePickerIOS from "./DatePickeriOs";
 
-const IP_BACKEND_ABDE = "192.168.211.232";
-const IP_BACKEND_ALEX = "10.0.2.155";
-
+// const IP_BACKEND_ABDE = "192.168.211.232";
+// const IP_BACKEND_ALEX = "10.0.2.155";
 
 export default function Search({ navigation }) {
-  const [dateSouhait, setDateSouhait] = useState(new Date());
-  const inputRef = useRef(null)
-  let datePicker = <DatePickerIOS/>
-      if(Platform.OS === 'android') datePicker = <DatePickerAndroid/>
-
-  const dispatch = useDispatch();
-  // const reservation = useSelector((state) => state.reservation.value);
+  const inputRef = useRef(null);
 
   const [bodyCounter, setBodyCounter] = useState(0);
   const [weeksCounter, setWeeksCounter] = useState(0);
-  // const [bungalowsData, setBungalowsData] = useState([]);
-  const [show, setShow] = useState(false);
   const [dateString, setDateString] = useState("");
 
+  const handleDateFormat = (date) => {
+    const dateStr = moment(date).format("YYYY-MM-DD");
+    setDateString(dateStr);
+  };
+
+  console.log("dateString", dateString);
+
+  let datePicker = <DatePickerIOS handleDateFormat={handleDateFormat} />;
+  if (Platform.OS === "android") datePicker = <DatePickerAndroid />;
+
+  const dispatch = useDispatch();
+
   const addCounterBody = () => {
-    if (bodyCounter >= 0) {   
+    if (bodyCounter >= 0) {
       setBodyCounter(bodyCounter + 1);
     }
   };
@@ -82,21 +63,9 @@ export default function Search({ navigation }) {
 
     const listBungalows = params.toString();
 
-    // console.log("query params", listBungalows);
-    // ------------------------------req.headers.destination ?
-    // const headers = {
-    //   "Content-Type": "application/json",
-    //   destination: destination,
-    //   bodyCounter: bodyCounter.toString(),
-    //   dateSouhait: dateSouhait
-    // };
-    // ---------------------------Fetch recherche bungalow dispo
-
-    // fetch(`http://${IP_BACKEND_ABDE}:3000/bungalow/dispo?${listBungalows}`, {
-     fetch(`https://backend-bunga.vercel.app/bungalow/dispo?${listBungalows}`, {
+    fetch(`https://backend-bunga.vercel.app/bungalow/dispo?${listBungalows}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-      // 'Cache-Control': 'no-cache'
     })
       .then((response) => response.json())
       .then((data) => {
@@ -113,40 +82,13 @@ export default function Search({ navigation }) {
         );
       });
   }
-  // console.log("DataB", bungalowsData);
-  // console.log("reservation _", reservation);
+
   const handleInputChange = (text) => {
     setDestination(text);
   };
-  // const handleDateChange = (date) => {
-  //   setDateSouhait(date);
-  // };
-
-  const onChangeDate = (event, selectedDate) => {
-    const dateStr = moment(selectedDate).format("YYYY-MM-DD");
-    const currentDate = selectedDate;
-    setDateSouhait(currentDate);
-    setDateString(dateStr);
-    setShow(false);
-  };
-
-
-  console.log("SelectedDate_______", dateSouhait);
-
-  // const showMode = (currentMode) => {
-  //   if (Platform.OS === 'android') {
-  //     setShow(false);
-  //     // for iOS, add a button that closes the picker
-  //   }
-  //   setMode(currentMode);
-  // };
-
-  const showDatePicker = () => {
-    setShow(true);
-  };
 
   return (
-      <SafeAreaView>
+    <SafeAreaView>
       <Stack space={12} w="75%" maxW="300px" mx="auto" alignItems="center">
         <Text style={styles.title}>Choisissez votre bungalow</Text>
         <View style={styles.textContainer}>
@@ -156,7 +98,7 @@ export default function Search({ navigation }) {
             style={styles.input}
             variant="underlined"
             placeholder="Rechercher votre destination"
-            onChangeText={(value) => inputRef.current.inputValue = value}
+            onChangeText={(value) => (inputRef.current.inputValue = value)}
           />
         </View>
         <View style={styles.textContainer}>
@@ -183,9 +125,7 @@ export default function Search({ navigation }) {
               >
                 <Text style={styles.plusText}>+</Text>
               </Button>
-              <Text style={styles.counterBody}>
-                {bodyCounter}
-              </Text>
+              <Text style={styles.counterBody}>{bodyCounter}</Text>
               <Button
                 size="sm"
                 variant="subtle"
@@ -223,9 +163,7 @@ export default function Search({ navigation }) {
               >
                 +
               </Button>
-              <Text style={styles.counterBody}>
-                {weeksCounter}
-              </Text>
+              <Text style={styles.counterBody}>{weeksCounter}</Text>
               <Button
                 size="sm"
                 variant="subtle"
@@ -238,29 +176,27 @@ export default function Search({ navigation }) {
             </View>
           </Stack>
         </View>
-       <View style={{ height: "40%", justifyContent: 'space-between'}}>
-          <View style={styles.containerDataPicker}>
-            { datePicker }
-            </View>
-        
-        <Button
-          size="sm"
-          variant="subtle"
-          onPress={() => {
-            selectionDestination();
-          }}
-        >
-          Rechercher
-        </Button>
+        <View style={{ height: "30%", justifyContent: "space-between" }}>
+          <View style={styles.containerDataPicker}>{datePicker}</View>
+
+          <Button
+            size="sm"
+            variant="subtle"
+            onPress={() => {
+              selectionDestination();
+            }}
+          >
+            Rechercher
+          </Button>
         </View>
       </Stack>
-      </SafeAreaView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor:'#F8FFFF',
+    backgroundColor: "#F8FFFF",
     flex: 1,
     // padding: 10,
     // margin: 50,
@@ -270,7 +206,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: "Poppins-Regular",
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
   },
   title: {
     fontSize: 20,
@@ -282,7 +218,7 @@ const styles = StyleSheet.create({
     height: 70,
     width: 300,
     // backgroundColor: 'red',
-    justifyContent: 'space-around',
+    justifyContent: "space-around",
   },
   body: {
     fontSize: 17,
@@ -291,8 +227,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   buttonCounter: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-between",
   },
   datePickerStyle: {
@@ -304,7 +240,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     height: 100,
-
   },
   boldText: {
     // fontWeight: "bold",

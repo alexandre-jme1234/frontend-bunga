@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import moment from "moment";
 import DatePicker from "@react-native-community/datetimepicker";
 
-export default function DatePickerIOS() {
+export default function DatePickerIOS(props) {
   const [date, setDate] = useState(new Date());
 
   console.log(date);
@@ -11,12 +11,22 @@ export default function DatePickerIOS() {
   // don't remove the event param or it will crash
   function onDateChange(event, selectedDate) {
     const currentDate = selectedDate;
+    props.handleDateFormat(currentDate);
     setDate(currentDate);
   }
 
   return (
-    <View style={{ width: "100%", alignItems: 'center'}}>
-      <Text style={{marginBottom: 15, fontSize: '17', fontFamily: 'poppins-regular'}}> Date selectionnée </Text>
+    <View style={{ width: "100%", alignItems: "center" }}>
+      <Text
+        style={{
+          marginBottom: 15,
+          fontSize: "17",
+          fontFamily: "poppins-regular",
+        }}
+      >
+        {" "}
+        Date selectionnée{" "}
+      </Text>
       <DatePicker
         value={date}
         mode="date"
