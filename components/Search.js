@@ -120,19 +120,19 @@ export default function Search({ navigation }) {
               <Button
                 size="sm"
                 variant="subtle"
-                onPress={addCounterBody}
-                title="+"
+                onPress={substractCounter}
+                title="-"
               >
-                <Text style={styles.plusText}>+</Text>
+                <Text style={styles.plusText}>-</Text>
               </Button>
               <Text style={styles.counterBody}>{bodyCounter}</Text>
               <Button
                 size="sm"
                 variant="subtle"
-                onPress={substractCounter}
-                title="-"
+                onPress={addCounterBody}
+                title="+"
               >
-                <Text style={styles.plusText}>-</Text>
+                <Text style={styles.plusText}>+</Text>
               </Button>
             </View>
           </Stack>
@@ -158,20 +158,20 @@ export default function Search({ navigation }) {
                 size="sm"
                 variant="subtle"
                 onPress={() => {
-                  addWeekCounterBody();
+                  substractWeekCounter();
                 }}
               >
-                +
+                -
               </Button>
               <Text style={styles.counterBody}>{weeksCounter}</Text>
               <Button
                 size="sm"
                 variant="subtle"
                 onPress={() => {
-                  substractWeekCounter();
+                  addWeekCounterBody();
                 }}
               >
-                -
+                +
               </Button>
             </View>
           </Stack>
@@ -247,8 +247,6 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
     padding: 10,
     marginBottom: 10,
   },
