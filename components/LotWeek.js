@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Box } from "native-base";
-import { StyleSheet, Text, TouchableHighlight } from "react-native";
-import React from "react";
+import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 
-export default function LotWeek() {
+export default function LotWeek(props) {
+
+  const { bungalow_id } = props.route.params
+  console.log('props LotWeek', props)
   const searchResult = useSelector((state) => state.searchResult.value);
   const bungalowsFilter = searchResult.filter((e) => e._id === bungalow_id);
   const [isPress, setIsPress] = useState(false);
@@ -27,7 +29,7 @@ export default function LotWeek() {
       <Text>au</Text>
       <Text>{bungalowsFilter[0].chambre}</Text>
       <Text>{bungalowsFilter[0].chambre}</Text>
-        <TouchableHighlight {...touchProps} onPress={onPress}>
+        <TouchableHighlight {...touchProps} onPress={() => {}}>
           <View style={styles.button}>
             <Text>Rechercher</Text>
           </View>

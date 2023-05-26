@@ -1,6 +1,6 @@
 import CardBungalow from "../components/CardBungalow";
 import EquipementList from "../components/EquipementList";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import moment from "moment";
 import {
   NativeBaseProvider,
@@ -32,19 +32,19 @@ import DatePickerIOS from './DatePickeriOs';
 
 const IP_BACKEND_ABDE = "192.168.211.232";
 const IP_BACKEND_ALEX = "10.0.2.155";
-const [dateSouhait, setDateSouhait] = useState(new Date());
+
 
 export default function Search({ navigation }) {
-
+  const [dateSouhait, setDateSouhait] = useState(new Date());
+  const inputRef = useRef(null)
   let datePicker = <DatePickerIOS/>
       if(Platform.OS === 'android') datePicker = <DatePickerAndroid/>
 
   const dispatch = useDispatch();
-  const reservation = useSelector((state) => state.reservation.value);
+  // const reservation = useSelector((state) => state.reservation.value);
 
   const [bodyCounter, setBodyCounter] = useState(0);
   const [weeksCounter, setWeeksCounter] = useState(0);
-  const [destination, setDestination] = useState("Lyon");
   // const [bungalowsData, setBungalowsData] = useState([]);
   const [show, setShow] = useState(false);
   const [dateString, setDateString] = useState("");
@@ -75,7 +75,7 @@ export default function Search({ navigation }) {
   // --------------------------Preparation des params
   function selectionDestination() {
     const params = new URLSearchParams({
-      destination,
+      destination: inputRef.current?.inputValue,
       dateString,
       bodyCounter,
     });
@@ -92,7 +92,8 @@ export default function Search({ navigation }) {
     // };
     // ---------------------------Fetch recherche bungalow dispo
 
-    fetch(`http://${IP_BACKEND_ALEX}:3000/bungalow/dispo?${listBungalows}`, {
+    // fetch(`http://${IP_BACKEND_ABDE}:3000/bungalow/dispo?${listBungalows}`, {
+     fetch(`https://backend-bunga.vercel.app/bungalow/dispo?${listBungalows}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       // 'Cache-Control': 'no-cache'
@@ -146,101 +147,95 @@ export default function Search({ navigation }) {
 
   return (
       <Stack space={12} w="75%" maxW="300px" mx="auto" alignItems="center">
-      <Text style={styles.title}>
-        Choisissez votre bungalow
-        </Text>
+        <Text style={styles.title}>Choisissez votre bungalow</Text>
         <View style={styles.textContainer}>
-        <Text style={styles.body}>
-          Région
-        </Text>
-        <Input
-          // style={styles.input}
-          variant="underlined"
-          placeholder="Rechercher votre destination"
-          onChangeText={handleInputChange}
-          value={destination}
-        />
+          <Text style={styles.body}>Région</Text>
+          <Input
+            ref={inputRef}
+            style={styles.input}
+            variant="underlined"
+            placeholder="Rechercher votre destination"
+            onChangeText={(value) => inputRef.current.inputValue = value}
+          />
         </View>
         <View style={styles.textContainer}>
-        <Text style={styles.body}>
-          Nombre de participants
-        </Text>
-        <Stack
-          direction="row"
-          space={4}
-          w="100%"
-          maxW="300px"
-          mx="auto"
-          alignItems="center"
-          justifyContent="space-between"
-          backgroundColor='#FAFAFA'
-        >
-          <Text bold fontSize="sm">
-            Capacité du Bungalow
-          </Text>
-          <View style={styles.buttonCounter}>
-          <Button
-            size="sm"
-            variant="subtle"
-            onPress={substractCounter}
-            title="-"
+          <Text style={styles.body}>Nombre de participants</Text>
+          <Stack
+            direction="row"
+            space={4}
+            w="100%"
+            maxW="300px"
+            mx="auto"
+            alignItems="center"
+            justifyContent="space-between"
+            backgroundColor="grey.100"
           >
-            <Text style={styles.plusText}>-</Text>
-          </Button>
-          <View style={styles.counterBlock}>
-          <Text bold fontSize="sm">
-            {bodyCounter}
-          </Text>
-          </View>
-          <Button size="sm" variant="subtle" onPress={addCounterBody} title="+">
-            <Text style={styles.plusText}>+</Text>
-          </Button>
-          </View>
-        </Stack>
+            <Text bold fontSize="sm">
+              Capacité du Bungalow
+            </Text>
+            <View style={styles.buttonCounter}>
+              <Button
+                size="sm"
+                variant="subtle"
+                onPress={addCounterBody}
+                title="+"
+              >
+                <Text style={styles.plusText}>+</Text>
+              </Button>
+              <Text bold fontSize="sm">
+                {bodyCounter}
+              </Text>
+              <Button
+                size="sm"
+                variant="subtle"
+                onPress={substractCounter}
+                title="-"
+              >
+                <Text style={styles.plusText}>-</Text>
+              </Button>
+            </View>
+          </Stack>
         </View>
-        
+
         <View style={styles.textContainer}>
-        <Text style={styles.body}>
-        Semaines
-        </Text>
-        <Stack
-          direction="row"
-          space={4}
-          w="100%"
-          maxW="300px"
-          mx="auto"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Text bold fontSize="sm">
-            Nombre semaines
-          </Text>
-          <View style={styles.buttonCounter}>
-          <Button
-            size="sm"
-            variant="subtle"
-            onPress={() => {
-              addWeekCounterBody();
-            }}
+          <Text style={styles.body}>Semaines</Text>
+          <Stack
+            direction="row"
+            space={4}
+            w="100%"
+            maxW="300px"
+            mx="auto"
+            alignItems="center"
+            justifyContent="space-between"
+            backgroundColor="red.100"
           >
-            +
-          </Button>
-          <View style={styles.counterBlock}>
-          <Text bold fontSize="sm">
-            {weeksCounter}
-          </Text>
-          </View>
-          <Button
-            size="sm"
-            variant="subtle"
-            onPress={() => {
-              substractWeekCounter();
-            }}
-          >
-            -
-          </Button>
-        </View>
-        </Stack>
+            <Text bold fontSize="sm">
+              Nombre semaines
+            </Text>
+            <View style={styles.buttonCounter}>
+              <Button
+                size="sm"
+                variant="subtle"
+                onPress={() => {
+                  addWeekCounterBody();
+                }}
+              >
+                +
+              </Button>
+              <Text bold fontSize="sm">
+                {weeksCounter}
+              </Text>
+              <Button
+                size="sm"
+                variant="subtle"
+                onPress={() => {
+                  substractWeekCounter();
+                }}
+              >
+                -
+              </Button>
+            </View>
+          </Stack>
         </View>
         <SafeAreaView style={styles.containerDataPicker}>
           <View style={styles.containerDataPicker}>
@@ -274,10 +269,6 @@ const styles = StyleSheet.create({
     // fontWeight: 600,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
-  },
-  counterBlock: {
-    marginLeft:10,
-    marginRight: 10
   },
   textContainer: {
     height: 70,

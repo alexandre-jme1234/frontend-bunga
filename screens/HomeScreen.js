@@ -1,7 +1,4 @@
-// import React, { useState } from "react";
-// import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import CardBungalow from "../components/CardBungalow";
-// import EquipementList from '../components/EquipementList';
 
 import {
   SafeAreaView,
@@ -32,7 +29,7 @@ import {
 
 export default function HomeScreen({ navigation }) {
   const searchResult = useSelector((state) => state.searchResult.value);
-// console.log('searchResult_____',searchResult)
+  // console.log('searchResult_____',searchResult)
   //------------------------------font
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
@@ -80,23 +77,25 @@ export default function HomeScreen({ navigation }) {
   if (searchResult.length) {
     bungalowsList = searchResult.map((objetbungalow, i) => {
       // attention à descendre la prop de navigation au composant
-      return <CardBungalow key={i} {...objetbungalow} navigation={navigation} />;
+      return (
+        <CardBungalow key={i} {...objetbungalow} navigation={navigation} />
+      );
     });
   }
 
   return (
     <SafeAreaView style={styles.background}>
-        <View style={styles.headContainer}>
+      <View style={styles.headContainer}>
         <Text style={styles.title}>Notre Sélection</Text>
         <Text style={styles.subTitle}>Ardèche</Text>
-        </View>
-        <ScrollView vertical={false} style={styles.scrollView}>
-          {bungalowsList}
-        </ScrollView>
-        <Button
-          title="Go to Product Screen"
-          onPress={() => navigation.navigate("Product")}
-        />
+      </View>
+      <ScrollView vertical={false} style={styles.scrollView}>
+        {bungalowsList}
+      </ScrollView>
+      <Button
+        title="Go to Product Screen"
+        onPress={() => navigation.navigate("Product")}
+      />
     </SafeAreaView>
   );
 }
@@ -107,18 +106,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    backgroundColor: '#F8FFFF',
+    backgroundColor: "#F8FFFF",
     // backgroundColor: "red",
     paddingTop: StatusBar.currentHeight,
   },
   scrollView: {
     // backgroundColor: "red",
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   headContainer: {
     // backgroundColor: "green",
-    justifyContent: 'space-around',
+    justifyContent: "space-around",
     marginTop: 20,
     height: 100,
     padding: 10,
@@ -134,5 +133,5 @@ const styles = StyleSheet.create({
     // fontWeight: 600,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
-  }
+  },
 });

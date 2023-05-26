@@ -5,7 +5,6 @@ import { View, StyleSheet } from "react-native";
 
 export default function EquipementList(props) {
   console.log("props", props);
-  // console.log('reservation', reservation);
 
   // const equipmentsName = [
   //     {nameEquip: 'fa-television'},

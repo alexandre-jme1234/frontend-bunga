@@ -1,34 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { View, Button, Input } from "react-native";
 
+export default function InputMail() {
+  const [addMail, setAddMail] = useState("");
 
+  return (
+    <View>
+    
 
-export default function inputMail(props) {
-
-    const[addMail, setAddMail] = useState('');
-
-    const addaddMailInStoreMail = () => {
-
-    }
-
-    return(
-        <Box >
-            <Input
-          variant="filled"
-          placeholder="Destination"
-          onChangeText={(value) => setAddMail(value)}
-          value={addMail}
-        />  
-            <Button
-            size="sm"
-            variant="subtle"
-            onPress={() => {
-              addMailInStore();
-            }}
-          >
-            Sélectionner
-          </Button>
-        </Box>
-    )
-
-
+    </View>
+  );
 }
