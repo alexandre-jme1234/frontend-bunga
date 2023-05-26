@@ -22,7 +22,8 @@ export function DatePickerAndroid() {
 
 	return (
 		<>
-			<Text>Date selectionnée: {date.toLocaleString()}</Text>
+			<Text style={{marginBottom: 15, fontSize: '17', fontFamily: 'poppins-regular'}}>
+			Date selectionnée: {date.toLocaleString()}</Text>
 			<Button
 				onPress={() => showDatePicker()}
 				title='Sélectionner une date'

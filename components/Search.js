@@ -146,6 +146,7 @@ export default function Search({ navigation }) {
   };
 
   return (
+      <SafeAreaView>
       <Stack space={12} w="75%" maxW="300px" mx="auto" alignItems="center">
         <Text style={styles.title}>Choisissez votre bungalow</Text>
         <View style={styles.textContainer}>
@@ -182,7 +183,7 @@ export default function Search({ navigation }) {
               >
                 <Text style={styles.plusText}>+</Text>
               </Button>
-              <Text bold fontSize="sm">
+              <Text style={styles.counterBody}>
                 {bodyCounter}
               </Text>
               <Button
@@ -207,10 +208,10 @@ export default function Search({ navigation }) {
             mx="auto"
             alignItems="center"
             justifyContent="space-between"
-            backgroundColor="red.100"
+            // backgroundColor="red.100"
           >
             <Text bold fontSize="sm">
-              Nombre semaines
+              Nombre de semaines
             </Text>
             <View style={styles.buttonCounter}>
               <Button
@@ -222,7 +223,7 @@ export default function Search({ navigation }) {
               >
                 +
               </Button>
-              <Text bold fontSize="sm">
+              <Text style={styles.counterBody}>
                 {weeksCounter}
               </Text>
               <Button
@@ -237,12 +238,11 @@ export default function Search({ navigation }) {
             </View>
           </Stack>
         </View>
-        <SafeAreaView style={styles.containerDataPicker}>
+       <View style={{ height: "40%", justifyContent: 'space-between'}}>
           <View style={styles.containerDataPicker}>
-            <Text style={styles.boldText}>Disponibilité</Text>
             { datePicker }
             </View>
-        </SafeAreaView>
+        
         <Button
           size="sm"
           variant="subtle"
@@ -252,7 +252,9 @@ export default function Search({ navigation }) {
         >
           Rechercher
         </Button>
+        </View>
       </Stack>
+      </SafeAreaView>
   );
 }
 
@@ -263,6 +265,12 @@ const styles = StyleSheet.create({
     // padding: 10,
     // margin: 50,
     justifyContent: "space-around",
+  },
+  counterBody: {
+    fontSize: 15,
+    fontFamily: "Poppins-Regular",
+    marginLeft: 10,
+    marginRight: 10
   },
   title: {
     fontSize: 20,
@@ -293,8 +301,10 @@ const styles = StyleSheet.create({
   },
   containerDataPicker: {
     padding: 10,
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
+    height: 100,
+
   },
   boldText: {
     // fontWeight: "bold",

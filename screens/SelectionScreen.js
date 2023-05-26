@@ -5,7 +5,6 @@ import Search from "../components/Search";
 export default function SelectionScreen({ navigation }) {
   return (
     <View style={styles.background}>
-      <Text>Selection Screen</Text>
       <Search navigation={navigation} />
       {/* <Button
        title="Go to Home"

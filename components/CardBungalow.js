@@ -14,7 +14,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 export default function CardBungalow(props) {
-  console.log("props_cards__", props);
+  console.log("props_cards__", props.disponibilites[0].tarif);
   // console.log("nav_prop_", props.navigation);
 
   return (
@@ -58,7 +58,7 @@ export default function CardBungalow(props) {
 
             <View style={styles.footerCard}>
               <Stack space={2}>
-                <Heading size="md" ml="-1" marginBottom="1">
+                <Heading size="xl" ml="-1" marginBottom="1">
                   {props.departementNom}
                 </Heading>
               </Stack>
@@ -74,19 +74,16 @@ export default function CardBungalow(props) {
                   <Badge colorScheme="success" alignSelf="center">
                     surface:
                   </Badge>
-                  <Text>{props.surface}m</Text>
-                  <HStack
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
+                  <Text style={styles.bodyCard}>{props.surface}m</Text>
+                  <HStack justifyContent="flex-start" alignItems="center">
                     <Badge
                       colorScheme="success"
                       alignSelf="center"
-                      marginRight='1'
+                      // marginRight='1'
                     >
                       chambre:
                     </Badge>
-                    <Text>{props.chambre}ch</Text>
+                    <Text style={styles.bodyCard}>{props.chambre}ch</Text>
                   </HStack>
                   <HStack
                     backgroundColor="#EBF9FF"
@@ -94,12 +91,14 @@ export default function CardBungalow(props) {
                     borderRadius="5"
                   >
                     <View style={styles.containerBadge}>
-                      <Text style={styles.bodyCard}>6 mins ago</Text>
+                      <Text style={styles.bodyCard}>
+                        Détails
+                      </Text>
                       <FontAwesome
                         name="caret-right"
                         aria-hidden="true"
                         size={20}
-                        color="#ec6e5b"
+                        color="#9747FF"
                       ></FontAwesome>
                     </View>
                   </HStack>
@@ -126,7 +125,7 @@ const styles = StyleSheet.create({
   },
   bodyCard: {
     fontFamily: "Poppins-Regular",
-    fontSize: "10xl",
+    fontSize: "16xl",
   },
   footerCard: {
     // backgroundColor: 'white',

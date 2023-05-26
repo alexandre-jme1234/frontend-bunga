@@ -92,10 +92,10 @@ export default function HomeScreen({ navigation }) {
       <ScrollView vertical={false} style={styles.scrollView}>
         {bungalowsList}
       </ScrollView>
-      <Button
+      {/* <Button
         title="Go to Product Screen"
         onPress={() => navigation.navigate("Product")}
-      />
+      /> */}
     </SafeAreaView>
   );
 }
