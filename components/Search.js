@@ -17,7 +17,6 @@ import {
   Text,
   StyleSheet,
 } from "react-native";
-// import DatePicker from "react-native-datepicker";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,24 +27,31 @@ import {
   addDestination,
 } from "../reducers/reservation";
 import { saveSearchData } from "../reducers/searchResult";
+import DatePickerAndroid from './DatePickerAndroid';
+import DatePickerIOS from './DatePickeriOs';
 
 const IP_BACKEND_ABDE = "192.168.211.232";
 const IP_BACKEND_ALEX = "10.0.2.155";
+const [dateSouhait, setDateSouhait] = useState(new Date());
 
 export default function Search({ navigation }) {
+
+  let datePicker = <DatePickerIOS/>
+      if(Platform.OS === 'android') datePicker = <DatePickerAndroid/>
+
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.value);
 
   const [bodyCounter, setBodyCounter] = useState(0);
   const [weeksCounter, setWeeksCounter] = useState(0);
   const [destination, setDestination] = useState("Lyon");
-  const [dateSouhait, setDateSouhait] = useState(new Date());
-  const [bungalowsData, setBungalowsData] = useState([]);
+  // const [bungalowsData, setBungalowsData] = useState([]);
   const [show, setShow] = useState(false);
   const [dateString, setDateString] = useState("");
 
   const addCounterBody = () => {
     if (bodyCounter >= 0) {
+      
       setBodyCounter(bodyCounter + 1);
     }
   };
@@ -123,6 +129,8 @@ export default function Search({ navigation }) {
     setDateString(dateStr);
     setShow(false);
   };
+
+
   console.log("SelectedDate_______", dateSouhait);
 
   // const showMode = (currentMode) => {
@@ -138,10 +146,6 @@ export default function Search({ navigation }) {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
       <Stack space={12} w="75%" maxW="300px" mx="auto" alignItems="center">
       <Text style={styles.title}>
         Choisissez votre bungalow
@@ -242,20 +246,8 @@ export default function Search({ navigation }) {
         <SafeAreaView style={styles.containerDataPicker}>
           <View style={styles.containerDataPicker}>
             <Text style={styles.boldText}>Disponibilité</Text>
-            <Button
-              onPress={showDatePicker}
-              title="Pick a date !"
-              style={{ height: 50, width: 50 }}
-            />
-
-            {show && (
-              <DateTimePicker
-                value={dateSouhait}
-                mode="date"
-                onChange={onChangeDate}
-              />
-            )}
-          </View>
+            { datePicker }
+            </View>
         </SafeAreaView>
         <Button
           size="sm"
@@ -267,7 +259,6 @@ export default function Search({ navigation }) {
           Rechercher
         </Button>
       </Stack>
-    </KeyboardAvoidingView>
   );
 }
 

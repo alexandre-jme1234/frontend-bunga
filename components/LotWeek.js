@@ -1,46 +1,66 @@
 import { useState } from "react";
-import { Box, Text, Button } from "native-base";
-import {
-    StyleSheet
-  } from 'react-native';
+import { useSelector } from "react-redux";
+import { Box } from "native-base";
+import { StyleSheet, Text, TouchableHighlight } from "react-native";
+import React from "react";
 
 export default function LotWeek() {
-    
-    const[lotWeeks, setLotWeeks ] = useState(false);
-    
+  const searchResult = useSelector((state) => state.searchResult.value);
+  const bungalowsFilter = searchResult.filter((e) => e._id === bungalow_id);
+  const [isPress, setIsPress] = useState(false);
 
-// Réfléchir à ce useState.
+  var touchProps = {
+    activeOpacity: 1,
+    underlayColor: "blue",
+    style: isPress ? styles.btnPress : styles.btnNormal,
+    onHideUnderlay: () => setIsPress(false),
+    onShowUnderlay: () => setIsPress(true),
+    onPress: () => console.log("GOOD STATE"),
+  };
 
+  const handleSelectionLotsWeek = () => {};
 
-    const addLotsWeek = () => {
-        lotWeeks == true;
-    }
-    
-    return (
-        <Box style={styles.plageData}>
-            <Text>Décembre</Text>
-            <Text>1/12</Text>
-            <Text>au</Text>
-            <Text>15/12</Text>
-            <Text>100€</Text>
-            <Button
-          size="sm"
-          variant="subtle"
-          onPress={() => {
-            addLotsWeek();
-          }}
-        >
-          Rechercher
-        </Button>
-        </Box>
-    );
+  return (
+    <Box style={styles.plageData}>
+      <Text>Période</Text>
+      <Text>{bungalowsFilter[0].chambre}</Text>
+      <Text>au</Text>
+      <Text>{bungalowsFilter[0].chambre}</Text>
+      <Text>{bungalowsFilter[0].chambre}</Text>
+        <TouchableHighlight {...touchProps} onPress={onPress}>
+          <View style={styles.button}>
+            <Text>Rechercher</Text>
+          </View>
+        </TouchableHighlight>
+    </Box>
+  );
 }
 
 const styles = StyleSheet.create({
-    plageData: {
-        height: '10%',
-        width: '100%',
-        backgroundColor: '#EAEAEA',
-        borderRadius: '10'
-    }
-})
+  plageData: {
+    height: "10%",
+    width: "100%",
+    backgroundColor: "#EAEAEA",
+    borderRadius: "10",
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+  },
+  btnNormal: {
+    borderColor: "blue",
+    backgroundColor: '#DDDDDD',
+    borderWidth: 1,
+    borderRadius: 10,
+    height: 30,
+    width: 100,
+  },
+  btnPress: {
+    borderColor: "#94F2AA",
+    backgroundColor: '#94F2AA',
+    borderWidth: 1,
+    height: 30,
+    width: 100,
+  },
+});

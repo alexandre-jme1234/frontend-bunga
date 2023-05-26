@@ -32,7 +32,7 @@ console.log('capacite', capacite)
   
   console.log('All props', props)
   return (
-    <ScrollView style={styles.background}>
+    <ScrollView vertical={false} style={styles.background}>
       <Image
           style={styles.imageProduct}
           src={bungalowsFilter[0].image}
@@ -74,10 +74,10 @@ console.log('capacite', capacite)
             backgroundColor="#F5F5F5"
           >
             <FontAwesome
-              name="caret-right"
+              name="arrows-alt"
               aria-hidden="true"
               size={20}
-              color="#ec6e5b"
+              color="#484657"
             ></FontAwesome>
             <Text>surface:</Text>
             <Badge justifyContent="center" >{bungalowsFilter[0].surface}</Badge>
@@ -89,10 +89,10 @@ console.log('capacite', capacite)
             backgroundColor="#F5F5F5"
           >
             <FontAwesome
-              name="caret-right"
+              name="users"
               aria-hidden="true"
               size={20}
-              color="#ec6e5b"
+              color="#484657"
             ></FontAwesome>
             <Text>capacité</Text>
             <Badge justifyContent="center">{capacite}</Badge>
@@ -104,10 +104,10 @@ console.log('capacite', capacite)
             backgroundColor="#F5F5F5"
           >
             <FontAwesome
-              name="caret-right"
+              name="bed"
               aria-hidden="true"
               size={20}
-              color="#ec6e5b"
+              color="#484657"
             ></FontAwesome>
             <Text>chambres</Text>
             <Badge justifyContent="center">{bungalowsFilter[0].chambre}</Badge>
@@ -149,7 +149,7 @@ console.log('capacite', capacite)
           name="caret-right"
           aria-hidden="true"
           size={10}
-          color="#ec6e5b"
+          color="#484657"
         ></FontAwesome>
         <VStack space={2} alignItems="flex-start">
           <Text bold fontSize="sm">

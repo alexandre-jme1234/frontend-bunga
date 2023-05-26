@@ -90,7 +90,7 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.title}>Notre Sélection</Text>
         <Text style={styles.subTitle}>Ardèche</Text>
         </View>
-        <ScrollView style={styles.scrollView}>
+        <ScrollView vertical={false} style={styles.scrollView}>
           {bungalowsList}
         </ScrollView>
         <Button
