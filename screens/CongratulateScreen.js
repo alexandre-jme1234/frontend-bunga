@@ -10,8 +10,9 @@ export default function CongratulateScreen({ navigation }) {
     <VStack style={styles.containerPlageData}>
         <VStack>
           <Text style={styles.title}>
-          Félicitations!
-          Votre mail à bien été envoyé.
+          Félicitations!</Text>
+          <Text style={styles.body}>
+            Votre mail a bien été envoyé.
           </Text>
         </VStack>
       </VStack>
@@ -34,6 +35,8 @@ const styles = StyleSheet.create({
       height: '60%',
       width: '80%',
       backgroundColor: '#F8F8F8',
+      justifyContent: 'center',
+      alignItems: 'center',
       borderRadius: '15',
     },
       // plageData: {
@@ -48,5 +51,11 @@ const styles = StyleSheet.create({
       // fontWeight: 'bold',
       marginTop: 250,
       textAlign: 'center', 
-    },
+    },  
+    body: {
+      fontSize: 17,
+      // fontWeight: 600,
+      fontFamily: "Poppins-Regular",
+      marginBottom: 20,
+    }
 });

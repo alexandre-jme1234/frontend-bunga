@@ -25,6 +25,7 @@ export default function PlageDateScreen({ navigation, ...props }) {
       </VStack>
       <VStack style={styles.containerPlageData}>
         <VStack style={styles.plageData}>
+          <LotWeek />
         </VStack>
       </VStack>
       <VStack

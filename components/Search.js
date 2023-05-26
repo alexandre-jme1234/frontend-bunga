@@ -50,8 +50,7 @@ export default function Search({ navigation }) {
   const [dateString, setDateString] = useState("");
 
   const addCounterBody = () => {
-    if (bodyCounter >= 0) {
-      
+    if (bodyCounter >= 0) {   
       setBodyCounter(bodyCounter + 1);
     }
   };
