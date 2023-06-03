@@ -47,13 +47,13 @@ const styles = StyleSheet.create({
       // },
     title: {
       fontFamily: 'Poppins-Regular',
-      fontSize: 20,
+      // fontSize: 20,
       // fontWeight: 'bold',
       marginTop: 250,
       textAlign: 'center', 
     },  
     body: {
-      fontSize: 17,
+      // fontSize: 17,
       // fontWeight: 600,
       fontFamily: "Poppins-Regular",
       marginBottom: 20,

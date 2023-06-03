@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import moment from "moment";
 import { Input, Stack, Button } from "native-base";
-import { Platform, SafeAreaView, View, Text, StyleSheet } from "react-native";
+import { Platform, SafeAreaView, View, Text, StyleSheet, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
 import { saveSearchData } from "../reducers/searchResult";
@@ -88,6 +88,10 @@ export default function Search({ navigation }) {
   };
 
   return (
+    <KeyboardAvoidingView
+    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <SafeAreaView>
       <Stack space={12} w="75%" maxW="300px" mx="auto" alignItems="center">
         <Text style={styles.title}>Choisissez votre bungalow</Text>
@@ -113,7 +117,7 @@ export default function Search({ navigation }) {
             justifyContent="space-between"
             backgroundColor="grey.100"
           >
-            <Text bold fontSize="sm">
+            <Text>
               Capacité du Bungalow
             </Text>
             <View style={styles.buttonCounter}>
@@ -150,7 +154,7 @@ export default function Search({ navigation }) {
             justifyContent="space-between"
             // backgroundColor="red.100"
           >
-            <Text bold fontSize="sm">
+            <Text>
               Nombre de semaines
             </Text>
             <View style={styles.buttonCounter}>
@@ -176,10 +180,12 @@ export default function Search({ navigation }) {
             </View>
           </Stack>
         </View>
+      </Stack>
         <View style={{ height: "30%", justifyContent: "space-between" }}>
           <View style={styles.containerDataPicker}>{datePicker}</View>
 
           <Button
+            style={{marginLeft: 50, marginRight: 0}}
             size="sm"
             variant="subtle"
             onPress={() => {
@@ -189,8 +195,9 @@ export default function Search({ navigation }) {
             Rechercher
           </Button>
         </View>
-      </Stack>
     </SafeAreaView>
+    </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -209,7 +216,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   title: {
-    fontSize: 20,
+    // fontSize: 20,
     // fontWeight: 600,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,

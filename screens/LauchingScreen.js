@@ -8,6 +8,7 @@ import {
   HStack,
   Image,
 } from "native-base";
+import SignIn from '../components/SignIn';
 import { useFonts } from "expo-font";
 
 export default function LauchingScreen({ navigation }) {
@@ -30,14 +31,14 @@ export default function LauchingScreen({ navigation }) {
       alt="ImagedeFond"
       style={styles.backgroundImage}
     >
-      <SafeAreaView
+      {/* <SafeAreaView
         style={{
           alignItems: "center",
           justifyContent: "space-between",
           height: "90%",
           width: "100%",
         }}
-      >
+      > */}
         <HStack>
           <Image
             style={styles.logoImage}
@@ -76,6 +77,9 @@ export default function LauchingScreen({ navigation }) {
               pour CSE
             </Text>
           </View>
+          {/* <View>
+              <SignIn />
+          </View> */}
           <Stack mb="2.5" mt="1.5" direction="column" space={3}>
             <Text bold style={styles.bodyCorps}>
               {" "}
@@ -101,7 +105,7 @@ export default function LauchingScreen({ navigation }) {
             </Button>
           </Stack>
         </Stack>
-      </SafeAreaView>
+      {/* </SafeAreaView> */}
     </ImageBackground>
   );
 }

@@ -66,7 +66,7 @@ export default function EquipementList(props) {
             size={20}
             style={styles.iconStyle}
           ></FontAwesome>
-          <Text style={styles.titleEquipement}>Lave_vaisselle</Text>
+          <Text style={styles.titleEquipement}>Lave vaisselle</Text>
         </HStack>
         <Text>{props[0].lave_vaisselle}</Text>
         <View style={styles.borderLine} />
@@ -79,7 +79,7 @@ export default function EquipementList(props) {
             size={20}
             style={styles.iconStyle}
           ></FontAwesome>
-          <Text style={styles.titleEquipement}>MachineCafe</Text>
+          <Text style={styles.titleEquipement}>Machine à café</Text>
         </HStack>
         <Text>{props[0].machineCafe}</Text>
         <View style={styles.borderLine} />

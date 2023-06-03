@@ -14,6 +14,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 export default function CardBungalow(props) {
+  
   console.log("props_cards__", props.disponibilites[0].tarif);
   // console.log("nav_prop_", props.navigation);
 
@@ -50,7 +51,6 @@ export default function CardBungalow(props) {
                 }}
                 // height='110%'
                 // width='100%'
-                // alt="image"
                 style={styles.imageSize}
                 alt="image"
               />
@@ -59,7 +59,7 @@ export default function CardBungalow(props) {
             <View style={styles.footerCard}>
               <Stack space={2}>
                 <Heading size="xl" ml="-1" marginBottom="1">
-                  {props.departementNom}
+                  {props.ville}
                 </Heading>
               </Stack>
               <HStack space={4}>

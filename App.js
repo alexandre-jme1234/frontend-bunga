@@ -9,8 +9,6 @@ import reservation from "./reducers/reservation";
 import searchResult from "./reducers/searchResult";
 //-----------font
 
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -51,7 +49,7 @@ const TabNavigator = () => {
           } else if (route.name === "Profil") {
             iconName = "user";
           } else if (route.name === "WishList") {
-            iconName = "user";
+            iconName = "star";
           }
           return <FontAwesome name={iconName} size={size} color={color} />;
         },
@@ -61,8 +59,8 @@ const TabNavigator = () => {
       })}
     >
       <Tab.Screen name="Bungalow" component={BungalowStack} />
-      {/* <Tab.Screen name="WishList" component={WishListScreen} />
-      <Tab.Screen name="Profil" component={ProfilScreen} /> */}
+      <Tab.Screen name="WishList" component={WishListScreen} />
+      <Tab.Screen name="Profil" component={ProfilScreen} />
     </Tab.Navigator>
   );
 };

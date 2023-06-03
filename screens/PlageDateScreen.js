@@ -1,55 +1,61 @@
-import { VStack, Text } from "native-base";
-import { Button, StyleSheet, View, TextInput } from "react-native";
-import InputMail from "../components/InputMail";
+import { VStack } from "native-base";
+import {
+  SafeAreaView,
+  Button,
+  StyleSheet,
+  View,
+  TextInput,
+  Text,
+} from "react-native";
 import LotWeek from "../components/LotWeek";
 
 export default function PlageDateScreen(props) {
-  console.log("props plageDate", props);
   return (
-    <View style={styles.background}>
+    <SafeAreaView style={styles.container}>
       <VStack
         space={1}
         alignItems="flex-start"
-        paddingLeft="10"
+        justifyContent='space-around'
+        paddingLeft="5"
         marginBottom="5"
         marginTop="5"
       >
-        <Text bold fontSize="sm">
-          Contacter le bailleur
-        </Text>
-        <Text fontSize="xs">
+        <Text style={styles.title}>Contacter le bailleur</Text>
+        <Text>
           Pour entamer les négociations avec le propriétaire de bungalows.
           Sélectionner les lots de bungalows.
         </Text>
-      </VStack>
       <VStack style={styles.containerPlageData}>
-      
         <VStack style={styles.plageData}>
           <LotWeek {...props} />
         </VStack>
       </VStack>
       <VStack
         space={1}
-        alignItems="flex-start"
-        paddingLeft="10"
+        alignItems='flex-start'
         marginBottom="5"
-        marginTop="5"
       >
-        <Text bold fontSize="sm">
-          Clôturer votre réservation
-        </Text>
-        <Text fontSize="xs">Renseigner votre e-mail pour contacter</Text>
+        <Text style={styles.title}>Finir la réservation</Text>
+        <Text>Renseigner votre e-mail pour contacter</Text>
       </VStack>
       <TextInput placeholder="inout value here" />
       <Button
         title="Go to Congratulation"
         onPress={() => props.navigation.navigate("Congratulation")}
       />
-    </View>
+      </VStack>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  title: {
+    fontFamily: "Poppins-Regular",
+    fontSize: 30,
+  },
   background: {
     flex: 1,
     backgroundColor: "#ffffff",
@@ -61,7 +67,7 @@ const styles = StyleSheet.create({
   containerPlageData: {
     padding: 30,
     height: "60%",
-    width: "80%",
+    width: 375,
     backgroundColor: "#F8F8F8",
     borderRadius: "15",
   },
