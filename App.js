@@ -14,6 +14,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import IdentificateScreen from "./screens/IdentificateScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProfilScreen from "./screens/ProfilScreen";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -80,6 +81,7 @@ export default function App() {
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Identificate" component={IdentificateScreen} />
             <Stack.Screen name="Launching" component={LauchingScreen} />
             <Stack.Screen name="Selection" component={SelectionScreen} />
             <Stack.Screen name="TabNavigator" component={TabNavigator} />
