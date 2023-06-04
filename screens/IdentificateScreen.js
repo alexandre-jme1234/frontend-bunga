@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -10,9 +10,27 @@ import {
   Image,
 } from "react-native";
 import { Button } from "native-base";
+import SignIn from "../components/SignIn";
 
 export default function IdentificateScreen() {
   const [modalVisible, setModalVisible] = useState(false);
+  
+  
+  // ------ TEST
+  
+  const [users, setUsers] = useState()
+
+  const handleSubmit = () => {
+    useEffect(() => {
+        fetch('http://localhost:3000/users')
+          .then(response => response.json())
+          .then(data => {
+            setUsers(data);
+          });
+      }, []);
+  }
+
+  // ------ TEST
 
   return (
     <SafeAreaView style={styles.container}>
@@ -30,10 +48,12 @@ export default function IdentificateScreen() {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
+            
               <Text style={styles.modalText}>Hello World!</Text>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
+                // onPress={() => setModalVisible(!modalVisible)}
+                onPress={() => handleSubmit()}
               >
                 <Text style={styles.textStyle}>Hide Modal</Text>
               </Pressable>
