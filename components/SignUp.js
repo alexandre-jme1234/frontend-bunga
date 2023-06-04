@@ -1,8 +1,4 @@
 
-
-
-
-
 export function SignUp() {
 
     const [email, setEmail] = useState('');
