@@ -8,42 +8,43 @@ import {
   Pressable,
   Alert,
   Image,
+  TouchableOpacity
 } from "react-native";
 import { Button, Input } from "native-base";
 import SignIn from "../components/SignIn";
 import Password from "antd/es/input/Password";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 export default function IdentificateScreen() {
   const [modalVisible, setModalVisible] = useState(false);
 
-  
-  
   // ------ TEST
-  
-  const [users, setUsers] = useState()
 
-  const [email, setEmail ] = useState('');
-  const [password, setPassword] = useState('');
+  const [users, setUsers] = useState();
 
-  const emailChange = text => setEmail(text);
-  const passwordChange = text => setPassword(text);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  console.log('emailChange _', email);
-  console.log('passwordChange _', password);
+  const emailChange = (text) => setEmail(text);
+  const passwordChange = (text) => setPassword(text);
 
-  // const handleSubmit = () => {
-  //           fetch('http://192.168.1.21:19000/users/signin', {
-  //             method: 'POST',
-  //             headers: { 'Content-Type': 'application/json' },
-  //             body: JSON.stringify({ email, password }),
-  //           }).then(response => response.json())
-  //             .then(data => {
-  //               console.log('data results _', data.results)
-  //               // data.result && dispatch(login({ token: data.token, firstName: data.firstName, username: data.username }));
-  //             });
-  //         };
-  
-    // ------ TEST
+  console.log("emailChange _", email);
+  console.log("passwordChange _", password);
+
+  const handleSubmit = () => {
+    fetch("http://192.168.1.21:19000/users/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("data results _", data.results);
+        // data.result && dispatch(login({ token: data.token, firstName: data.firstName, username: data.username }));
+      });
+  };
+
+  // ------ TEST
 
   return (
     <SafeAreaView style={styles.container}>
@@ -61,30 +62,40 @@ export default function IdentificateScreen() {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-            <Input
-            // ref={inputRef}
-            style={styles.input}
-            variant="underlined"
-            placeholder="Rechercher votre email"
-            onChangeText={emailChange}
-            value={email}
-          />
-          <Input
-            // ref={inputRef}
-            style={styles.input}
-            variant="underlined"
-            placeholder="Rechercher votre password"
-            onChangeText={passwordChange}
-            value={password}
-          />
-              <Text style={styles.modalText}>Hello World!</Text>
+            <View style={{alignItems: 'flex-end'}}>
+            <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
+            <FontAwesome
+                        name="close"
+                        aria-hidden="true"
+                        size={20}
+                        color="#9747FF"
+                      ></FontAwesome>
+            </TouchableOpacity>
+            </View>
+              <Text style={{fontFamily: 'Poppins-Regular', fontSize: 20, fontWeight: 'bold', paddingBottom: 20}}>Identifiez-vous</Text>
+              <View style={{justifyContent: 'space-around', height: '50%'}}>
+              <Input
+                style={styles.input}
+                variant="underlined"
+                placeholder="Rechercher votre email"
+                onChangeText={emailChange}
+                value={email}
+              />
+              <Input
+                style={styles.input}
+                variant="underlined"
+                placeholder="Renseigner votre password"
+                onChangeText={passwordChange}
+                value={password}
+              />
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                // onPress={() => setModalVisible(!modalVisible)}
+                // onClick={() => setModalVisible(!modalVisible)}
                 onPress={() => handleSubmit()}
               >
-                <Text style={styles.textStyle}>Hide Modal !!</Text>
+                <Text style={styles.textStyle}>Valider</Text>
               </Pressable>
+              </View>
             </View>
           </View>
         </Modal>
@@ -128,6 +139,9 @@ export default function IdentificateScreen() {
 }
 
 const styles = StyleSheet.create({
+  baseText: {
+    fontFamily: "Poppins-Regular",
+  },
   title: {
     fontSize: 60,
     color: "#F8FFFF",
@@ -139,16 +153,16 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%",
     width: "100%",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#305775",
   },
   centeredView: {
-    flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: '30%',
+    backgroundColor: 'red'
   },
   image: {
     marginTop: 100,
@@ -158,10 +172,10 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
+    width: '70%',
     backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -173,7 +187,10 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 20,
-    padding: 10,
+    padding: 20,
+    paddingLeft: 60,
+    paddingRight: 60,
+    borderRadius: 40,
     elevation: 2,
     margin: 10,
   },
