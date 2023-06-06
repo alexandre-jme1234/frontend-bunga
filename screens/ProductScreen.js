@@ -16,7 +16,7 @@ import { useSelector } from "react-redux";
 
 export default function ProductScreen(props) {
   const { bungalow_id } = props.route.params;
-  console.log("bungalow_id", bungalow_id);
+  // console.log("bungalow_id", bungalow_id);
 
   const selectPlageData = () => {
     props.navigation.navigate("PlageDate", { bungalow_id });
@@ -27,11 +27,11 @@ export default function ProductScreen(props) {
   const capacite =
     bungalowsFilter[0].capaciteAdulte + bungalowsFilter[0].capaciteEnfant;
 
-  console.log("capacite", capacite);
+  // console.log("capacite", capacite);
 
-  console.log("bungalowsFilter", bungalowsFilter);
+  // console.log("bungalowsFilter", bungalowsFilter);
 
-  console.log("All props", props);
+  // console.log("All props", props);
   return (
     <ScrollView vertical={false} style={styles.background}>
       <Image
@@ -43,9 +43,9 @@ export default function ProductScreen(props) {
       <VStack
         space={1}
         alignItems="flex-start"
-        paddingLeft="10"
-        marginBottom="5"
-        marginTop="10"
+        paddingLeft={10}
+        marginBottom={5}
+        marginTop={10}
       >
         <Text bold fontSize="sm">
           {bungalowsFilter[0].departementNom}
@@ -58,7 +58,7 @@ export default function ProductScreen(props) {
         space={2}
         width="100%"
         // justifyContent="space-between"
-        padding="0"
+        padding={0}
       >
         <HStack
           justifyContent="center"
@@ -67,12 +67,12 @@ export default function ProductScreen(props) {
           backgroundColor="#EBE8FF"
           width="100%"
           // marginLeft='2'
-          marginRight='2O'
-          padding="1"
-          borderRadius="5"
+          marginRight={20}
+          padding={1}
+          borderRadius={5}
         >
           <HStack
-            justifyContent="space--"
+            justifyContent="space-around"
             alignItems="center"
             space={2}
             backgroundColor="#F5F5F5"
@@ -123,10 +123,10 @@ export default function ProductScreen(props) {
       <VStack
         space={1}
         alignItems="flex-start"
-        paddingLeft="10"
-        paddingRight="10"
-        marginBottom="5"
-        marginTop="5"
+        paddingLeft={10}
+        paddingRight={10}
+        marginBottom={5}
+        marginTop={5}
       >
         <Text bold fontSize="sm">
           Description
@@ -144,11 +144,8 @@ export default function ProductScreen(props) {
         space={4}
         justifyContent="flex-start"
         backgroundColor="#FFFFFF"
-        padding="5"
-        marginBottom="5"
-        marginTop="5"
-        marginLeft="5"
-        marginRight="5"
+        padding={5}
+        margin={5}
       >
         <FontAwesome
           name="caret-right"
@@ -177,8 +174,8 @@ export default function ProductScreen(props) {
       <Button
         size="sm"
         variant="subtle"
-        marginLeft="5"
-        marginRight="5"
+        marginLeft={5}
+        marginRight={5}
         onPress={() => {
           selectPlageData();
         }}
