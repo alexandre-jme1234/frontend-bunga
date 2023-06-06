@@ -17,7 +17,6 @@ import { useDispatch, useSelector } from "react-redux";
 function SignIn() {
     // const dispatch = useDispatch();
     // const user = useSelector((state) => state.user.value);
-
     // const router = useRouter();
     // if (user.token) {
     //   router.push('/');
@@ -34,6 +33,7 @@ function SignIn() {
           body: JSON.stringify({ username, password, entreprise }),
         }).then(response => response.json())
           .then(data => {
+            console.log('DATA', data)
             data.result && console.log('Good!');
           });
       };
