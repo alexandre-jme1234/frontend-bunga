@@ -128,7 +128,6 @@ const styles = StyleSheet.create({
     fontSize: "16xl",
   },
   footerCard: {
-    // backgroundColor: 'white',
     width: "100%",
   },
 });

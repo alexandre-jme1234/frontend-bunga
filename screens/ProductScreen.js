@@ -5,7 +5,6 @@ import {
   Text,
   ScrollView,
   Image,
-  Flatlist,
   Button,
 } from "native-base";
 import { StyleSheet, Box } from "react-native";
@@ -16,7 +15,6 @@ import { useSelector } from "react-redux";
 
 export default function ProductScreen(props) {
   const { bungalow_id } = props.route.params;
-  // console.log("bungalow_id", bungalow_id);
 
   const selectPlageData = () => {
     props.navigation.navigate("PlageDate", { bungalow_id });
@@ -33,8 +31,6 @@ export default function ProductScreen(props) {
         style={styles.imageProduct}
         src={bungalowsFilter[0].image}
         alt="bungalow background"
-
-        // resizeMode="cover"
       />
       <VStack
         space={1}
@@ -43,26 +39,33 @@ export default function ProductScreen(props) {
         marginBottom={5}
         marginTop={10}
       >
-        <Text bold fontSize="sm">
+        <Text
+          style={{
+            fontSize: 20,
+            // fontWeight: 600,
+            fontFamily: "Poppins-Regular",
+            marginBottom: 20,
+          }}
+        >
           {bungalowsFilter[0].departementNom}
         </Text>
-        <Text fontSize="xs">{bungalowsFilter[0].ville}</Text>
+        <Text
+          style={{
+            fontSize: 20,
+            fontFamily: "Poppins-Regular",
+            marginBottom: 20,
+          }}
+        >
+          {bungalowsFilter[0].ville}
+        </Text>
       </VStack>
-      <HStack
-        // alignSelf="center"
-        backgroundColor="red.100"
-        space={2}
-        width="100%"
-        // justifyContent="space-between"
-        padding={0}
-      >
+      <HStack backgroundColor="red.100" space={2} width="100%" padding={0}>
         <HStack
           justifyContent="center"
           alignItems="center"
           space={4}
           backgroundColor="#EBE8FF"
           width="100%"
-          // marginLeft='2'
           marginRight={20}
           padding={1}
           borderRadius={5}
@@ -124,7 +127,13 @@ export default function ProductScreen(props) {
         marginBottom={5}
         marginTop={5}
       >
-        <Text bold fontSize="sm">
+        <Text
+          style={{
+            fontSize: 17,
+            fontFamily: "Poppins-Regular",
+            marginBottom: 20,
+          }}
+        >
           Description
         </Text>
         <Text fontSize="xs">

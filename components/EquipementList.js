@@ -4,29 +4,12 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { View, StyleSheet } from "react-native";
 
 export default function EquipementList(props) {
-  console.log("props", props);
 
-  // const equipmentsName = [
-  //     {nameEquip: 'fa-television'},
-  //     {nameEquip: 'télévision'},
-  //     {nameEquip: 'wifi'},
-  //     {nameEquip: 'lave_vaisselle'},
-  //     {nameEquip: 'machineCafe'},
-  //     {nameEquip: 'plancha'},
-  //     {nameEquip: 'piscine'},
-  //     {nameEquip: 'barbecue'},
-  //     {nameEquip: 'chien'}
-  // ]
-  // const equipmentsNameList = equipmentsName.map((data, i) => {
-  //     console.log(data.nameEquip)
-  //     return (
-  //         <Box style={styles.containerDetails} alignItems="center" marginBottom="5" backgroundColor="white">
-  //             <Text key={i}>{data.nameEquip}</Text> cx
-  //         </Box>
-  //     )
-  // })
+  const isEquipement = props[0].map((data, i) => {
 
-  // console.log('props', props[0])
+  })  
+
+  console.log('Equipment list _', props[0])
   return (
     <Box style={styles.containerDetails}>
       {/* <View>{equipmentsNameList}</View> */}

@@ -8,7 +8,6 @@ import {
   HStack,
   Image,
 } from "native-base";
-import SignIn from '../components/SignIn';
 import { useFonts } from "expo-font";
 
 export default function LauchingScreen({ navigation }) {
@@ -77,9 +76,6 @@ export default function LauchingScreen({ navigation }) {
               pour CSE
             </Text>
           </View>
-          {/* <View>
-              <SignIn />
-          </View> */}
           <Stack mb="2.5" mt="1.5" direction="column" space={3}>
             <Text bold style={styles.bodyCorps}>
               {" "}
@@ -147,9 +143,9 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   logoImage: {
-    //  paddingRight: 50,
-    //  justifyContent: 'flex-start',
-    //  alignItems: 'flex-start',
+    // paddingRight: 50,
+    // justifyContent: 'flex-start',
+    // alignItems: 'flex-start',
     // width: '40%',
     // height: '100%',
   },

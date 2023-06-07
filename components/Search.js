@@ -14,6 +14,8 @@ import DatePickerIOS from "./DatePickeriOs";
 export default function Search({ navigation }) {
   const inputRef = useRef(null);
 
+
+  // Set les critères de recherches de l'utilisateur.
   const [bodyCounter, setBodyCounter] = useState(0);
   const [weeksCounter, setWeeksCounter] = useState(0);
   const [dateString, setDateString] = useState("");
