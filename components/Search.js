@@ -94,12 +94,13 @@ export default function Search({ navigation }) {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <SafeAreaView>
       <Stack space={12} w="75%" maxW="300px" mx="auto" alignItems="center">
+        <View style={{height: 70, width: 400, flexDirection: 'column', justifyContent:'center', alignItems: 'center'}}>
         <Text style={styles.title}>Choisissez votre bungalow</Text>
+        </View>
         <View style={styles.textContainer}>
           <Text style={styles.body}>Région</Text>
           <Input
             ref={inputRef}
-            style={styles.input}
             variant="underlined"
             placeholder="Rechercher votre destination"
             onChangeText={(value) => (inputRef.current.inputValue = value)}
@@ -185,7 +186,7 @@ export default function Search({ navigation }) {
           <View style={styles.containerDataPicker}>{datePicker}</View>
 
           <Button
-            style={{marginLeft: 50, marginRight: 0}}
+            style={{marginLeft: 50, marginRight: 50}}
             size="sm"
             variant="subtle"
             onPress={() => {
@@ -216,8 +217,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   title: {
-    // fontSize: 20,
-    // fontWeight: 600,
+    fontSize: 25,
+    fontWeight: 700,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
   },
@@ -251,11 +252,6 @@ const styles = StyleSheet.create({
   boldText: {
     // fontWeight: "bold",
     fontSize: 14,
-  },
-  input: {
-    height: 40,
-    padding: 10,
-    marginBottom: 10,
   },
   plusText: {
     fontSize: 14,

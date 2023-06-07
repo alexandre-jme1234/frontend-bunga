@@ -27,11 +27,6 @@ export default function ProductScreen(props) {
   const capacite =
     bungalowsFilter[0].capaciteAdulte + bungalowsFilter[0].capaciteEnfant;
 
-  // console.log("capacite", capacite);
-
-  // console.log("bungalowsFilter", bungalowsFilter);
-
-  // console.log("All props", props);
   return (
     <ScrollView vertical={false} style={styles.background}>
       <Image

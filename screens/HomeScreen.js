@@ -30,7 +30,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     // <SafeAreaView style={styles.background}>
-    <>
+    <SafeAreaView>
       <View style={styles.headContainer}>
         <Text style={styles.title}>Notre Sélection</Text>
         <Text style={styles.subTitle}>Ardèche</Text>
@@ -38,7 +38,7 @@ export default function HomeScreen({ navigation }) {
       <ScrollView vertical={false} style={styles.scrollView}>
         {bungalowsList}
       </ScrollView>
-    </>
+    </SafeAreaView>
     // </SafeAreaView>
   );
 }
