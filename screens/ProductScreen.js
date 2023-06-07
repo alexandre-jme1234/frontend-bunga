@@ -67,7 +67,7 @@ export default function ProductScreen(props) {
           backgroundColor="#EBE8FF"
           width="100%"
           // marginLeft='2'
-          marginRight='2O'
+          marginRight={20}
           padding="1"
           borderRadius="5"
         >
