@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -8,29 +8,67 @@ import {
   Pressable,
   Alert,
   Image,
+  TouchableOpacity
 } from "react-native";
-import { Button } from "native-base";
+import { Button, Input } from "native-base";
 import SignIn from "../components/SignIn";
+import Password from "antd/es/input/Password";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-export default function IdentificateScreen() {
-  const [modalVisible, setModalVisible] = useState(false);
-  
+export default function IdentificateScreen({ navigation }) {
+  const [modalVisibleSignin, setModalVisibleSignin] = useState(false);
+  const [modalVisibleSignup, setModalVisibleSignup ] = useState(false);
   
   // ------ TEST
-  
-  const [users, setUsers] = useState()
+
+  const [users, setUsers] = useState();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState('');
+  const [entreprise, setEntreprise] = useState('');
+  const [prenom, setPrenom] = useState('');
+  const [nom, setNom] =  useState('');
+
+  const emailChange = (text) => setEmail(text);
+  const passwordChange = (text) => setPassword(text);
+  const roleChange = (text) => setRole(text);
+  const entrepriseChange = (text) => setEntreprise(text);
+  const prenomChange = (text) => setPrenom(text);
+  const nomChange = (text) => setNom(text);
+
+  console.log("emailChange _", email);
+  console.log("passwordChange _", password);
 
   const handleSubmit = () => {
-    useEffect(() => {
-        fetch('http://localhost:3000/users')
-          .then(response => response.json())
-          .then(data => {
-            setUsers(data);
-          });
-      }, []);
-  }
+    console.log('Good Co!')
+    fetch("http://10.0.1.187:3000/users/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("data results _", data);
+          data.result && navigation.navigate("Launching")
+          setModalVisibleSignin(!modalVisibleSignin)
+      });
+  };
 
-  // ------ TEST
+
+  const handleSubmitSignUp = () => {
+    fetch("http://10.0.1.187:3000/users/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password, entreprise, role, prenom, nom }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("data results _", data);
+          data.result && navigation.navigate("Launching")
+          setModalVisibleSignup(!modalVisibleSignup)
+      });
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,29 +78,54 @@ export default function IdentificateScreen() {
         <Modal
           animationType="slide"
           transparent={true}
-          visible={modalVisible}
+          visible={modalVisibleSignin}
           onRequestClose={() => {
             Alert.alert("Modal has been closed.");
-            setModalVisible(!modalVisible);
+            setModalVisibleSignin(!modalVisibleSignin);
           }}
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-            
-              <Text style={styles.modalText}>Hello World!</Text>
+            <View style={{alignItems: 'flex-end'}}>
+            <TouchableOpacity onPress={() => setModalVisibleSignin(!modalVisibleSignin)}>
+            <FontAwesome
+                        name="close"
+                        aria-hidden="true"
+                        size={20}
+                        color="#9747FF"
+                      ></FontAwesome>
+            </TouchableOpacity>
+            </View>
+              <Text style={{fontFamily: 'Poppins-Regular', fontSize: 20, fontWeight: 'bold', paddingBottom: 20}}>Identifiez-vous</Text>
+              <View style={{justifyContent: 'space-around', height: '50%'}}>
+              <Input
+                style={styles.input}
+                variant="underlined"
+                placeholder="Rechercher votre email"
+                onChangeText={emailChange}
+                value={email}
+              />
+              <Input
+                style={styles.input}
+                variant="underlined"
+                placeholder="Renseigner votre password"
+                onChangeText={passwordChange}
+                value={password}
+              />
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                // onPress={() => setModalVisible(!modalVisible)}
+                // onClick={() => setModalVisible(!modalVisible)}
                 onPress={() => handleSubmit()}
               >
-                <Text style={styles.textStyle}>Hide Modal</Text>
+                <Text style={styles.textStyle}>Valider</Text>
               </Pressable>
+              </View>
             </View>
           </View>
         </Modal>
         <Pressable
           style={[styles.button, styles.buttonOpenSignIn]}
-          onPress={() => setModalVisible(true)}
+          onPress={() => setModalVisibleSignin(true)}
         >
           <Text style={styles.textStyle}>Sign In</Text>
         </Pressable>
@@ -70,27 +133,82 @@ export default function IdentificateScreen() {
         <Modal
           animationType="slide"
           transparent={true}
-          visible={modalVisible}
+          visible={modalVisibleSignup}
           onRequestClose={() => {
             Alert.alert("Modal has been closed.");
-            setModalVisible(!modalVisible);
+            setModalVisibleSignup(!modalVisibleSignup);
           }}
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
+            <View style={{alignItems: 'flex-end'}}>
+            <TouchableOpacity onPress={() => setModalVisibleSignup(!modalVisibleSignup)}>
+            <FontAwesome
+                        name="close"
+                        aria-hidden="true"
+                        size={20}
+                        color="#9747FF"
+                      ></FontAwesome>
+            </TouchableOpacity>
+            </View>
+              <Text style={{fontFamily: 'Poppins-Regular', fontSize: 20, fontWeight: 'bold', paddingBottom: 20}}>Inscrivez-vous</Text>
+              <View style={{justifyContent: 'space-around', height: '65%'}}>
+                <Input
+                 style={styles.input}
+                 variant="underlined"
+                 placeholder="Renseigner votre prenom"
+                 onChangeText={prenomChange}
+                 value={prenom}
+               />
+                <Input
+                 style={styles.input}
+                 variant="underlined"
+                 placeholder="Renseigner votre nom"
+                 onChangeText={nomChange}
+                 value={nom}
+               />
+              <Input
+                style={styles.input}
+                variant="underlined"
+                placeholder="Rechercher votre email"
+                onChangeText={emailChange}
+                value={email}
+              />
+              <Input
+                style={styles.input}
+                variant="underlined"
+                placeholder="Renseigner votre password"
+                onChangeText={passwordChange}
+                value={password}
+              />
+               <Input
+                style={styles.input}
+                variant="underlined"
+                placeholder="Renseigner votre entreprise"
+                onChangeText={entrepriseChange}
+                value={entreprise}
+              />
+               <Input
+                style={styles.input}
+                variant="underlined"
+                placeholder="Renseigner votre role"
+                onChangeText={roleChange}
+                value={role}
+              />
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
+                // onClick={() => setModalVisible(!modalVisible)}
+                onPress={() => handleSubmitSignUp()}
               >
-                <Text style={styles.textStyle}>Hide Modal</Text>
+                <Text style={styles.textStyle}>Valider</Text>
               </Pressable>
+              </View>
             </View>
           </View>
         </Modal>
         <Pressable
           style={[styles.button, styles.buttonOpenSignUp]}
-          onPress={() => setModalVisible(true)}
+          onPress={() => setModalVisibleSignup(true)}
         >
           <Text style={styles.textStyle}>Sign Up</Text>
         </Pressable>
@@ -100,6 +218,9 @@ export default function IdentificateScreen() {
 }
 
 const styles = StyleSheet.create({
+  baseText: {
+    fontFamily: "Poppins-Regular",
+  },
   title: {
     fontSize: 60,
     color: "#F8FFFF",
@@ -111,16 +232,16 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%",
     width: "100%",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#305775",
   },
   centeredView: {
-    flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: '30%',
+    // backgroundColor: 'red'
   },
   image: {
     marginTop: 100,
@@ -130,10 +251,10 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
+    width: '70%',
     backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -145,7 +266,10 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 20,
-    padding: 10,
+    padding: 20,
+    paddingLeft: 60,
+    paddingRight: 60,
+    borderRadius: 40,
     elevation: 2,
     margin: 10,
   },
