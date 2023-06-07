@@ -13,15 +13,22 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import EquipementList from "../components/EquipementList";
 import { useSelector } from "react-redux";
 
-export default function ProductScreen(props) {
-  const { bungalow_id } = props.route.params;
 
+export default function ProductScreen(props) {
+  // extrait la valeur du paramètre bungalow_id et la stocke dans la variable bungalow_id
+  const { bungalow_id } = props.route.params;
+  // Permet de faire descendre bungalow_id à la screen PlageData
   const selectPlageData = () => {
     props.navigation.navigate("PlageDate", { bungalow_id });
   };
+  
+
 
   const searchResult = useSelector((state) => state.searchResult.value);
+  
+  // filtre tous les bungalows par ID et s'assure de conserver les bunbgalows_id params égaux aux bungalowsid stockés dans le reducer SearchResult.
   const bungalowsFilter = searchResult.filter((e) => e._id === bungalow_id);
+
   const capacite =
     bungalowsFilter[0].capaciteAdulte + bungalowsFilter[0].capaciteEnfant;
 

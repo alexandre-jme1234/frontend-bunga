@@ -40,7 +40,6 @@ export default function LauchingScreen({ navigation }) {
       >
         <HStack>
           <Image
-            style={styles.logoImage}
             source={require("../assets/logoBunga.jpg")}
             alt="ImagedeFond2"
             accessibilityLabel="LogoBungaBunga"
@@ -65,12 +64,10 @@ export default function LauchingScreen({ navigation }) {
               bold
               style={{
                 fontSize: 30,
-                // fontWeight: 400,
                 color: "#F8FFFF",
                 fontFamily: "Poppins-Regular",
                 marginBottom: 40,
                 margin: 0,
-                // 'backgroundColor': 'red',
               }}
             >
               pour CSE
@@ -117,37 +114,25 @@ const styles = StyleSheet.create({
     height: 150
   },
   title: {
-    // justifyContent: '',
     fontSize: 60,
-    // fontWeight: 600,
     color: "#305775",
     fontFamily: "Poppins-Regular",
-    // marginBottom: 20
   },
   subTitle: {
     height: 100,
     fontSize: 54,
-    // fontWeight: 600,
     color: "#F8FFFF",
     fontFamily: "Poppins-Regular",
     margin: 0,
   },
   bodyCorps: {
     fontSize: 14,
-    // fontWeight: 600,
     color: "#F8FFFF",
     fontFamily: "Poppins-Regular",
     margin: 0,
   },
   containerImage: {
     paddingLeft: 20,
-  },
-  logoImage: {
-    // paddingRight: 50,
-    // justifyContent: 'flex-start',
-    // alignItems: 'flex-start',
-    // width: '40%',
-    // height: '100%',
   },
   background: {
     marginLeft: 30,

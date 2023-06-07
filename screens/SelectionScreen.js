@@ -2,14 +2,11 @@ import { Button, StyleSheet, Text, View } from "react-native";
 import { Box, Input } from "native-base";
 import Search from "../components/Search";
 
+// Renvoie le composant Search avec une propriété navigation
 export default function SelectionScreen({ navigation }) {
   return (
     <View style={styles.background}>
       <Search navigation={navigation} />
-      {/* <Button
-       title="Go to Home"
-       onPress={() => navigation.navigate('TabNavigator')}
-     /> */}
     </View>
   );
 }

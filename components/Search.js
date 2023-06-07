@@ -14,64 +14,76 @@ import DatePickerIOS from "./DatePickeriOs";
 export default function Search({ navigation }) {
   const inputRef = useRef(null);
 
+  // ---- Search est intégré à la Screen SelectionScreen
 
   // Set les critères de recherches de l'utilisateur.
   const [bodyCounter, setBodyCounter] = useState(0);
   const [weeksCounter, setWeeksCounter] = useState(0);
   const [dateString, setDateString] = useState("");
 
+
+  // Set la date sélectionnée par l'utilisateur sous un format année mois jours du module Moment.
   const handleDateFormat = (date) => {
     const dateStr = moment(date).format("YYYY-MM-DD");
     setDateString(dateStr);
   };
 
-  console.log("dateString", dateString);
+  // console.log("dateString", dateString);
 
+  // Affiche un dataPicker selon le format du téléphone.
   let datePicker = <DatePickerIOS handleDateFormat={handleDateFormat} />;
   if (Platform.OS === "android") datePicker = <DatePickerAndroid />;
 
   const dispatch = useDispatch();
 
+  // Ajoute 1 au click counter capacité.
   const addCounterBody = () => {
     if (bodyCounter >= 0) {
       setBodyCounter(bodyCounter + 1);
     }
   };
 
+  // soustrait 1 au click au counter capacité
   const substractCounter = () => {
     if (bodyCounter > 0) {
       setBodyCounter(bodyCounter - 1);
     }
   };
 
+  // Ajoute 1 au click counter dateSouhait
   const addWeekCounterBody = () => {
     if (weeksCounter >= 0) {
       setWeeksCounter(weeksCounter + 1);
     }
   };
+
+  // Soustrait 1 au click counter dateSouhait
   const substractWeekCounter = () => {
     if (weeksCounter > 0) {
       setWeeksCounter(weeksCounter - 1);
     }
   };
 
-  // --------------------------Preparation des params
+  // ---- Preparation des params : objet de paramètres d'URL contenant différents paramètres.
   function selectionDestination() {
     const params = new URLSearchParams({
+      // Récupère onChangetext de l'input si il existe
       destination: inputRef.current?.inputValue,
+      // Récupère valeurs useState
       dateString,
       bodyCounter,
     });
 
+  // ---- 
     const listBungalows = params.toString();
 
+    // --- reçoit objet bungalows & et le dispatch vers reducer searchResults
     fetch(`https://backend-bunga.vercel.app/bungalow/dispo?${listBungalows}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("listBungalows----------", listBungalows);
         if (data.success) {
           dispatch(saveSearchData(data.results));
           navigation.navigate("TabNavigator", { screen: "Home" });
@@ -84,10 +96,6 @@ export default function Search({ navigation }) {
         );
       });
   }
-
-  const handleInputChange = (text) => {
-    setDestination(text);
-  };
 
   return (
     <KeyboardAvoidingView
@@ -155,7 +163,6 @@ export default function Search({ navigation }) {
             mx="auto"
             alignItems="center"
             justifyContent="space-between"
-            // backgroundColor="red.100"
           >
             <Text>
               Nombre de semaines
@@ -208,8 +215,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F8FFFF",
     flex: 1,
-    // padding: 10,
-    // margin: 50,
     justifyContent: "space-around",
   },
   counterBody: {
@@ -227,12 +232,10 @@ const styles = StyleSheet.create({
   textContainer: {
     height: 70,
     width: 300,
-    // backgroundColor: 'red',
     justifyContent: "space-around",
   },
   body: {
     fontSize: 17,
-    // fontWeight: 600,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
   },
@@ -252,7 +255,6 @@ const styles = StyleSheet.create({
     height: 100,
   },
   boldText: {
-    // fontWeight: "bold",
     fontSize: 14,
   },
   plusText: {

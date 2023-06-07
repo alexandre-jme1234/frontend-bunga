@@ -4,14 +4,20 @@ import { SafeAreaView, StyleSheet, Text, View, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import { useFonts } from "expo-font";
 
+
+// Affiche components CardBungalow sous forme de ScrollView.
 export default function HomeScreen({ navigation }) {
+
+  // Réceptionne l'objet Bungalow du reducer SearchData.
   const searchResult = useSelector((state) => state.searchResult.value);
   // console.log('searchResult_____',searchResult)
+
   //------------------------------font
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
   });
-  console.log("searchResult", searchResult);
+
+  // console.log("searchResult", searchResult);
   if (!fontsLoaded) {
     return <Text>Please wait...</Text>;
   }
@@ -19,17 +25,18 @@ export default function HomeScreen({ navigation }) {
   // console.log("searchResult", searchResult);
 
   let bungalowsList;
+
+  // Spread opérator pour que toutes les clés de l'objetBungalow descendu du reducer soient considérées comme des propriétés.
   if (searchResult.length) {
     bungalowsList = searchResult.map((objetbungalow, i) => {
-      // attention à descendre la prop de navigation au composant
       return (
+        // on ajoute la méthode navigation
         <CardBungalow key={i} {...objetbungalow} navigation={navigation} />
       );
     });
   }
 
   return (
-    // <SafeAreaView style={styles.background}>
     <SafeAreaView>
       <View style={styles.headContainer}>
         <Text style={styles.title}>Notre Sélection</Text>
@@ -39,7 +46,6 @@ export default function HomeScreen({ navigation }) {
         {bungalowsList}
       </ScrollView>
     </SafeAreaView>
-    // </SafeAreaView>
   );
 }
 
@@ -54,12 +60,10 @@ const styles = StyleSheet.create({
     // paddingTop: StatusBar.currentHeight,
   },
   scrollView: {
-    // backgroundColor: "red",
     width: "100%",
     height: "100%",
   },
   headContainer: {
-    // backgroundColor: "green",
     justifyContent: "space-around",
     marginTop: 20,
     height: 100,
@@ -67,13 +71,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    // fontWeight: 600,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
   },
   subTitle: {
     fontSize: 40,
-    // fontWeight: 600,
     fontFamily: "Poppins-Regular",
     marginBottom: 20,
   },
