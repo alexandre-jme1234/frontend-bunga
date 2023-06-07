@@ -37,8 +37,8 @@ export default function IdentificateScreen({ navigation }) {
   const prenomChange = (text) => setPrenom(text);
   const nomChange = (text) => setNom(text);
 
-  console.log("emailChange _", email);
-  console.log("passwordChange _", password);
+  // console.log("emailChange _", email);
+  // console.log("passwordChange _", password);
 
   const handleSubmit = () => {
     console.log('Good Co!')
@@ -247,7 +247,6 @@ const styles = StyleSheet.create({
     marginTop: 100,
     width: "20%",
     height: "10%",
-    backgroundColor: "#305775",
   },
   modalView: {
     margin: 20,

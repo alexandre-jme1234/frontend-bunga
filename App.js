@@ -81,7 +81,7 @@ export default function App() {
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Identificate" component={IdentificateScreen} />
+            {/* <Stack.Screen name="Identificate" component={IdentificateScreen} /> */}
             <Stack.Screen name="Launching" component={LauchingScreen} />
             <Stack.Screen name="Selection" component={SelectionScreen} />
             <Stack.Screen name="TabNavigator" component={TabNavigator} />

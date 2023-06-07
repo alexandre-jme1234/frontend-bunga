@@ -38,6 +38,7 @@ export default function ProductScreen(props) {
         style={styles.imageProduct}
         src={bungalowsFilter[0].image}
         alt="bungalow background"
+
         // resizeMode="cover"
       />
       <VStack

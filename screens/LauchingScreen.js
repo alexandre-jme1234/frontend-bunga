@@ -31,14 +31,14 @@ export default function LauchingScreen({ navigation }) {
       alt="ImagedeFond"
       style={styles.backgroundImage}
     >
-      {/* <SafeAreaView
+      <SafeAreaView
         style={{
           alignItems: "center",
           justifyContent: "space-between",
           height: "90%",
           width: "100%",
         }}
-      > */}
+      >
         <HStack>
           <Image
             style={styles.logoImage}
@@ -105,7 +105,7 @@ export default function LauchingScreen({ navigation }) {
             </Button>
           </Stack>
         </Stack>
-      {/* </SafeAreaView> */}
+      </SafeAreaView>
     </ImageBackground>
   );
 }
@@ -116,12 +116,9 @@ const styles = StyleSheet.create({
   },
   containerText: {
     justifyContent: "center",
-    alignItems: "center",
-    // borderWidth: 0.5,
+    alignItems: "flex-start",
     width: 300,
-    height: 300
-    // marginTop: 200,
-    // justifyContent: 'flex-start',
+    height: 150
   },
   title: {
     // justifyContent: '',
@@ -163,6 +160,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   buttonSuivant: {
-    marginTop: 40,
+    marginTop: 80,
   },
 });
