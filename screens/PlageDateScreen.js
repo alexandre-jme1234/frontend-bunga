@@ -9,13 +9,13 @@ import {
 } from "react-native";
 import LotWeek from "../components/LotWeek";
 
-export default function PlageDateScreen(props) {
+export default function PlageDateScreen({navigation, ...props}) {
   return (
     <SafeAreaView style={styles.container}>
       <VStack
         space={1}
         alignItems="flex-start"
-        justifyContent='space-around'
+        justifyContent="space-around"
         paddingLeft="5"
         marginBottom="5"
         marginTop="5"
@@ -25,24 +25,18 @@ export default function PlageDateScreen(props) {
           Pour entamer les négociations avec le propriétaire de bungalows.
           Sélectionner les lots de bungalows.
         </Text>
-      <VStack style={styles.containerPlageData}>
-        <VStack style={styles.plageData}>
-          <LotWeek {...props} />
+        <VStack style={styles.containerPlageData}>
+          <VStack style={styles.plageData}>
+            <LotWeek {...props} />
+          </VStack>
         </VStack>
-      </VStack>
-      <VStack
-        space={1}
-        alignItems='flex-start'
-        marginBottom="5"
-      >
-        <Text style={styles.title}>Finir la réservation</Text>
-        <Text>Renseigner votre e-mail pour contacter</Text>
-      </VStack>
-      <TextInput placeholder="inout value here" />
-      <Button
-        title="Go to Congratulation"
-        onPress={() => props.navigation.navigate("Congratulation")}
+        <View style={{marginTop: 100, marginLeft: 90, height: 60, width: 200, backgroundColor: '#0A91B1', justifyContent: 'center', alignItems: 'center', borderRadius: 10}}>
+        <Button
+        title="Contacter par mail"
+        color="#FAFAFA"
+        onPress={() => navigation.navigate("Congratulation")}
       />
+      </View>
       </VStack>
     </SafeAreaView>
   );
@@ -67,14 +61,13 @@ const styles = StyleSheet.create({
   containerPlageData: {
     padding: 30,
     height: "60%",
-    width: 375,
+    width: 380,
     backgroundColor: "#F8F8F8",
     borderRadius: "15",
   },
   plageData: {
     height: "10%",
     width: "100%",
-    backgroundColor: "#EAEAEA",
     borderRadius: "10",
   },
 });

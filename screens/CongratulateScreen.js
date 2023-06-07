@@ -8,13 +8,11 @@ export default function CongratulateScreen({ navigation }) {
  return (
    <View style={styles.background}>
     <VStack style={styles.containerPlageData}>
-        <VStack>
           <Text style={styles.title}>
           Félicitations!</Text>
           <Text style={styles.body}>
             Votre mail a bien été envoyé.
           </Text>
-        </VStack>
       </VStack>
     
    </View>
@@ -34,8 +32,6 @@ const styles = StyleSheet.create({
       padding: 30,
       height: '60%',
       width: '80%',
-      backgroundColor: '#F8F8F8',
-      justifyContent: 'center',
       alignItems: 'center',
       borderRadius: '15',
     },
@@ -47,8 +43,8 @@ const styles = StyleSheet.create({
       // },
     title: {
       fontFamily: 'Poppins-Regular',
-      // fontSize: 20,
-      // fontWeight: 'bold',
+      fontSize: 20,
+      fontWeight: 'bold',
       marginTop: 250,
       textAlign: 'center', 
     },  

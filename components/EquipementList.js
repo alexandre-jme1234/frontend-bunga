@@ -5,9 +5,9 @@ import { View, StyleSheet } from "react-native";
 
 export default function EquipementList(props) {
 
-  const isEquipement = props[0].map((data, i) => {
+  // const isEquipement = props[0].map((data, i) => {
 
-  })  
+  // })  
 
   console.log('Equipment list _', props[0])
   return (
