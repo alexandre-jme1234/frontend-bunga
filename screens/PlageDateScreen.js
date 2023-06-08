@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import LotWeek from "../components/LotWeek";
 
+
+// --- Component : appelle les props et la navigation
 export default function PlageDateScreen({navigation, ...props}) {
   return (
     <SafeAreaView style={styles.container}>

@@ -30,7 +30,6 @@ export default function HomeScreen({ navigation }) {
   if (searchResult.length) {
     bungalowsList = searchResult.map((objetbungalow, i) => {
       return (
-        // on ajoute la méthode navigation
         <CardBungalow key={i} {...objetbungalow} navigation={navigation} />
       );
     });

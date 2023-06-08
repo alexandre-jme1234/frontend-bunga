@@ -5,20 +5,24 @@ import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import moment from "moment";
 
+ 
 export default function LotWeek(props) {
+
+  // 
   const { bungalow_id } = props.route.params
 
   console.log('props LotWeek', props)
   const searchResult = useSelector((state) => state.searchResult.value);
 
+
   const bungalowsFilter = searchResult.filter((e) => e._id === bungalow_id);
   const [isPress, setIsPress] = useState(false);
 
+  // Converti au format mois année : datedébut & dateFin de l'utilisateur.
   const dateDebut = moment(bungalowsFilter[0].disponibilites[0].dateDebut).format("MMM Do YY");
   const dateFin = moment(bungalowsFilter[0].disponibilites[0].dateFin).format("MMM Do YY");
 
   console.log('bungalowsFilter', bungalowsFilter[0].disponibilites[0])
-
 
   var touchProps = {
     activeOpacity: 1,
