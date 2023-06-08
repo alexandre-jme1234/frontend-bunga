@@ -9,7 +9,7 @@ import {
 export default function ProfilScreen({ navigation }) {
     return (
         <View  style={styles.background}>
-        <Text>Wishlist Screen</Text>
+        <Text>Profil Screen</Text>
         <Button
           title="Go to Tab"
           onPress={() => navigation.navigate('TabNavigator')}

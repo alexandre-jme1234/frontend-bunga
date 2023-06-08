@@ -8,9 +8,6 @@ import { saveSearchData } from "../reducers/searchResult";
 import DatePickerAndroid from "./DatePickerAndroid";
 import DatePickerIOS from "./DatePickeriOs";
 
-// const IP_BACKEND_ABDE = "192.168.211.232";
-// const IP_BACKEND_ALEX = "10.0.2.155";
-
 export default function Search({ navigation }) {
   const inputRef = useRef(null);
 

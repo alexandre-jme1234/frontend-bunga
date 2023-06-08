@@ -23,8 +23,6 @@ export default function IdentificateScreen({ navigation }) {
    // Modal  SignUp --- ouverte et fermable au click.
   const [modalVisibleSignup, setModalVisibleSignup] = useState(false);
 
-  const [users, setUsers] = useState();
-
   // useState pour stocker les valeurs des inputs réservés à l'authentification
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,7 +44,7 @@ export default function IdentificateScreen({ navigation }) {
 
   // ---- SIGNIN: fetch l'email & le password saisi par l'utilisateur si result est true alors navigue vers la Launching & la modal se ferme.
   const handleSubmit = () => {
-    fetch("http://10.0.1.187:3000/users/signin", {
+    fetch("https://backend-bunga.vercel.app/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -63,7 +61,7 @@ export default function IdentificateScreen({ navigation }) {
 
   // ---- SIGNUP : fetch inputs que la routes Signup enregistre dans la BDD, si result true alors navigue vers Launching & la modal se ferme.
   const handleSubmitSignUp = () => {
-    fetch("http://10.0.1.187:3000/users/signup", {
+    fetch("https://backend-bunga.vercel.app/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password, entreprise, role, prenom, nom }),

@@ -47,6 +47,7 @@ export default function CardBungalow(props) {
             >
               <Image
                 source={{
+                  // adresse http stocker sur internet.
                   uri: props.image,
                 }}
                 // height='110%'

@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 
 
 export default function ProductScreen(props) {
-  // extrait la valeur du paramètre bungalow_id et la stocke dans la variable bungalow_id
+  // desrtructure bungalow_id
   const { bungalow_id } = props.route.params;
   // Permet de faire descendre bungalow_id à la screen PlageData
   const selectPlageData = () => {
@@ -23,10 +23,10 @@ export default function ProductScreen(props) {
   };
   
 
-
+  // Récupère tous les bungalows 
   const searchResult = useSelector((state) => state.searchResult.value);
   
-  // filtre tous les bungalows par ID et s'assure de conserver les bunbgalows_id params égaux aux bungalowsid stockés dans le reducer SearchResult.
+  // Filtre la liste bungalow du reducer par le bungalow_ID de la Card.
   const bungalowsFilter = searchResult.filter((e) => e._id === bungalow_id);
 
   const capacite =

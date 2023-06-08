@@ -5,14 +5,9 @@ import { View, StyleSheet } from "react-native";
 
 export default function EquipementList(props) {
 
-  // const isEquipement = props[0].map((data, i) => {
-
-  // })  
-
   console.log('Equipment list _', props[0])
   return (
     <Box style={styles.containerDetails}>
-      {/* <View>{equipmentsNameList}</View> */}
       <View style={styles.borderLine} />
       <Text style={styles.title}>Détails</Text>
       <Box style={styles.boxEquipement}>
